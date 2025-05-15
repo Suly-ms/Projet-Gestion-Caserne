@@ -175,12 +175,22 @@ namespace SAE_A21_D21___Projet_Caserne
 
 
             gbxMobilisation.Visible = true;
+
+            frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier();
+            monUC.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier();
-            monUC.Show();
+            
+        }
+
+        private void btnReinitialiser_Click(object sender, EventArgs e)
+        {
+            txbMotif.Text = "";
+            txbCodePostal.Text = "";
+            txbRue.Text = "";
+            txbVille.Text = "";
         }
     }
 }
