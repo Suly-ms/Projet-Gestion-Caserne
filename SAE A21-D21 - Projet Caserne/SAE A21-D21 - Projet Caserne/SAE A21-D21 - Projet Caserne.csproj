@@ -49,9 +49,19 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UserControlChoixVehicules, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UserControlChoixVehicules.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
+    <Compile Include="frmChoixVehiculesPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChoixVehiculesPompier.Designer.cs">
+      <DependentUpon>frmChoixVehiculesPompier.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestionNouvelleMission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +77,9 @@
     <Compile Include="mesDatas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmChoixVehiculesPompier.resx">
+      <DependentUpon>frmChoixVehiculesPompier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestionNouvelleMission.resx">
       <DependentUpon>frmGestionNouvelleMission.cs</DependentUpon>
     </EmbeddedResource>

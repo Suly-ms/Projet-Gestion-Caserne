@@ -25,3 +25,5 @@ C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SA
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE A21-D21 - Projet Caserne.exe
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE A21-D21 - Projet Caserne.pdb
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.MainFormulaire.resources
+C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\bin\Debug\UserControlChoixVehicules.pdb
+C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.frmChoixVehiculesPompier.resources
