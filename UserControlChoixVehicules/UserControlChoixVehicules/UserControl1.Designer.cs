@@ -39,7 +39,7 @@
             // 
             this.pbVehicule.Location = new System.Drawing.Point(19, 41);
             this.pbVehicule.Name = "pbVehicule";
-            this.pbVehicule.Size = new System.Drawing.Size(80, 80);
+            this.pbVehicule.Size = new System.Drawing.Size(99, 80);
             this.pbVehicule.TabIndex = 0;
             this.pbVehicule.TabStop = false;
             // 
@@ -68,7 +68,7 @@
             // btnChoisi
             // 
             this.btnChoisi.BackColor = System.Drawing.Color.Red;
-            this.btnChoisi.Location = new System.Drawing.Point(118, 46);
+            this.btnChoisi.Location = new System.Drawing.Point(137, 41);
             this.btnChoisi.Name = "btnChoisi";
             this.btnChoisi.Size = new System.Drawing.Size(70, 70);
             this.btnChoisi.TabIndex = 4;
@@ -85,7 +85,7 @@
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.pbVehicule);
             this.Name = "UCChoixVehicule";
-            this.Size = new System.Drawing.Size(210, 141);
+            this.Size = new System.Drawing.Size(226, 141);
             ((System.ComponentModel.ISupportInitialize)(this.pbVehicule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

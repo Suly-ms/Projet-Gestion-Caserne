@@ -17,11 +17,12 @@ namespace UserControlChoixVehicules
             InitializeComponent();
         }
 
-        public void ChargerDonnees(Image image, int numero, int type)
+        public void ChargerDonnees(Image image, int numero, String type)
         {
             pbVehicule.Image = image;
+            pbVehicule.SizeMode = PictureBoxSizeMode.StretchImage;
             lblNumero.Text = numero.ToString();
-            lblType.Text = type.ToString();
+            lblType.Text = type;
         }
 
         private void btnChoisi_Click(object sender, EventArgs e)
