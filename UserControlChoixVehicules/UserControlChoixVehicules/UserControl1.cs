@@ -12,6 +12,8 @@ namespace UserControlChoixVehicules
 {
     public partial class UCChoixVehicule: UserControl
     {
+        public event EventHandler<VehiculeChoisiEventArgs> VehiculeChoisi;
+        public event EventHandler<VehiculeNonChoisiEventArgs> VehiculeNonChoisi;
         public UCChoixVehicule()
         {
             InitializeComponent();
@@ -27,7 +29,35 @@ namespace UserControlChoixVehicules
 
         private void btnChoisi_Click(object sender, EventArgs e)
         {
-            btnChoisi.BackColor = btnChoisi.BackColor==Color.Red ? Color.Green : Color.Red;
+            if(btnChoisi.BackColor == Color.Red)
+            {
+                VehiculeChoisi?.Invoke(this, new VehiculeChoisiEventArgs
+                {
+                    Numero = int.Parse(lblNumero.Text),
+                    Type = lblType.Text
+                });
+                btnChoisi.BackColor = Color.Green;
+            }
+            else
+            {
+                VehiculeNonChoisi?.Invoke(this, new VehiculeNonChoisiEventArgs
+                {
+                    Numero = int.Parse(lblNumero.Text),
+                    Type = lblType.Text
+                });
+                btnChoisi.BackColor = Color.Red;
+            }
+        }
+        public class VehiculeChoisiEventArgs : EventArgs
+        {
+            public int Numero { get; set; }
+            public string Type { get; set; }
+        }
+
+        public class VehiculeNonChoisiEventArgs : EventArgs
+        {
+            public int Numero { get; set; }
+            public string Type { get; set; }
         }
     }
 }

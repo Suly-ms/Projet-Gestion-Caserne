@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pinpon;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +9,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserControlChoixPompier;
 using UserControlChoixVehicules;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
-using Pinpon;
-using UserControlChoixPompier;
+using static UserControlChoixVehicules.UCChoixVehicule;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
@@ -26,6 +26,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private DataRow[] affectationPompiers;
         private DataRow[] habilitationPompiers;
         private DataRow[] habilitationMission;
+        private DataSet pompierVehiculeEnregistre = new DataSet();
         public frmChoixVehiculesPompier()
         {
             InitializeComponent();
@@ -53,6 +54,11 @@ namespace SAE_A21_D21___Projet_Caserne
                 { "VSS", Image.FromFile("img/vss.jpg") },
                 { "VSR", Image.FromFile("img/vsr.jpg") }
             };
+
+            DataTable table = new DataTable("Vehicules");
+            table.Columns.Add("Numero", typeof(int));
+            table.Columns.Add("Type", typeof(string));
+            pompierVehiculeEnregistre.Tables.Add(table);
 
             int top = 10;
             int left = 20;
@@ -82,7 +88,10 @@ namespace SAE_A21_D21___Projet_Caserne
                     };
 
                     String code = Vehicules[i]["codeTypeEngin"].ToString();
-                    
+
+
+                    choixVehicule.VehiculeChoisi += UcVehicule_VehiculeChoisi;
+                    choixVehicule.VehiculeNonChoisi += UcVehicule_VehiculeNonChoisi;
                     choixVehicule.ChargerDonnees(imagesVehicules[code], Convert.ToInt32(Vehicules[i]["numero"]), code);
 
                     pnlChoixVehicule.Controls.Add(choixVehicule);
@@ -120,54 +129,20 @@ namespace SAE_A21_D21___Projet_Caserne
                 top = 10;
                 foreach (DataRow r_habilitations in habilitationMission)
                 {
-                    habilisations.Add(Convert.ToInt32(r_habilitations["idHabilitation"]));
-                    DataRow[] habilitation = MesDatas.DsGlobal.Tables["Habilitation"].Select("id = " + r_habilitations["idHabilitation"]);
+                    int idHab = Convert.ToInt32(r_habilitations["idHabilitation"]);
+                    DataRow[] habilitation = MesDatas.DsGlobal.Tables["Habilitation"].Select("id = " + idHab);
+
                     var boutonHabilitation = new System.Windows.Forms.Button
                     {
                         Top = top,
                         Left = left,
                         Text = habilitation[0]["libelle"].ToString(),
+                        Tag = idHab // Stocker l'id de l'habilitation dans le bouton
                     };
+
                     boutonHabilitation.Click += new System.EventHandler(afficherPompier);
                     pnlChoixHabilitation.Controls.Add(boutonHabilitation);
                     top += 50;
-                }
-
-                // Récupérer tous les matricules des pompiers qui ont les bonnes habilitations pour la mission
-                List<int> matriculeBonneHabilitations = new List<int>();
-                foreach (DataRow r_habilitationPompiers in habilitationPompiers)
-                {
-                    if (habilisations.Contains(Convert.ToInt32(r_habilitationPompiers["idHabilitation"])))
-                    {
-                        matriculeBonneHabilitations.Add(Convert.ToInt32(r_habilitationPompiers["matriculePompier"]));
-                    }
-                }
-
-                List<DataRow> tmp = new List<DataRow>();
-                foreach (DataRow r_pompiers in pompiers)
-                {
-                    if (matriculeBonneHabilitations.Contains(Convert.ToInt32(r_pompiers["matricule"])))
-                    {
-                        tmp.Add(r_pompiers);
-                    }
-                }
-                pompiers = tmp;
-
-                String habilitationPompier;
-                foreach (DataRow r_pompiers in pompiers)
-                {
-                    // Récupérer les habilitations pour le pompier actuel
-                    List<string> habilitationList = new List<string>();
-                    foreach (DataRow r_habilitationPompiers in habilitationPompiers)
-                    {
-                        if (Convert.ToInt32(r_habilitationPompiers["matriculePompier"]) == Convert.ToInt32(r_pompiers["matricule"]))
-                        {
-                            habilitationList.Add(r_habilitationPompiers["idHabilitation"].ToString());
-                        }
-                    }
-
-                    // Ajouter les habilitations à la nouvelle ligne
-                    habilitationPompier = string.Join(", ", habilitationList);
                 }
             }
 
@@ -183,9 +158,22 @@ namespace SAE_A21_D21___Projet_Caserne
             pnlChoixPompier.Controls.Clear();
             int top = 10;
             int left = 20;
-            for (int i = 0; i < pompiers.Count; i++)
+
+            System.Windows.Forms.Button bouton = sender as System.Windows.Forms.Button;
+
+            int idHabilitationCliquee = (int)bouton.Tag;
+
+            foreach (DataRow pompier in pompiers)
             {
-                if (MesDatas.DsGlobal.Tables["Passer"].Select("idHabilitation = " + ) pompiers[i]["matricule"])
+                int matricule = Convert.ToInt32(pompier["matricule"]);
+
+                // Vérifier si ce pompier a cette habilitation
+                bool aHabilitation = habilitationPompiers.Any(h =>
+                    Convert.ToInt32(h["matriculePompier"]) == matricule &&
+                    Convert.ToInt32(h["idHabilitation"]) == idHabilitationCliquee
+                );
+
+                if (aHabilitation)
                 {
                     var choixPompier = new UCChoixPompier
                     {
@@ -193,14 +181,56 @@ namespace SAE_A21_D21___Projet_Caserne
                         Left = left
                     };
 
-                    String grade = pompiers[i]["codeGrade"].ToString();
-                    String nom = pompiers[i]["nom"].ToString() + " " + pompiers[i]["prenom"].ToString();
+                    String grade = pompier["codeGrade"].ToString();
+                    String nom = pompier["nom"].ToString() + " " + pompier["prenom"].ToString();
 
                     choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom);
 
                     pnlChoixPompier.Controls.Add(choixPompier);
                     top += 130;
                 }
+            }
+        }
+
+        private void UcVehicule_VehiculeChoisi(object sender, VehiculeChoisiEventArgs e)
+        {
+            // Ajouter une ligne au DataSet
+            pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Add(e.Numero, e.Type);
+            chargerDataSetPompierVehiculeEnregistre();
+        }
+
+        private void UcVehicule_VehiculeNonChoisi(object sender, VehiculeNonChoisiEventArgs e)
+        {
+            // Ajouter une ligne au DataSet
+            foreach (DataRow row in pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Cast<DataRow>().ToList())
+            {
+                if ((int)row["Numero"] == e.Numero && row["Type"].ToString() == e.Type)
+                {
+                    row.Delete();
+                }
+            }
+            pompierVehiculeEnregistre.Tables["Vehicules"].AcceptChanges();
+            chargerDataSetPompierVehiculeEnregistre();
+        }
+
+        private void chargerDataSetPompierVehiculeEnregistre()
+        {
+            pnlPompierEnregistre.Controls.Clear();
+            pnlVehiculeEnregistre.Controls.Clear();
+            int top = 20;
+            int left = 5;
+            foreach(DataRow row in pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Cast<DataRow>().ToList())
+            {
+                Label label = new Label();
+                label.Text = row["Type"].ToString() + row["Numero"].ToString();
+                label.Top = top;
+                label.Left = left;
+                label.Width = 55;
+                label.BackColor = Color.Yellow;
+                label.AutoSize = false;
+                pnlVehiculeEnregistre.Controls.Add(label);
+
+                left += 75;
             }
         }
     }
