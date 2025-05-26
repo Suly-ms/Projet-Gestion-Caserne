@@ -14,17 +14,19 @@ namespace UserControlChoixVehicules
     {
         public event EventHandler<VehiculeChoisiEventArgs> VehiculeChoisi;
         public event EventHandler<VehiculeNonChoisiEventArgs> VehiculeNonChoisi;
+        int m_caserne;
         public UCChoixVehicule()
         {
             InitializeComponent();
         }
 
-        public void ChargerDonnees(Image image, int numero, String type)
+        public void ChargerDonnees(Image image, int numero, String type, int caserne)
         {
             pbVehicule.Image = image;
             pbVehicule.SizeMode = PictureBoxSizeMode.StretchImage;
             lblNumero.Text = numero.ToString();
             lblType.Text = type;
+            m_caserne = caserne;
         }
 
         private void btnChoisi_Click(object sender, EventArgs e)
@@ -34,7 +36,8 @@ namespace UserControlChoixVehicules
                 VehiculeChoisi?.Invoke(this, new VehiculeChoisiEventArgs
                 {
                     Numero = int.Parse(lblNumero.Text),
-                    Type = lblType.Text
+                    Type = lblType.Text,
+                    Caserne = m_caserne
                 });
                 btnChoisi.BackColor = Color.Green;
             }
@@ -43,7 +46,8 @@ namespace UserControlChoixVehicules
                 VehiculeNonChoisi?.Invoke(this, new VehiculeNonChoisiEventArgs
                 {
                     Numero = int.Parse(lblNumero.Text),
-                    Type = lblType.Text
+                    Type = lblType.Text,
+                    Caserne = m_caserne
                 });
                 btnChoisi.BackColor = Color.Red;
             }
@@ -52,12 +56,14 @@ namespace UserControlChoixVehicules
         {
             public int Numero { get; set; }
             public string Type { get; set; }
+            public int Caserne { get; set; }
         }
 
         public class VehiculeNonChoisiEventArgs : EventArgs
         {
             public int Numero { get; set; }
             public string Type { get; set; }
+            public int Caserne { get; set; }
         }
     }
 }

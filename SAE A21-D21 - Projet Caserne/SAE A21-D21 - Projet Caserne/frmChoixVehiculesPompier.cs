@@ -26,7 +26,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private DataRow[] pompiersTmp;
         private DataRow[] affectationPompiers;
         private DataRow[] habilitationPompiers;
-        private DataRow[] habilitationMission;
+        private List<DataRow> habilitationMission = new List<DataRow>();
         private int lastHabilitation;
         private DataSet pompierVehiculeEnregistre = new DataSet();
         private Dictionary<int, int> habilitationCompteurs = new Dictionary<int, int>();
@@ -63,6 +63,7 @@ namespace SAE_A21_D21___Projet_Caserne
             DataTable tableVehicule = new DataTable("Vehicules");
             tableVehicule.Columns.Add("Numero", typeof(int));
             tableVehicule.Columns.Add("Type", typeof(string));
+            tableVehicule.Columns.Add("Caserne", typeof(int));
             pompierVehiculeEnregistre.Tables.Add(tableVehicule);
 
             DataTable tablePompier = new DataTable("Pompiers");
@@ -78,8 +79,9 @@ namespace SAE_A21_D21___Projet_Caserne
 
             try
             {
+                int caserne = m_caserne;
                 // Récupérer les Types de véhicules en fonction de l'ID du sinistre
-                int natureSinistre = m_natureSinistre + 1;
+                int natureSinistre = m_natureSinistre;
                 DataRow[] typeVéhiculeDataRow = MesDatas.DsGlobal.Tables["Necessiter"].Select("idNatureSinistre = " + natureSinistre);
                 List<string> listeTypes = new List<string>();
                 foreach (DataRow r in typeVéhiculeDataRow)
@@ -87,16 +89,31 @@ namespace SAE_A21_D21___Projet_Caserne
                     listeTypes.Add("'" + r["codeTypeEngin"].ToString() + "'");
                 }
 
-                // Tous les type de véhicules nécessaire dans un string séparé par des , (utile dans le SQL)
-                string typesPourInClause = string.Join(",", listeTypes);
-
-                int caserne = m_caserne + 1;
-
                 // Récupérer les véhicules en fonction de la caserne choisit, des bon véhicules pour la mision et de savoir si ils sont en mission et si ils sont en panne
-                DataRow[] Vehicules = MesDatas.DsGlobal.Tables["Engin"].Select("idCaserne = " + caserne + " AND codeTypeEngin IN (" + typesPourInClause + ")" + " AND enMission = 0 AND enPanne = 0");
-
+                List<DataRow> Vehicules = new List<DataRow>();
+                foreach (string t in listeTypes)
+                {
+                    DataRow[] caserneTmp = MesDatas.DsGlobal.Tables["Caserne"].Select();
+                    DataRow[] vehiculeTmp = MesDatas.DsGlobal.Tables["Engin"].Select($@"idCaserne = " + caserne + "AND codeTypeEngin = " + t + " AND enMission = 0 AND enPanne = 0");
+                    if (vehiculeTmp.Length == 0)
+                    {
+                        for (int i = 0; i < caserneTmp.Count(); i++)
+                        {
+                            vehiculeTmp = MesDatas.DsGlobal.Tables["Engin"].Select($@"idCaserne = " + i + "AND codeTypeEngin = " + t + " AND enMission = 0 AND enPanne = 0");
+                            if (vehiculeTmp.Length > 0)
+                            {
+                                Vehicules.AddRange(vehiculeTmp);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Vehicules.AddRange(vehiculeTmp);
+                    }
+                }
                 // Ajouter dans le panel du choix des véhicules, les UC pour chosiir les véhicules
-                for (int i = 0; i < Vehicules.Length; i++)
+                for (int i = 0; i < Vehicules.Count; i++)
                 {
                     var choixVehicule = new UCChoixVehicule
                     {
@@ -109,7 +126,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
                     choixVehicule.VehiculeChoisi += UcVehicule_VehiculeChoisi;
                     choixVehicule.VehiculeNonChoisi += UcVehicule_VehiculeNonChoisi;
-                    choixVehicule.ChargerDonnees(imagesVehicules[code], Convert.ToInt32(Vehicules[i]["numero"]), code);
+                    choixVehicule.ChargerDonnees(imagesVehicules[code], Convert.ToInt32(Vehicules[i]["numero"]), code, Convert.ToInt32(Vehicules[i]["idCaserne"]));
 
                     pnlChoixVehicule.Controls.Add(choixVehicule);
                     top += 110;
@@ -123,9 +140,16 @@ namespace SAE_A21_D21___Projet_Caserne
                 
                 // Sélection des habilitations des pompiers
                 habilitationPompiers = MesDatas.DsGlobal.Tables["Passer"].Select();
-                
+
                 // Sélection des habilitations nécessaires pour la mission
-                habilitationMission = MesDatas.DsGlobal.Tables["Embarquer"].Select("codeTypeEngin IN (" + typesPourInClause + ")");
+                foreach (string t in listeTypes)
+                {
+                    foreach(DataRow dr in MesDatas.DsGlobal.Tables["Embarquer"].Select("codeTypeEngin = " + t))
+                    {
+                        habilitationMission.Add(dr);
+                    }
+                }
+                
 
                 // Récupérer les pompiers de la caserne choisie
                 foreach (DataRow r in pompiersTmp)
@@ -279,7 +303,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private void UcVehicule_VehiculeChoisi(object sender, VehiculeChoisiEventArgs e)
         {
             // Ajouter une ligne au DataSet
-            pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Add(e.Numero, e.Type);
+            pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Add(e.Numero, e.Type, e.Caserne);
             chargerDataSetPompierVehiculeEnregistre();
             // Recalculer tous les boutons d’habilitation (comme dans la suppression)
             pnlChoixHabilitation.Controls.Clear();
@@ -342,9 +366,6 @@ namespace SAE_A21_D21___Projet_Caserne
                     {
                         string nomHabilitation = btn.Text.Split('x')[0].Trim();
                         btn.Text = $"{nomHabilitation} x{habilitationCompteurs[lastHabilitation]}";
-
-                        // Optionnel : griser ou désactiver s’il n’en reste plus
-                        btn.Enabled = habilitationCompteurs[lastHabilitation] > 0;
                         break;
                     }
                 }
@@ -375,7 +396,6 @@ namespace SAE_A21_D21___Projet_Caserne
                             {
                                 string nomHabilitation = btn.Text.Split('x')[0].Trim();
                                 btn.Text = $"{nomHabilitation} x{habilitationCompteurs[idHabilitation]}";
-                                btn.Enabled = true;
                                 break;
                             }
                         }

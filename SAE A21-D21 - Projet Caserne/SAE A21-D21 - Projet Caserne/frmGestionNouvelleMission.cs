@@ -54,8 +54,8 @@ namespace SAE_A21_D21___Projet_Caserne
         private void btnConstituer_Click(object sender, EventArgs e)
         {
             frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier(
-                Convert.ToInt32(cbxNatureSinistre.SelectedValue)-1,
-                Convert.ToInt32(cbxCaserne.SelectedValue)-1
+                Convert.ToInt32(cbxNatureSinistre.SelectedValue),
+                Convert.ToInt32(cbxCaserne.SelectedValue)
             );
 
             if (monUC.ShowDialog() == DialogResult.OK)
@@ -91,7 +91,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 foreach (DataRow row in Vehicules)
                 {
                     insertIntoMission.CommandText = $@"INSERT INTO PartirAvec
-                                               VALUES({cbxCaserne.SelectedIndex}, '{row["Type"]}', '{row["Numero"]}', {id}, NULL);";
+                                               VALUES({row["Caserne"]}, '{row["Type"]}', '{row["Numero"]}', {id}, NULL);";
                     insertIntoMission.ExecuteNonQuery();
                 }
 
