@@ -49,6 +49,8 @@
             this.cbxNatureSinistre = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFermer = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.lblChampsIncomplets = new System.Windows.Forms.Label();
             this.gbxInformationUsager.SuspendLayout();
             this.gbxDecisionRegul.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@
             this.lblNouvelleMission.AutoSize = true;
             this.lblNouvelleMission.BackColor = System.Drawing.Color.Transparent;
             this.lblNouvelleMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNouvelleMission.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblNouvelleMission.ForeColor = System.Drawing.Color.Black;
             this.lblNouvelleMission.Location = new System.Drawing.Point(255, 27);
             this.lblNouvelleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNouvelleMission.Name = "lblNouvelleMission";
@@ -76,7 +78,7 @@
             this.lblDateDelenchement.AutoSize = true;
             this.lblDateDelenchement.BackColor = System.Drawing.Color.Transparent;
             this.lblDateDelenchement.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateDelenchement.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblDateDelenchement.ForeColor = System.Drawing.Color.Black;
             this.lblDateDelenchement.Location = new System.Drawing.Point(732, 27);
             this.lblDateDelenchement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateDelenchement.Name = "lblDateDelenchement";
@@ -120,12 +122,13 @@
             this.txbVille.Name = "txbVille";
             this.txbVille.Size = new System.Drawing.Size(452, 27);
             this.txbVille.TabIndex = 11;
+            this.txbVille.TextChanged += new System.EventHandler(this.txbVille_TextChanged);
             // 
             // lblVille
             // 
             this.lblVille.AutoSize = true;
             this.lblVille.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVille.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblVille.ForeColor = System.Drawing.Color.Black;
             this.lblVille.Location = new System.Drawing.Point(507, 163);
             this.lblVille.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVille.Name = "lblVille";
@@ -139,12 +142,13 @@
             this.txbCodePostal.Name = "txbCodePostal";
             this.txbCodePostal.Size = new System.Drawing.Size(102, 27);
             this.txbCodePostal.TabIndex = 9;
+            this.txbCodePostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodePostal_KeyPress);
             // 
             // lblCodePostale
             // 
             this.lblCodePostale.AutoSize = true;
             this.lblCodePostale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodePostale.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCodePostale.ForeColor = System.Drawing.Color.Black;
             this.lblCodePostale.Location = new System.Drawing.Point(507, 120);
             this.lblCodePostale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostale.Name = "lblCodePostale";
@@ -158,12 +162,13 @@
             this.txbRue.Name = "txbRue";
             this.txbRue.Size = new System.Drawing.Size(452, 27);
             this.txbRue.TabIndex = 7;
+            this.txbRue.TextChanged += new System.EventHandler(this.txbRue_TextChanged);
             // 
             // lblRue
             // 
             this.lblRue.AutoSize = true;
             this.lblRue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRue.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblRue.ForeColor = System.Drawing.Color.Black;
             this.lblRue.Location = new System.Drawing.Point(507, 77);
             this.lblRue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRue.Name = "lblRue";
@@ -175,7 +180,7 @@
             // 
             this.lblAdresseSinistre.AutoSize = true;
             this.lblAdresseSinistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresseSinistre.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblAdresseSinistre.ForeColor = System.Drawing.Color.Black;
             this.lblAdresseSinistre.Location = new System.Drawing.Point(736, 34);
             this.lblAdresseSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresseSinistre.Name = "lblAdresseSinistre";
@@ -190,12 +195,13 @@
             this.txbMotif.Name = "txbMotif";
             this.txbMotif.Size = new System.Drawing.Size(423, 187);
             this.txbMotif.TabIndex = 4;
+            this.txbMotif.TextChanged += new System.EventHandler(this.txbMotif_TextChanged);
             // 
             // lblMotif
             // 
             this.lblMotif.AutoSize = true;
             this.lblMotif.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotif.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblMotif.ForeColor = System.Drawing.Color.Black;
             this.lblMotif.Location = new System.Drawing.Point(12, 33);
             this.lblMotif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotif.Name = "lblMotif";
@@ -241,7 +247,7 @@
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCaserne.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCaserne.ForeColor = System.Drawing.Color.Black;
             this.lblCaserne.Location = new System.Drawing.Point(534, 38);
             this.lblCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaserne.Name = "lblCaserne";
@@ -262,7 +268,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(26, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -280,12 +286,35 @@
             this.btnFermer.UseVisualStyleBackColor = true;
             this.btnFermer.Click += new System.EventHandler(this.btnRetour_Click);
             // 
+            // btnValider
+            // 
+            this.btnValider.Location = new System.Drawing.Point(916, 510);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(182, 42);
+            this.btnValider.TabIndex = 19;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
+            // 
+            // lblChampsIncomplets
+            // 
+            this.lblChampsIncomplets.AutoSize = true;
+            this.lblChampsIncomplets.BackColor = System.Drawing.Color.Red;
+            this.lblChampsIncomplets.Location = new System.Drawing.Point(753, 521);
+            this.lblChampsIncomplets.Name = "lblChampsIncomplets";
+            this.lblChampsIncomplets.Size = new System.Drawing.Size(157, 20);
+            this.lblChampsIncomplets.TabIndex = 20;
+            this.lblChampsIncomplets.Text = "Champs Incomplets";
+            this.lblChampsIncomplets.Visible = false;
+            // 
             // frmGestionNouvelleMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1145, 572);
+            this.Controls.Add(this.lblChampsIncomplets);
+            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.gbxDecisionRegul);
             this.Controls.Add(this.gbxInformationUsager);
@@ -329,6 +358,8 @@
         private System.Windows.Forms.Button btnConstituer;
         private System.Windows.Forms.Button btnReinitialiser;
         private System.Windows.Forms.Button btnFermer;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Label lblChampsIncomplets;
     }
 }
 

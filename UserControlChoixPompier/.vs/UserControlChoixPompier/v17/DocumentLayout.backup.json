@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{F5CE360F-C430-4520-B40C-169B9AB76454}|UserControlChoixPompier\\UserControlChoixPompier.csproj|solutionrelative:usercontrolchoixpompier\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5CE360F-C430-4520-B40C-169B9AB76454}|UserControlChoixPompier\\UserControlChoixPompier.csproj|c:\\users\\marti\\documents\\iut\\sae\\a21\\sae-a21-d21\\usercontrolchoixpompier\\usercontrolchoixpompier\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F5CE360F-C430-4520-B40C-169B9AB76454}|UserControlChoixPompier\\UserControlChoixPompier.csproj|C:\\Users\\marti\\Documents\\IUT\\SAE\\A21\\sae-a21-d21\\UserControlChoixPompier\\usercontrolchoixpompier\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F5CE360F-C430-4520-B40C-169B9AB76454}|UserControlChoixPompier\\UserControlChoixPompier.csproj|solutionrelative:usercontrolchoixpompier\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "UserControlChoixPompier\\UserControl1.cs",
               "ToolTip": "C:\\Users\\marti\\Documents\\IUT\\SAE\\A21\\sae-a21-d21\\UserControlChoixPompier\\UserControlChoixPompier\\UserControl1.cs",
               "RelativeToolTip": "UserControlChoixPompier\\UserControl1.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAiwBgAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-20T12:09:32.806Z",
               "EditorCaption": ""
@@ -54,8 +54,7 @@
               "ToolTip": "C:\\Users\\marti\\Documents\\IUT\\SAE\\A21\\sae-a21-d21\\UserControlChoixPompier\\UserControlChoixPompier\\UserControl1.cs [Design]",
               "RelativeToolTip": "UserControlChoixPompier\\UserControl1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T12:02:03.647Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-20T12:02:03.647Z"
             }
           ]
         }

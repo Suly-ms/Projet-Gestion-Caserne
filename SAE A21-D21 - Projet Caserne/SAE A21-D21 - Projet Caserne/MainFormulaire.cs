@@ -40,7 +40,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private void button1_Click(object sender, EventArgs e)
         {
             frmGestionNouvelleMission NouvelleMission = new frmGestionNouvelleMission(); // Crée une instance
-            NouvelleMission.Show();
+            NouvelleMission.ShowDialog();
         }
     }
 }

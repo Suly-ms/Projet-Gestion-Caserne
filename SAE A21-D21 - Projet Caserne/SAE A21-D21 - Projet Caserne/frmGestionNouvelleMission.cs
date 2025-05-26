@@ -18,6 +18,7 @@ namespace SAE_A21_D21___Projet_Caserne
 {
     public partial class frmGestionNouvelleMission : Form
     {
+        private DataSet pompierVehiculeMission;
         public frmGestionNouvelleMission()
         {
             InitializeComponent();
@@ -52,13 +53,17 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void btnConstituer_Click(object sender, EventArgs e)
         {
-            frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier(cbxNatureSinistre.SelectedIndex, cbxCaserne.SelectedIndex);
-            monUC.ShowDialog();
-        }
+            frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier(
+                Convert.ToInt32(cbxNatureSinistre.SelectedValue)-1,
+                Convert.ToInt32(cbxCaserne.SelectedValue)-1
+            );
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
+            if (monUC.ShowDialog() == DialogResult.OK)
+            {
+                // Ici, on utilise bien l'instance monUC pour accéder à la propriété
+                pompierVehiculeMission = monUC.DataSetMission;
+                btnConstituer.BackColor = Color.White;
+            }
         }
 
         private void btnReinitialiser_Click(object sender, EventArgs e)
@@ -67,6 +72,92 @@ namespace SAE_A21_D21___Projet_Caserne
             txbCodePostal.Text = "";
             txbRue.Text = "";
             txbVille.Text = "";
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+            if(!(txbVille.Text=="" || txbRue.Text == "" || txbCodePostal.Text == "" || pompierVehiculeMission == null))
+            {
+                DataRow[] idRow = MesDatas.DsGlobal.Tables["Mission"].Select();
+                int id = Convert.ToInt32(idRow[idRow.Length - 1]["id"]) + 1;
+
+                SQLiteCommand insertIntoMission = new SQLiteCommand();
+                insertIntoMission.Connection = Connexion.Connec;
+                insertIntoMission.CommandText = $@"INSERT INTO Mission(id, dateHeureDepart, motifAppel, adresse, cp, ville, terminee, idNatureSinistre, idCaserne)
+                                               VALUES('{id}', '{DateTime.Now}', '{txbMotif.Text}', '{txbRue.Text}', '{txbCodePostal.Text}', '{txbVille.Text}', 0, '{cbxNatureSinistre.SelectedValue}', '{cbxCaserne.SelectedValue}');";
+                insertIntoMission.ExecuteNonQuery();
+
+                DataRow[] Vehicules = pompierVehiculeMission.Tables["Vehicules"].Select();
+                foreach (DataRow row in Vehicules)
+                {
+                    insertIntoMission.CommandText = $@"INSERT INTO PartirAvec
+                                               VALUES({cbxCaserne.SelectedIndex}, '{row["Type"]}', '{row["Numero"]}', {id}, NULL);";
+                    insertIntoMission.ExecuteNonQuery();
+                }
+
+                DataRow[] Pompiers = pompierVehiculeMission.Tables["Pompiers"].Select();
+                foreach (DataRow row in Pompiers)
+                {
+                    insertIntoMission.CommandText = $@"INSERT INTO Mobiliser
+                                                VALUES({row["matricule"]}, {id}, {row["habilitation"]});";
+                    insertIntoMission.ExecuteNonQuery();
+                }
+
+                Connexion.FermerConnexion();
+
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                txbVille.BackColor = txbVille.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                txbRue.BackColor = txbRue.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                txbCodePostal.BackColor = txbCodePostal.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                txbMotif.BackColor = txbMotif.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                btnConstituer.BackColor = pompierVehiculeMission == null ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                lblChampsIncomplets.BackColor = ColorTranslator.FromHtml("#ff9c9c");
+                lblChampsIncomplets.Visible = true;
+            }
+        }
+
+        private void txbCodePostal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Bloque la saisie si ce n’est pas un chiffre ou une touche de contrôle
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+            else
+            {
+                txbCodePostal.BackColor = Color.White;
+            }
+
+            // Empêche d'écrire plus de 5 chiffres
+            if (!char.IsControl(e.KeyChar) && txbCodePostal.Text.Length >= 5)
+            {
+                e.Handled = true;
+            }
+
+            // Empêche le collage via Ctrl+V
+            if ((ModifierKeys == Keys.Control) && (e.KeyChar == 22)) // 22 = Ctrl+V
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txbMotif_TextChanged(object sender, EventArgs e)
+        {
+            txbMotif.BackColor = Color.White;
+        }
+
+        private void txbRue_TextChanged(object sender, EventArgs e)
+        {
+            txbRue.BackColor = Color.White;
+        }
+
+        private void txbVille_TextChanged(object sender, EventArgs e)
+        {
+            txbVille.BackColor = Color.White;
         }
     }
 }
