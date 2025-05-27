@@ -13,8 +13,8 @@ using UserControlChoixPompier;
 using UserControlChoixVehicules;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static UserControlChoixPompier.UCChoixPompier;
-using static UserControlChoixVehicules.UCChoixVehicule;
+using static UserControlChoixPompier.UC_ChoixPompier;
+using static UserControlChoixVehicules.UC_ChoixVehicule;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
@@ -115,7 +115,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 // Ajouter dans le panel du choix des véhicules, les UC pour chosiir les véhicules
                 for (int i = 0; i < Vehicules.Count; i++)
                 {
-                    var choixVehicule = new UCChoixVehicule
+                    var choixVehicule = new UC_ChoixVehicule
                     {
                         Top = top,
                         Left = left
@@ -264,7 +264,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
                 if (aHabilitation)
                 {
-                    var choixPompier = new UCChoixPompier
+                    var choixPompier = new UC_ChoixPompier
                     {
                         Top = top,
                         Left = left

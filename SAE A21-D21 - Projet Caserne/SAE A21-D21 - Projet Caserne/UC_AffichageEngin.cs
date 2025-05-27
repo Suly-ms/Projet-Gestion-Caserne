@@ -74,7 +74,7 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 // Ouvre un forme avec un textBox qui attend les réparations
                 // Le form va mettre à jour le DataGlobal et la base de donnée
-                FrmDommageEngin frmDommage = new FrmDommageEngin(m_idCaserne, m_codeTypeEngin, m_numeroEngin, m_idMission);
+                frmDommageEngin frmDommage = new frmDommageEngin(m_idCaserne, m_codeTypeEngin, m_numeroEngin, m_idMission);
                 frmDommage.ShowDialog();
             }
             else

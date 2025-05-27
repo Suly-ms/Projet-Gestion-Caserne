@@ -72,17 +72,17 @@
     <Compile Include="frmChoixVehiculesPompier.Designer.cs">
       <DependentUpon>frmChoixVehiculesPompier.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCompteRendu.cs">
+    <Compile Include="frmCompteRendu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCompteRendu.Designer.cs">
-      <DependentUpon>FrmCompteRendu.cs</DependentUpon>
+    <Compile Include="frmCompteRendu.Designer.cs">
+      <DependentUpon>frmCompteRendu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDommageEngin.cs">
+    <Compile Include="frmDommageEngin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDommageEngin.Designer.cs">
-      <DependentUpon>FrmDommageEngin.cs</DependentUpon>
+    <Compile Include="frmDommageEngin.Designer.cs">
+      <DependentUpon>frmDommageEngin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestionNouvelleMission.cs">
       <SubType>Form</SubType>
@@ -90,11 +90,11 @@
     <Compile Include="frmGestionNouvelleMission.Designer.cs">
       <DependentUpon>frmGestionNouvelleMission.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTableauBord.cs">
+    <Compile Include="frmTableauBord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTableauBord.Designer.cs">
-      <DependentUpon>FrmTableauBord.cs</DependentUpon>
+    <Compile Include="frmTableauBord.Designer.cs">
+      <DependentUpon>frmTableauBord.cs</DependentUpon>
     </Compile>
     <Compile Include="mesDatas.cs" />
     <Compile Include="Program.cs" />
@@ -111,26 +111,38 @@
     <Compile Include="UC_RecapMission.Designer.cs">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserDoubleBoutonImage.cs">
+    <Compile Include="UC_DoubleBoutonImage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserDoubleBoutonImage.Designer.cs">
-      <DependentUpon>UserDoubleBoutonImage.cs</DependentUpon>
+    <Compile Include="UC_DoubleBoutonImage.Designer.cs">
+      <DependentUpon>UC_DoubleBoutonImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChoixPompier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixPompier.Designer.cs">
+      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChoixVehicule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixVehicule.Designer.cs">
+      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmChoixVehiculesPompier.resx">
       <DependentUpon>frmChoixVehiculesPompier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCompteRendu.resx">
-      <DependentUpon>FrmCompteRendu.cs</DependentUpon>
+    <EmbeddedResource Include="frmCompteRendu.resx">
+      <DependentUpon>frmCompteRendu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDommageEngin.resx">
-      <DependentUpon>FrmDommageEngin.cs</DependentUpon>
+    <EmbeddedResource Include="frmDommageEngin.resx">
+      <DependentUpon>frmDommageEngin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionNouvelleMission.resx">
       <DependentUpon>frmGestionNouvelleMission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTableauBord.resx">
-      <DependentUpon>FrmTableauBord.cs</DependentUpon>
+    <EmbeddedResource Include="frmTableauBord.resx">
+      <DependentUpon>frmTableauBord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,8 +159,14 @@
     <EmbeddedResource Include="UC_RecapMission.resx">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserDoubleBoutonImage.resx">
-      <DependentUpon>UserDoubleBoutonImage.cs</DependentUpon>
+    <EmbeddedResource Include="UC_DoubleBoutonImage.resx">
+      <DependentUpon>UC_DoubleBoutonImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixPompier.resx">
+      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixVehicule.resx">
+      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

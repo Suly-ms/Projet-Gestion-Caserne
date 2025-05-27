@@ -37,3 +37,5 @@ C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SA
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.UC_AffichageEngin.resources
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\UC_RecapMission.UC_AffichageMission.resources
 C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\UC_DoubleBoutonImage.UC_DoubleBouton.resources
+C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\UserControlChoixPompier.UC_ChoixPompier.resources
+C:\Users\marti\Documents\IUT\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\UserControlChoixVehicules.UC_ChoixVehicule.resources
