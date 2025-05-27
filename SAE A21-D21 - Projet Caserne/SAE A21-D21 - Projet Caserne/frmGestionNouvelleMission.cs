@@ -19,6 +19,7 @@ namespace SAE_A21_D21___Projet_Caserne
     public partial class frmGestionNouvelleMission : Form
     {
         private DataSet pompierVehiculeMission;
+        private int numeroMission;
         public frmGestionNouvelleMission()
         {
             InitializeComponent();
@@ -42,8 +43,11 @@ namespace SAE_A21_D21___Projet_Caserne
             cbxCaserne.ValueMember = "id";
 
             // Récupérer le numéro de mission
-            DataRow[] numeroMission = MesDatas.DsGlobal.Tables["Mission"].Select();
-            lblNouvelleMission.Text = lblNouvelleMission.Text + (numeroMission.Length+1).ToString();
+            using (SQLiteCommand getMaxId = new SQLiteCommand("SELECT IFNULL(MAX(id), 0) + 1 FROM Mission", Connexion.Connec))
+            {
+                numeroMission = Convert.ToInt32(getMaxId.ExecuteScalar());
+                lblNouvelleMission.Text = lblNouvelleMission.Text + numeroMission.ToString();
+            }
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -78,20 +82,17 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             if(!(txbVille.Text=="" || txbRue.Text == "" || txbCodePostal.Text == "" || pompierVehiculeMission == null))
             {
-                DataRow[] idRow = MesDatas.DsGlobal.Tables["Mission"].Select();
-                int id = Convert.ToInt32(idRow[idRow.Length - 1]["id"]) + 1;
-
                 SQLiteCommand insertIntoMission = new SQLiteCommand();
                 insertIntoMission.Connection = Connexion.Connec;
                 insertIntoMission.CommandText = $@"INSERT INTO Mission(id, dateHeureDepart, motifAppel, adresse, cp, ville, terminee, idNatureSinistre, idCaserne)
-                                               VALUES('{id}', '{DateTime.Now}', '{txbMotif.Text}', '{txbRue.Text}', '{txbCodePostal.Text}', '{txbVille.Text}', 0, '{cbxNatureSinistre.SelectedValue}', '{cbxCaserne.SelectedValue}');";
+                                               VALUES('{numeroMission}', '{DateTime.Now}', '{txbMotif.Text}', '{txbRue.Text}', '{txbCodePostal.Text}', '{txbVille.Text}', 0, '{cbxNatureSinistre.SelectedValue}', '{cbxCaserne.SelectedValue}');";
                 insertIntoMission.ExecuteNonQuery();
 
                 DataRow[] Vehicules = pompierVehiculeMission.Tables["Vehicules"].Select();
                 foreach (DataRow row in Vehicules)
                 {
                     insertIntoMission.CommandText = $@"INSERT INTO PartirAvec
-                                               VALUES({row["Caserne"]}, '{row["Type"]}', '{row["Numero"]}', {id}, NULL);";
+                                               VALUES({row["Caserne"]}, '{row["Type"]}', '{row["Numero"]}', {numeroMission}, NULL);";
                     insertIntoMission.ExecuteNonQuery();
                 }
 
@@ -99,7 +100,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 foreach (DataRow row in Pompiers)
                 {
                     insertIntoMission.CommandText = $@"INSERT INTO Mobiliser
-                                                VALUES({row["matricule"]}, {id}, {row["habilitation"]});";
+                                                VALUES({row["matricule"]}, {numeroMission}, {row["habilitation"]});";
                     insertIntoMission.ExecuteNonQuery();
                 }
 
