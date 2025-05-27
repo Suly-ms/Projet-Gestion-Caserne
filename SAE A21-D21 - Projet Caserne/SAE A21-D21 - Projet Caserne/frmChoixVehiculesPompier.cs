@@ -18,7 +18,7 @@ using static UserControlChoixVehicules.UC_ChoixVehicule;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
-    public partial class frmChoixVehiculesPompier : Form
+    public partial class FrmChoixVehiculesPompier : Form
     {
         private int m_natureSinistre;
         private int m_caserne;
@@ -30,12 +30,12 @@ namespace SAE_A21_D21___Projet_Caserne
         private int lastHabilitation;
         private DataSet pompierVehiculeEnregistre = new DataSet();
         private Dictionary<int, int> habilitationCompteurs = new Dictionary<int, int>();
-        public frmChoixVehiculesPompier()
+        public FrmChoixVehiculesPompier()
         {
             InitializeComponent();
         }
 
-        public frmChoixVehiculesPompier(int natureSinitre, int caserne)
+        public FrmChoixVehiculesPompier(int natureSinitre, int caserne)
         {
             InitializeComponent();
             m_natureSinistre = natureSinitre;

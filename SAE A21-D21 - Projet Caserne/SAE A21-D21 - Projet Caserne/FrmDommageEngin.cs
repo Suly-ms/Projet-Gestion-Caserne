@@ -14,14 +14,14 @@ using Pinpon;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
-    public partial class frmDommageEngin : Form
+    public partial class FrmDommageEngin : Form
     {
         private int m_idCaserne;
         private string m_codeTypeEngin;
         private int m_numeroEngin;
         private int m_idMission;
 
-        public frmDommageEngin(int idCaserne, string codeTypeEngin, int numeroEngin, int idMission)
+        public FrmDommageEngin(int idCaserne, string codeTypeEngin, int numeroEngin, int idMission)
         {
             InitializeComponent();
 

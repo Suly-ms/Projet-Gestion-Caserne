@@ -1,6 +1,6 @@
 ﻿namespace SAE_A21_D21___Projet_Caserne
 {
-    partial class frmDommageEngin
+    partial class FrmDommageEngin
     {
         /// <summary>
         /// Required designer variable.

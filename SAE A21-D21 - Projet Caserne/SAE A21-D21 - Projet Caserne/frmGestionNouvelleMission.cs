@@ -16,11 +16,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
-    public partial class frmGestionNouvelleMission : Form
+    public partial class FrmGestionNouvelleMission : Form
     {
         private DataSet pompierVehiculeMission;
         private int numeroMission;
-        public frmGestionNouvelleMission()
+        public FrmGestionNouvelleMission()
         {
             InitializeComponent();
         }
@@ -57,7 +57,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void btnConstituer_Click(object sender, EventArgs e)
         {
-            frmChoixVehiculesPompier monUC = new frmChoixVehiculesPompier(
+            FrmChoixVehiculesPompier monUC = new FrmChoixVehiculesPompier(
                 Convert.ToInt32(cbxNatureSinistre.SelectedValue),
                 Convert.ToInt32(cbxCaserne.SelectedValue)
             );
