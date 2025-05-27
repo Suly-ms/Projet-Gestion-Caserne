@@ -61,6 +61,11 @@ namespace UserControlChoixPompier
             public string Grade { get; set; }
         }
 
+        private void UC_ChoixPompier_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public class PompierNonChoisiEventArgs : EventArgs
         {
             public string Nom { get; set; }

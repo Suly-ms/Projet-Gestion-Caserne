@@ -75,7 +75,7 @@
             this.pbGrade.TabIndex = 5;
             this.pbGrade.TabStop = false;
             // 
-            // UCChoixPompier
+            // UC_ChoixPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,8 +85,9 @@
             this.Controls.Add(this.lblGrade);
             this.Controls.Add(this.pbGrade);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "UCChoixPompier";
+            this.Name = "UC_ChoixPompier";
             this.Size = new System.Drawing.Size(201, 165);
+            this.Load += new System.EventHandler(this.UC_ChoixPompier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbGrade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

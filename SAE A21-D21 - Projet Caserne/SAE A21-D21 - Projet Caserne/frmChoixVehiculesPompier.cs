@@ -232,10 +232,18 @@ namespace SAE_A21_D21___Projet_Caserne
                 Text = $"{nomHabilitation} x{restant}",
                 Tag = idHabilitation,
                 AutoSize = true,
-                Top = pnlChoixHabilitation.Controls.Count * 50,
                 Left = 20
             };
 
+            if (pnlChoixHabilitation.Controls.Count == 0)
+            {
+                bouton.Top = 20;
+            }
+            else
+            {
+                bouton.Top = (pnlChoixHabilitation.Controls.Count * 50) + 20;
+            }
+            bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             bouton.Click += (s, e) => afficherPompier(s);
             pnlChoixHabilitation.Controls.Add(bouton);
         }
@@ -421,7 +429,8 @@ namespace SAE_A21_D21___Projet_Caserne
                 label.Top = top;
                 label.Left = left;
                 label.Width = 55;
-                label.AutoSize = false;
+                label.AutoSize = true;
+                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 pnlVehiculeEnregistre.Controls.Add(label);
 
                 left += label.Width + 10;
@@ -435,6 +444,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 label.Top = top;
                 label.Left = left;
                 label.AutoSize = true;
+                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 pnlPompierEnregistre.Controls.Add(label);
 
                 left += label.Width + 10;
