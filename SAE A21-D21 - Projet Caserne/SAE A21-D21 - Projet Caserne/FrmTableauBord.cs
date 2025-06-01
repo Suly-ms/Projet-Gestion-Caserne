@@ -21,6 +21,7 @@ using static System.Windows.Forms.LinkLabel;
 using Org.BouncyCastle.Asn1.IsisMtt.X509;
 using CompteRenduBox;
 using System.Threading;
+using iTextSharp.text.pdf.draw;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
@@ -92,12 +93,13 @@ namespace SAE_A21_D21___Projet_Caserne
 
             DataRow[] resultats = ckbEnCours.Checked ? /* Prend que les missions en cours -> */tableMissions.Select("terminee = 0") : /* Initialise quelque chose de toujours vrai (pour prendre toutes les missions) -> */tableMissions.Select("0 = 0");
 
-            foreach (DataRow ligne in resultats)
+            for (int i = resultats.Length - 1; i >= 0; i--)
             {
-                RemplireTableauBord(ligne, hauteur);
+                RemplireTableauBord(resultats[i], hauteur);
 
                 hauteur += 125;
             }
+
         }
 
         private string TrouverCaserne(int idMission)
@@ -319,69 +321,101 @@ namespace SAE_A21_D21___Projet_Caserne
             // Declaration du chemin du fichier PDF
             string chemin = $"Mission_{idMission}.pdf";
 
-            // Declaration et initialisation du Document, du FileStream et du PdfWriter
+            // Declaration et initialisation du Document, Filestream et du Pdfwriter
             Document pdf = new Document();
             FileStream fs = new FileStream(chemin, FileMode.Create);
             PdfWriter.GetInstance(pdf, fs);
 
+            // Ouvrir l'écriture du PDF
             pdf.Open();
 
-            Font titreFont = FontFactory.GetFont("Arial" /*Police*/ , 23 /*Taille*/ , 1 /*Gras*/);
-            Font partieFont = FontFactory.GetFont("Arial" /*Police*/ , 17 /*Taille*/ , 1 /*Gras*/);
-            Font importantFont = FontFactory.GetFont("Arial" /*Police*/ , 14 /*Taille*/ , 1 /*Gras*/);
-            Font normalFont = FontFactory.GetFont("Arial" /*Police*/ , 14 /*Taille*/ , 0 /*Normal*/);
+            // Définition des polices
+            Font titreFont = FontFactory.GetFont("Arial", 24, 1);
+            Font sousTitreFont = FontFactory.GetFont("Arial", 18, 1);
+            Font sectionFont = FontFactory.GetFont("Arial", 14, 1);
+            Font normalFont = FontFactory.GetFont("Arial", 12, 0);
+            Font boldFont = FontFactory.GetFont("Arial", 12, 1);
+            Font statusFont = FontFactory.GetFont("Arial", 12, 2, BaseColor.GRAY);
+            Font italiqueFont = FontFactory.GetFont("Arial", 12, 2);
 
-            // Ecriture du fichier PDF
-            Paragraph paragraphTitre = new Paragraph($"Rapport de mission", titreFont);
-            Paragraph paragraphStatus = new Paragraph($"{statusMission}\n\n", normalFont);
+            // Titre
+            Paragraph titre = new Paragraph("Rapport de Mission", titreFont);
+            titre.Alignment = Element.ALIGN_CENTER;
+            pdf.Add(titre);
 
-            // Centrer le titre et le status
-            paragraphTitre.Alignment = Element.ALIGN_CENTER;
-            paragraphStatus.Alignment = Element.ALIGN_CENTER;
+            // Statut
+            Paragraph statut = new Paragraph(statusMission + "\n\n", statusFont);
+            statut.Alignment = Element.ALIGN_CENTER;
+            pdf.Add(statut);
 
-            // Ajouter le titre au PDF
-            pdf.Add(paragraphTitre);
+            // Séparateur
+            Chunk separateur = new Chunk(new LineSeparator(0.5f, 100, BaseColor.GRAY, Element.ALIGN_CENTER, -2));
 
-            // Ajouter el status au PDF
-            pdf.Add(paragraphStatus);
+            pdf.Add(separateur);
+            pdf.Add(new Paragraph("\n"));
 
-            pdf.Add(new Paragraph($"Déclenchée le {dateDepartMission.Day.ToString("00")}-{dateDepartMission.Month.ToString("00")}-{dateDepartMission.Year.ToString("00")} à {dateDepartMission.Hour.ToString("00")}h{dateDepartMission.Minute.ToString("00")}", importantFont));
+            // Dates
+            pdf.Add(new Paragraph($"Déclenchée le {dateDepartMission:dd-MM-yyyy à HH\\hmm}", sectionFont));
 
-            // Verification de si il y a une date de retour
             if (dateRetourMission != DateTime.MinValue)
             {
-                pdf.Add(new Paragraph($"Retour le {dateRetourMission.Day.ToString("00")}-{dateRetourMission.Month.ToString("00")}-{dateRetourMission.Year.ToString("00")} à {dateRetourMission.Hour.ToString("00")}h{dateRetourMission.Minute.ToString("00")}", importantFont));
+                pdf.Add(new Paragraph($"Retour le {dateRetourMission:dd-MM-yyyy à HH\\hmm}", sectionFont));
             }
             else
             {
-                pdf.Add(new Paragraph($"Pas encore de date de retour car la mission est en cours", importantFont));
+                pdf.Add(new Paragraph("Mission toujours en cours, pas de retour enregistré", sectionFont));
             }
-            
-            pdf.Add(new Paragraph($"----------------------------------------------------------------------------------------------------------------\n\n", importantFont));
-            pdf.Add(new Paragraph($"Type de sinistre : {sinistreMission}\n\n", partieFont));
-            pdf.Add(new Paragraph($"Motif : {motifMission}", importantFont));
-            pdf.Add(new Paragraph($"Adresse : {adresseMission}\n\n", importantFont));
-            pdf.Add(new Paragraph($"Compte-rendu : {renduMission}", importantFont));
-            pdf.Add(new Paragraph($"----------------------------------------------------------------------------------------------------------------\n\n", importantFont));
-            pdf.Add(new Paragraph($"Caserne : {caserneMission}\n\n", partieFont));
 
+            pdf.Add(new Paragraph("\n"));
+            pdf.Add(separateur);
+            pdf.Add(new Paragraph("\n"));
 
-            // Remplir les pompiers affectés dans le PDF
-            pdf.Add(new Paragraph($"Pompiers affectés :", partieFont));
+            // Infos generales
+            pdf.Add(new Paragraph($"Type de sinistre : {sinistreMission}\n", sousTitreFont));
+            pdf.Add(new Paragraph($"\nAdresse : {adresseMission}", normalFont));
+            pdf.Add(new Paragraph($"\nMotif : {motifMission}", boldFont));
+            pdf.Add(new Paragraph($"\nCompte-rendu : {renduMission}", boldFont));
+
+            pdf.Add(new Paragraph("\n"));
+            pdf.Add(separateur);
+            pdf.Add(new Paragraph("\n"));
+
+            // Caserne
+            pdf.Add(new Paragraph($"Caserne responsable : {caserneMission}\n", sousTitreFont));
+
+            // Pompiers
+            pdf.Add(new Paragraph("\nPompier(s) affecté(s) :", sectionFont));
             string[] pompiers = TrouverPompiersAffectes(idMission);
-            foreach(string pompier in pompiers)
+            if (pompiers.Length == 0)
             {
-                pdf.Add(new Paragraph($"--> {pompier}", normalFont));
+                pdf.Add(new Paragraph("--> Aucun pompier affecté", italiqueFont));
+            }
+            else
+            {
+                foreach (string pompier in pompiers)
+                {
+                    pdf.Add(new Paragraph($"--> {pompier}", italiqueFont));
+                }
             }
 
-            // Remplir les engins utilisés dans le PDF
-            pdf.Add(new Paragraph($"\nEngins utilisés :", partieFont));
-            string[] engins = TrouverEnginsUtilises(idMission);
-            foreach (string engin in engins)
-            {
-                pdf.Add(new Paragraph($"--> {engin}", normalFont));
-            } 
+            pdf.Add(new Paragraph("\n"));
 
+            // Engins
+            pdf.Add(new Paragraph("Engin(s) utilisé(s) :", sectionFont));
+            string[] engins = TrouverEnginsUtilises(idMission);
+            if (engins.Length == 0)
+            {
+                pdf.Add(new Paragraph("--> Aucun engin utilisé", italiqueFont));
+            }
+            else
+            {
+                foreach (string engin in engins)
+                {
+                    pdf.Add(new Paragraph($"--> {engin}", italiqueFont));
+                }
+            }
+
+            // Fermeture du PDF
             pdf.Close();
         }
 
