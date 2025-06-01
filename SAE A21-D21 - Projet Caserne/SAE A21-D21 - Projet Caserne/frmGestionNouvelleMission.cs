@@ -94,6 +94,9 @@ namespace SAE_A21_D21___Projet_Caserne
                     insertIntoMission.CommandText = $@"INSERT INTO PartirAvec
                                                VALUES({row["Caserne"]}, '{row["Type"]}', '{row["Numero"]}', {numeroMission}, NULL);";
                     insertIntoMission.ExecuteNonQuery();
+                    insertIntoMission.CommandText = $@"UPDATE Engin
+                                               SET enMission = 1 WHERE codeTypeEngin = {row["Type"]} AND numero = { row["Numero"]} AND idCaserne = {row["Caserne"]};";
+                    insertIntoMission.ExecuteNonQuery();
                 }
 
                 DataRow[] Pompiers = pompierVehiculeMission.Tables["Pompiers"].Select();
