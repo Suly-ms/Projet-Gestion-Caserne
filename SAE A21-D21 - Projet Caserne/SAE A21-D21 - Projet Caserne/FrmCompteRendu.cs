@@ -23,13 +23,19 @@ namespace CompteRenduBox
         public FrmCompteRenduBox(int idMission, string[] enginsMission)
         {
             InitializeComponent();
+
+            // Empeche de mettre en pleine ecran
+            this.MaximizeBox = false;
+
+            // Empeche le redimensionnement
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             m_idMission = idMission;
             m_enginsMission = enginsMission;
         }
 
         private void FrmCompteRenduBox_Load(object sender, EventArgs e)
         {
-
             lblCompteRendu.Text = $"Veuillez écrire le compte-rendu de la mission n° {m_idMission}";
 
             int hauteur = 0;
@@ -41,9 +47,8 @@ namespace CompteRenduBox
                 string codeTypeEngin = engin["codeTypeEngin"].ToString();
                 int numeroEngin = Convert.ToInt16(engin["numeroEngin"]);
                 int idMission = Convert.ToInt16(engin["idMission"]);
-                string reparation = engin["reparationsEventuelles"].ToString();
 
-                UC_AffichageEngin afficheEngin = new UC_AffichageEngin(nom, idCaserne, codeTypeEngin, numeroEngin, idMission, reparation);
+                UC_AffichageEngin afficheEngin = new UC_AffichageEngin(nom, idCaserne, codeTypeEngin, numeroEngin, idMission);
                 afficheEngin.Location = new Point(0, hauteur);
                 pnlEngin.Controls.Add(afficheEngin);
                 hauteur += 25;
@@ -94,12 +99,7 @@ namespace CompteRenduBox
             catch (Exception)
             {
                 MessageBox.Show("Erreur lors de la mise à jour du compte rendu");
-            }
-            finally
-            {
-                Connexion.FermerConnexion();
-                DialogResult = DialogResult.OK;
-            }
+            } // On ferme pas la connexion ici car elle sera fermée dans la methode appelante
         }
 
         private void txbRapport_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,6 +111,11 @@ namespace CompteRenduBox
         {
             remplirRapportMission(txbRapport.Text);
             DialogResult = DialogResult.OK;
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -32,6 +32,7 @@
             this.lblNouvelleMission = new System.Windows.Forms.Label();
             this.lblDateDelenchement = new System.Windows.Forms.Label();
             this.gbxInformationUsager = new System.Windows.Forms.GroupBox();
+            this.lblMax6Caracteres = new System.Windows.Forms.Label();
             this.btnReinitialiser = new System.Windows.Forms.Button();
             this.txbVille = new System.Windows.Forms.TextBox();
             this.lblVille = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.lblChampsIncomplets = new System.Windows.Forms.Label();
-            this.lblMax6Caracteres = new System.Windows.Forms.Label();
             this.gbxInformationUsager.SuspendLayout();
             this.gbxDecisionRegul.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +70,7 @@
             this.lblNouvelleMission.Location = new System.Drawing.Point(236, 19);
             this.lblNouvelleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNouvelleMission.Name = "lblNouvelleMission";
-            this.lblNouvelleMission.Size = new System.Drawing.Size(140, 29);
+            this.lblNouvelleMission.Size = new System.Drawing.Size(112, 24);
             this.lblNouvelleMission.TabIndex = 0;
             this.lblNouvelleMission.Text = "Mission n° ";
             // 
@@ -83,7 +83,7 @@
             this.lblDateDelenchement.Location = new System.Drawing.Point(236, 48);
             this.lblDateDelenchement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateDelenchement.Name = "lblDateDelenchement";
-            this.lblDateDelenchement.Size = new System.Drawing.Size(187, 29);
+            this.lblDateDelenchement.Size = new System.Drawing.Size(152, 24);
             this.lblDateDelenchement.TabIndex = 1;
             this.lblDateDelenchement.Text = "Déclenché le : ";
             // 
@@ -108,6 +108,16 @@
             this.gbxInformationUsager.TabStop = false;
             this.gbxInformationUsager.Text = "Information usager";
             // 
+            // lblMax6Caracteres
+            // 
+            this.lblMax6Caracteres.AutoSize = true;
+            this.lblMax6Caracteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMax6Caracteres.Location = new System.Drawing.Point(257, 249);
+            this.lblMax6Caracteres.Name = "lblMax6Caracteres";
+            this.lblMax6Caracteres.Size = new System.Drawing.Size(204, 17);
+            this.lblMax6Caracteres.TabIndex = 18;
+            this.lblMax6Caracteres.Text = "Maximum de 6 nombres entiers";
+            // 
             // btnReinitialiser
             // 
             this.btnReinitialiser.Location = new System.Drawing.Point(425, 332);
@@ -122,7 +132,7 @@
             // 
             this.txbVille.Location = new System.Drawing.Point(88, 289);
             this.txbVille.Name = "txbVille";
-            this.txbVille.Size = new System.Drawing.Size(452, 27);
+            this.txbVille.Size = new System.Drawing.Size(452, 23);
             this.txbVille.TabIndex = 11;
             this.txbVille.TextChanged += new System.EventHandler(this.txbVille_TextChanged);
             // 
@@ -134,7 +144,7 @@
             this.lblVille.Location = new System.Drawing.Point(24, 289);
             this.lblVille.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVille.Name = "lblVille";
-            this.lblVille.Size = new System.Drawing.Size(54, 22);
+            this.lblVille.Size = new System.Drawing.Size(42, 18);
             this.lblVille.TabIndex = 10;
             this.lblVille.Text = "Ville :";
             // 
@@ -142,7 +152,7 @@
             // 
             this.txbCodePostal.Location = new System.Drawing.Point(149, 246);
             this.txbCodePostal.Name = "txbCodePostal";
-            this.txbCodePostal.Size = new System.Drawing.Size(102, 27);
+            this.txbCodePostal.Size = new System.Drawing.Size(102, 23);
             this.txbCodePostal.TabIndex = 9;
             this.txbCodePostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodePostal_KeyPress);
             // 
@@ -154,7 +164,7 @@
             this.lblCodePostale.Location = new System.Drawing.Point(24, 246);
             this.lblCodePostale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostale.Name = "lblCodePostale";
-            this.lblCodePostale.Size = new System.Drawing.Size(118, 22);
+            this.lblCodePostale.Size = new System.Drawing.Size(98, 18);
             this.lblCodePostale.TabIndex = 8;
             this.lblCodePostale.Text = "Code Postal :";
             // 
@@ -162,7 +172,7 @@
             // 
             this.txbRue.Location = new System.Drawing.Point(88, 203);
             this.txbRue.Name = "txbRue";
-            this.txbRue.Size = new System.Drawing.Size(452, 27);
+            this.txbRue.Size = new System.Drawing.Size(452, 23);
             this.txbRue.TabIndex = 7;
             this.txbRue.TextChanged += new System.EventHandler(this.txbRue_TextChanged);
             // 
@@ -174,7 +184,7 @@
             this.lblRue.Location = new System.Drawing.Point(24, 203);
             this.lblRue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRue.Name = "lblRue";
-            this.lblRue.Size = new System.Drawing.Size(53, 22);
+            this.lblRue.Size = new System.Drawing.Size(43, 18);
             this.lblRue.TabIndex = 6;
             this.lblRue.Text = "Rue :";
             // 
@@ -186,7 +196,7 @@
             this.lblAdresseSinistre.Location = new System.Drawing.Point(226, 163);
             this.lblAdresseSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresseSinistre.Name = "lblAdresseSinistre";
-            this.lblAdresseSinistre.Size = new System.Drawing.Size(183, 22);
+            this.lblAdresseSinistre.Size = new System.Drawing.Size(149, 18);
             this.lblAdresseSinistre.TabIndex = 5;
             this.lblAdresseSinistre.Text = "Addresse du sinistre :";
             // 
@@ -207,7 +217,7 @@
             this.lblMotif.Location = new System.Drawing.Point(290, 23);
             this.lblMotif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotif.Name = "lblMotif";
-            this.lblMotif.Size = new System.Drawing.Size(58, 22);
+            this.lblMotif.Size = new System.Drawing.Size(49, 18);
             this.lblMotif.TabIndex = 3;
             this.lblMotif.Text = "Motif :";
             // 
@@ -244,7 +254,7 @@
             this.cbxCaserne.FormattingEnabled = true;
             this.cbxCaserne.Location = new System.Drawing.Point(194, 79);
             this.cbxCaserne.Name = "cbxCaserne";
-            this.cbxCaserne.Size = new System.Drawing.Size(348, 28);
+            this.cbxCaserne.Size = new System.Drawing.Size(348, 25);
             this.cbxCaserne.TabIndex = 15;
             // 
             // lblCaserne
@@ -255,7 +265,7 @@
             this.lblCaserne.Location = new System.Drawing.Point(26, 79);
             this.lblCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(88, 22);
+            this.lblCaserne.Size = new System.Drawing.Size(72, 18);
             this.lblCaserne.TabIndex = 14;
             this.lblCaserne.Text = "Caserne :";
             // 
@@ -265,7 +275,7 @@
             this.cbxNatureSinistre.FormattingEnabled = true;
             this.cbxNatureSinistre.Location = new System.Drawing.Point(194, 38);
             this.cbxNatureSinistre.Name = "cbxNatureSinistre";
-            this.cbxNatureSinistre.Size = new System.Drawing.Size(348, 28);
+            this.cbxNatureSinistre.Size = new System.Drawing.Size(348, 25);
             this.cbxNatureSinistre.TabIndex = 13;
             // 
             // label1
@@ -276,7 +286,7 @@
             this.label1.Location = new System.Drawing.Point(26, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 22);
+            this.label1.Size = new System.Drawing.Size(131, 18);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nature du sinistre :";
             // 
@@ -311,24 +321,14 @@
             this.lblChampsIncomplets.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChampsIncomplets.Location = new System.Drawing.Point(214, 724);
             this.lblChampsIncomplets.Name = "lblChampsIncomplets";
-            this.lblChampsIncomplets.Size = new System.Drawing.Size(242, 29);
+            this.lblChampsIncomplets.Size = new System.Drawing.Size(193, 24);
             this.lblChampsIncomplets.TabIndex = 20;
             this.lblChampsIncomplets.Text = "Champs Incomplets";
             this.lblChampsIncomplets.Visible = false;
             // 
-            // lblMax6Caracteres
-            // 
-            this.lblMax6Caracteres.AutoSize = true;
-            this.lblMax6Caracteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMax6Caracteres.Location = new System.Drawing.Point(257, 249);
-            this.lblMax6Caracteres.Name = "lblMax6Caracteres";
-            this.lblMax6Caracteres.Size = new System.Drawing.Size(244, 20);
-            this.lblMax6Caracteres.TabIndex = 18;
-            this.lblMax6Caracteres.Text = "Maximum de 6 nombres entiers";
-            // 
             // FrmGestionNouvelleMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(660, 772);

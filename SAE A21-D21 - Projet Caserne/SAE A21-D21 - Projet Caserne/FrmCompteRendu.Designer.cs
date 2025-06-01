@@ -33,6 +33,7 @@
             this.pnlEngin = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txbRapport
@@ -79,14 +80,27 @@
             // 
             // btnValider
             // 
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnValider.Location = new System.Drawing.Point(735, 270);
+            this.btnValider.BackColor = System.Drawing.Color.Lime;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnValider.Location = new System.Drawing.Point(672, 255);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(88, 28);
+            this.btnValider.Size = new System.Drawing.Size(150, 42);
             this.btnValider.TabIndex = 6;
             this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Location = new System.Drawing.Point(25, 255);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(150, 42);
+            this.btnAnnuler.TabIndex = 7;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // FrmCompteRenduBox
             // 
@@ -94,6 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
             this.ClientSize = new System.Drawing.Size(852, 310);
+            this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlEngin);
@@ -115,6 +130,7 @@
         private System.Windows.Forms.Panel pnlEngin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }
 

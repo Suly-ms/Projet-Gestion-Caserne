@@ -45,7 +45,7 @@ namespace UC_DoubleBoutonImage
 
         private void pctbClotureMission_MouseEnter(object sender, EventArgs e)
         {
-            pctbClotureMission.BorderStyle = BorderStyle.Fixed3D;
+            //pctbClotureMission.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void pctbEditionPdf_MouseMove(object sender, MouseEventArgs e)
@@ -55,17 +55,19 @@ namespace UC_DoubleBoutonImage
 
         private void pctbClotureMission_MouseLeave(object sender, EventArgs e)
         {
-            pctbClotureMission.BorderStyle = BorderStyle.FixedSingle;
+            //C'est buggé, les pictureBoxs restent parfois avec la bordure Fixed3D alors que la souris n'est plus dedans... Donc j'ai enlevé cette fonctionnalité
+
+            //pctbClotureMission.BorderStyle = BorderStyle.FixedSingle;   
         }
 
         private void pctbEditionPdf_MouseLeave(object sender, EventArgs e)
         {
-            pctbEditionPdf.BorderStyle = BorderStyle.FixedSingle;
+            //pctbEditionPdf.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void pctbEditionPdf_MouseEnter(object sender, EventArgs e)
         {
-            pctbEditionPdf.BorderStyle = BorderStyle.Fixed3D;
+            //pctbEditionPdf.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void pctbClotureMission_MouseHover(object sender, EventArgs e)

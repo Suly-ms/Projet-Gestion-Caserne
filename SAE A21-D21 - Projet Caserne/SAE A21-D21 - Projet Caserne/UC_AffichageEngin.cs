@@ -33,7 +33,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private int m_idMission;
         private string m_reparation;
 
-        public UC_AffichageEngin(string nom, int idCaserne, string codeTypeEngin, int numeroEngin, int idMission, string reparation)
+        public UC_AffichageEngin(string nom, int idCaserne, string codeTypeEngin, int numeroEngin, int idMission)
         {
             InitializeComponent();
 
@@ -42,14 +42,14 @@ namespace SAE_A21_D21___Projet_Caserne
             m_codeTypeEngin = codeTypeEngin;
             m_numeroEngin = numeroEngin;
             m_idMission = idMission;
-            m_reparation = reparation;
+            m_reparation = "";
 
             ckbEngin.Text = getAffichage();
         }
 
         private void UC_AffichageEngin_Load(object sender, EventArgs e)
         {
-            ckbEngin.Checked = m_reparation == "" ? false : true;
+            ckbEngin.Checked = false;
         }
 
         public string getAffichage()
@@ -67,7 +67,6 @@ namespace SAE_A21_D21___Projet_Caserne
             ckbEngin.Checked = getChecked() ? false : true;
         }
 
-
         private void ckbEngin_CheckedChanged(object sender, EventArgs e)
         {
             if (ckbEngin.Checked)
@@ -75,13 +74,20 @@ namespace SAE_A21_D21___Projet_Caserne
                 // Ouvre un forme avec un textBox qui attend les réparations
                 // Le form va mettre à jour le DataGlobal et la base de donnée
                 FrmDommageEngin frmDommage = new FrmDommageEngin(m_idCaserne, m_codeTypeEngin, m_numeroEngin, m_idMission);
-                frmDommage.ShowDialog();
+                DialogResult result = frmDommage.ShowDialog();
+
+                if (result != DialogResult.OK)
+                {
+                    // L'utilisateur a fermé ou annulé le formulaire : décocher la checkbox
+                    ckbEngin.Checked = false;
+                }
             }
             else
             {
                 // C'est le cas où l'utilisateur a coché puis décoché
                 // Il va mettre à jour le DataGlobal et la base de donnée
                 SQLiteConnection connec = Connexion.Connec;
+
                 try
                 {
                     // Mettre à jour la base de donnée pour les lignes concernées
@@ -106,12 +112,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 catch (Exception)
                 {
                     MessageBox.Show("Erreur lors de la mise à jour des engins dans la base de donnée");
-                }
-
-                finally
-                {
-                    Connexion.FermerConnexion();
-                }
+                } // Pas fermer la connexion ici car elle sera fermer dans la methode appelante
             }
         }
 

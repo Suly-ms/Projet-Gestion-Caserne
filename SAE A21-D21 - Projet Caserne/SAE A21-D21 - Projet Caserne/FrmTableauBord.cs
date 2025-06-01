@@ -31,6 +31,12 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             InitializeComponent();
 
+            // Empeche de mettre en pleine ecran
+            this.MaximizeBox = false;
+
+            // Empeche le redimensionnement
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             SQLiteConnection connec = Connexion.Connec;
             DataTable schemaTable = connec.GetSchema("Tables");
 
@@ -446,37 +452,45 @@ namespace SAE_A21_D21___Projet_Caserne
                         }
                         else
                         {
-                            string requeteMajStatus = $"UPDATE Mission SET terminee = 1 WHERE id = {idMission}";
-
-                            string dateRetour = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-
-                            string requeteMajDateRetour = $"UPDATE Mission SET dateHeureRetour = '{dateRetour}' WHERE id = {idMission}";
-                            SQLiteCommand cdMaj = new SQLiteCommand();
-
-                            cdMaj.Connection = connec;
-                            cdMaj.CommandType = CommandType.Text;
-                            cdMaj.CommandText = requeteMajStatus;
-                            cdMaj.ExecuteNonQuery();
-
-                            cdMaj.CommandText = requeteMajDateRetour;
-                            cdMaj.ExecuteNonQuery();
-
                             // Ouvre le formulaire permettant d'écrire le compte rendu (mise à jour dans le dsGlobal et dans la base de donnée en mode connecté)
                             FrmCompteRenduBox frmRendu = new FrmCompteRenduBox(idMission, TrouverEnginsUtilises(idMission));
-                            frmRendu.ShowDialog();
+                            DialogResult result = frmRendu.ShowDialog();
 
+                            if (result == DialogResult.OK)
+                            {
+                                string requeteMajStatus = $"UPDATE Mission SET terminee = 1 WHERE id = {idMission}";
 
-                            // Mettre à jour le DataSet MesDatas.DsGlobal pour la ligne concernée
-                            MesDatas.DsGlobal.Tables["Mission"].Select($"id = {idMission}")[0]["terminee"] = true;
-                            MesDatas.DsGlobal.Tables["Mission"].Select($"id = {idMission}")[0]["dateHeureRetour"] = dateRetour;
+                                string dateRetour = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
-                            // Actualisation de l'interface
-                            pnlMission.Controls.Clear();
-                            RemplireToutTableauBord();
+                                string requeteMajDateRetour = $"UPDATE Mission SET dateHeureRetour = '{dateRetour}' WHERE id = {idMission}";
+                                SQLiteCommand cdMaj = new SQLiteCommand();
 
-                            GenererPdf(uc);
+                                cdMaj.Connection = connec;
+                                cdMaj.CommandType = CommandType.Text;
+                                cdMaj.CommandText = requeteMajStatus;
+                                cdMaj.ExecuteNonQuery();
 
-                            MessageBox.Show($"La mission n°{idMission} est achevée et son PDF à été généré");
+                                cdMaj.CommandText = requeteMajDateRetour;
+                                cdMaj.ExecuteNonQuery();
+
+                                // Mettre à jour le DataSet MesDatas.DsGlobal pour la ligne concernée
+                                MesDatas.DsGlobal.Tables["Mission"].Select($"id = {idMission}")[0]["terminee"] = true;
+                                MesDatas.DsGlobal.Tables["Mission"].Select($"id = {idMission}")[0]["dateHeureRetour"] = dateRetour;
+
+                                // Actualisation de l'interface
+                                pnlMission.Controls.Clear();
+                                RemplireToutTableauBord();
+
+                                GenererPdf(uc);
+
+                                MessageBox.Show($"La mission n°{idMission} est achevée et son PDF à été généré");
+                            }
+
+                            // Si l'utilisateur a quitté le form sans appuyer sur le bouton valider
+                            else
+                            {
+                                MessageBox.Show($"La mission n°{idMission} n'a pas été mise à jour dans la base de données");
+                            }
                         }
                     }
                     catch (Exception)

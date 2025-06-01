@@ -37,15 +37,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.ckbEnCours = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlNavBar = new System.Windows.Forms.Panel();
+            this.btnStatistiques = new System.Windows.Forms.Button();
+            this.btnGestionPersonnel = new System.Windows.Forms.Button();
+            this.btnGestionEngins = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.pnlMission = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnGestionEngins = new System.Windows.Forms.Button();
-            this.btnGestionPersonnel = new System.Windows.Forms.Button();
-            this.btnStatistiques = new System.Windows.Forms.Button();
+            this.pnlFond = new System.Windows.Forms.Panel();
             this.pnlTableauBord.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlNavBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // sqLiteCommandBuilder1
@@ -89,9 +89,11 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnNouvelleMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.btnNouvelleMission.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNouvelleMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelleMission.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelleMission.ForeColor = System.Drawing.Color.Black;
             this.btnNouvelleMission.Location = new System.Drawing.Point(662, 13);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(163, 40);
@@ -132,21 +134,55 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Tableau de bord";
             // 
-            // panel2
+            // pnlNavBar
             // 
-            this.panel2.BackColor = System.Drawing.Color.Firebrick;
-            this.panel2.Controls.Add(this.btnStatistiques);
-            this.panel2.Controls.Add(this.btnGestionPersonnel);
-            this.panel2.Controls.Add(this.btnGestionEngins);
-            this.panel2.Controls.Add(this.btnQuitter);
-            this.panel2.Location = new System.Drawing.Point(12, 21);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(222, 629);
-            this.panel2.TabIndex = 3;
+            this.pnlNavBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.pnlNavBar.Controls.Add(this.btnStatistiques);
+            this.pnlNavBar.Controls.Add(this.btnGestionPersonnel);
+            this.pnlNavBar.Controls.Add(this.btnGestionEngins);
+            this.pnlNavBar.Controls.Add(this.btnQuitter);
+            this.pnlNavBar.Location = new System.Drawing.Point(12, 21);
+            this.pnlNavBar.Name = "pnlNavBar";
+            this.pnlNavBar.Size = new System.Drawing.Size(222, 629);
+            this.pnlNavBar.TabIndex = 3;
+            // 
+            // btnStatistiques
+            // 
+            this.btnStatistiques.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStatistiques.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.btnStatistiques.Location = new System.Drawing.Point(17, 156);
+            this.btnStatistiques.Name = "btnStatistiques";
+            this.btnStatistiques.Size = new System.Drawing.Size(189, 40);
+            this.btnStatistiques.TabIndex = 12;
+            this.btnStatistiques.Text = "Statistiques";
+            this.btnStatistiques.UseVisualStyleBackColor = true;
+            // 
+            // btnGestionPersonnel
+            // 
+            this.btnGestionPersonnel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.btnGestionPersonnel.Location = new System.Drawing.Point(15, 86);
+            this.btnGestionPersonnel.Name = "btnGestionPersonnel";
+            this.btnGestionPersonnel.Size = new System.Drawing.Size(189, 40);
+            this.btnGestionPersonnel.TabIndex = 11;
+            this.btnGestionPersonnel.Text = "Gestion du personnel";
+            this.btnGestionPersonnel.UseVisualStyleBackColor = true;
+            // 
+            // btnGestionEngins
+            // 
+            this.btnGestionEngins.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionEngins.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.btnGestionEngins.Location = new System.Drawing.Point(15, 16);
+            this.btnGestionEngins.Name = "btnGestionEngins";
+            this.btnGestionEngins.Size = new System.Drawing.Size(189, 40);
+            this.btnGestionEngins.TabIndex = 10;
+            this.btnGestionEngins.Text = "Gestion des engins";
+            this.btnGestionEngins.UseVisualStyleBackColor = true;
             // 
             // btnQuitter
             // 
             this.btnQuitter.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuitter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.btnQuitter.Location = new System.Drawing.Point(15, 573);
             this.btnQuitter.Name = "btnQuitter";
@@ -165,46 +201,16 @@
             this.pnlMission.Size = new System.Drawing.Size(908, 629);
             this.pnlMission.TabIndex = 7;
             // 
-            // panel1
+            // pnlFond
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1165, 662);
-            this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnGestionEngins
-            // 
-            this.btnGestionEngins.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.btnGestionEngins.Location = new System.Drawing.Point(15, 16);
-            this.btnGestionEngins.Name = "btnGestionEngins";
-            this.btnGestionEngins.Size = new System.Drawing.Size(189, 40);
-            this.btnGestionEngins.TabIndex = 10;
-            this.btnGestionEngins.Text = "Gestion des engins";
-            this.btnGestionEngins.UseVisualStyleBackColor = true;
-            // 
-            // btnGestionPersonnel
-            // 
-            this.btnGestionPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.btnGestionPersonnel.Location = new System.Drawing.Point(15, 86);
-            this.btnGestionPersonnel.Name = "btnGestionPersonnel";
-            this.btnGestionPersonnel.Size = new System.Drawing.Size(189, 40);
-            this.btnGestionPersonnel.TabIndex = 11;
-            this.btnGestionPersonnel.Text = "Gestion du personnel";
-            this.btnGestionPersonnel.UseVisualStyleBackColor = true;
-            // 
-            // btnStatistiques
-            // 
-            this.btnStatistiques.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.btnStatistiques.Location = new System.Drawing.Point(17, 156);
-            this.btnStatistiques.Name = "btnStatistiques";
-            this.btnStatistiques.Size = new System.Drawing.Size(189, 40);
-            this.btnStatistiques.TabIndex = 12;
-            this.btnStatistiques.Text = "Statistiques";
-            this.btnStatistiques.UseVisualStyleBackColor = true;
+            this.pnlFond.AutoScroll = true;
+            this.pnlFond.BackColor = System.Drawing.Color.Transparent;
+            this.pnlFond.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFond.Location = new System.Drawing.Point(0, 0);
+            this.pnlFond.Name = "pnlFond";
+            this.pnlFond.Size = new System.Drawing.Size(1165, 662);
+            this.pnlFond.TabIndex = 8;
+            this.pnlFond.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // FrmTableauDeBord
             // 
@@ -215,15 +221,15 @@
             this.ClientSize = new System.Drawing.Size(1165, 662);
             this.Controls.Add(this.pnlTableauBord);
             this.Controls.Add(this.pnlMission);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlNavBar);
+            this.Controls.Add(this.pnlFond);
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de bord";
             this.Load += new System.EventHandler(this.FrmTableauDeBord_Load);
             this.pnlTableauBord.ResumeLayout(false);
             this.pnlTableauBord.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.pnlNavBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -232,13 +238,13 @@
 
         private System.Data.SQLite.SQLiteCommandBuilder sqLiteCommandBuilder1;
         private System.Windows.Forms.Panel pnlTableauBord;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlNavBar;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox ckbEnCours;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlMission;
         private System.Windows.Forms.Button btnNouvelleMission;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlFond;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.TextBox txbEnCours;
         private System.Windows.Forms.Label label2;

@@ -25,10 +25,17 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             InitializeComponent();
 
+            // Empeche de mettre en pleine ecran
+            this.MaximizeBox = false;
+
+            // Empeche le redimensionnement
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             m_idCaserne = idCaserne;
             m_codeTypeEngin = codeTypeEngin;
             m_numeroEngin = numeroEngin;
             m_idMission = idMission;
+
         }
 
         private void FrmDommageEngin_Load(object sender, EventArgs e)
@@ -66,19 +73,23 @@ namespace SAE_A21_D21___Projet_Caserne
                     MesDatas.DsGlobal.Tables["Engin"].Select($"idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numero = {m_numeroEngin}")[0]["enPanne"] = true;
                     MesDatas.DsGlobal.Tables["PartirAvec"].Select($"idCaserne = { m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numeroEngin = { m_numeroEngin } AND idMission = {m_idMission}")[0]["reparationsEventuelles"] = reparation;
 
-                    MessageBox.Show($"Les réparations à faire ont été renseignées dans la base de donnée");
+                    MessageBox.Show($"Les réparations à faire ont été renseignées dans la base de données");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Erreur lors de la mise à jour des engins dans la base de donnée");
+                    MessageBox.Show("Erreur lors de la mise à jour des engins dans la base de données");
                 }
 
                 finally
                 {
-                    Connexion.FermerConnexion();
                     DialogResult = DialogResult.OK;
-                }
+                } // On ferme pas la connexion car elle sera fermé dans la methode appelante
             }
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
