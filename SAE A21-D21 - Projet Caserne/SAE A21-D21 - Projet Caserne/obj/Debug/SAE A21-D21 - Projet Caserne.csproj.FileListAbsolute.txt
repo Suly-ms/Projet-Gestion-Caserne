@@ -96,3 +96,6 @@ C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Pr
 C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE A21-.CCC722CA.Up2Date
 C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE A21-D21 - Projet Caserne.exe
 C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE A21-D21 - Projet Caserne.pdb
+C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmGestionPompiers.resources
+C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmConnexionAdmin.resources
+C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.UC_AffichagePompier.resources

@@ -167,6 +167,7 @@
             this.btnGestionPersonnel.TabIndex = 11;
             this.btnGestionPersonnel.Text = "Gestion du personnel";
             this.btnGestionPersonnel.UseVisualStyleBackColor = true;
+            this.btnGestionPersonnel.Click += new System.EventHandler(this.btnGestionPersonnel_Click);
             // 
             // btnGestionEngins
             // 

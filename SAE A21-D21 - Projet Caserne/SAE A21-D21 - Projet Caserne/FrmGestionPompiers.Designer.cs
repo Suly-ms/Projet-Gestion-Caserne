@@ -1,0 +1,192 @@
+﻿namespace SAE_A21_D21___Projet_Caserne
+{
+    partial class FrmGestionPompiers
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionPompiers));
+            this.pnlAffichagePompier = new System.Windows.Forms.Panel();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnFermer = new System.Windows.Forms.Button();
+            this.pnlSelectionPompier = new System.Windows.Forms.Panel();
+            this.lblMode = new System.Windows.Forms.Label();
+            this.pcbAdmin = new System.Windows.Forms.PictureBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlAffichagePompier.SuspendLayout();
+            this.pnlSelectionPompier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlAffichagePompier
+            // 
+            this.pnlAffichagePompier.AutoScroll = true;
+            this.pnlAffichagePompier.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlAffichagePompier.Controls.Add(this.btnValider);
+            this.pnlAffichagePompier.Controls.Add(this.btnFermer);
+            this.pnlAffichagePompier.Location = new System.Drawing.Point(12, 137);
+            this.pnlAffichagePompier.Name = "pnlAffichagePompier";
+            this.pnlAffichagePompier.Size = new System.Drawing.Size(636, 625);
+            this.pnlAffichagePompier.TabIndex = 8;
+            // 
+            // btnValider
+            // 
+            this.btnValider.BackColor = System.Drawing.Color.Lime;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Location = new System.Drawing.Point(474, 575);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(150, 42);
+            this.btnValider.TabIndex = 20;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = false;
+            // 
+            // btnFermer
+            // 
+            this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFermer.Location = new System.Drawing.Point(11, 575);
+            this.btnFermer.Name = "btnFermer";
+            this.btnFermer.Size = new System.Drawing.Size(150, 42);
+            this.btnFermer.TabIndex = 10;
+            this.btnFermer.Text = "Fermer";
+            this.btnFermer.UseVisualStyleBackColor = false;
+            this.btnFermer.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
+            // pnlSelectionPompier
+            // 
+            this.pnlSelectionPompier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.pnlSelectionPompier.Controls.Add(this.lblMode);
+            this.pnlSelectionPompier.Controls.Add(this.pcbAdmin);
+            this.pnlSelectionPompier.Controls.Add(this.comboBox2);
+            this.pnlSelectionPompier.Controls.Add(this.label2);
+            this.pnlSelectionPompier.Controls.Add(this.comboBox1);
+            this.pnlSelectionPompier.Controls.Add(this.label1);
+            this.pnlSelectionPompier.Location = new System.Drawing.Point(12, 12);
+            this.pnlSelectionPompier.Name = "pnlSelectionPompier";
+            this.pnlSelectionPompier.Size = new System.Drawing.Size(636, 116);
+            this.pnlSelectionPompier.TabIndex = 9;
+            // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.lblMode.Location = new System.Drawing.Point(212, 9);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(212, 29);
+            this.lblMode.TabIndex = 5;
+            this.lblMode.Text = "Mode visualisation";
+            // 
+            // pcbAdmin
+            // 
+            this.pcbAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pcbAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pcbAdmin.Image")));
+            this.pcbAdmin.Location = new System.Drawing.Point(582, 9);
+            this.pcbAdmin.Name = "pcbAdmin";
+            this.pcbAdmin.Size = new System.Drawing.Size(43, 43);
+            this.pcbAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbAdmin.TabIndex = 4;
+            this.pcbAdmin.TabStop = false;
+            this.pcbAdmin.Click += new System.EventHandler(this.pcbAdmin_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(345, 87);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(239, 21);
+            this.comboBox2.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label2.Location = new System.Drawing.Point(346, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(237, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Veuillez sélectionner un pompier";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(37, 87);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(239, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(33, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Veuillez sélectionner une caserne";
+            // 
+            // FrmGestionPompiers
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(660, 772);
+            this.Controls.Add(this.pnlSelectionPompier);
+            this.Controls.Add(this.pnlAffichagePompier);
+            this.Name = "FrmGestionPompiers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestion du personnel";
+            this.Load += new System.EventHandler(this.FrmGestionPompiers_Load);
+            this.pnlAffichagePompier.ResumeLayout(false);
+            this.pnlSelectionPompier.ResumeLayout(false);
+            this.pnlSelectionPompier.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlAffichagePompier;
+        private System.Windows.Forms.Button btnFermer;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Panel pnlSelectionPompier;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.PictureBox pcbAdmin;
+        private System.Windows.Forms.Label lblMode;
+    }
+}

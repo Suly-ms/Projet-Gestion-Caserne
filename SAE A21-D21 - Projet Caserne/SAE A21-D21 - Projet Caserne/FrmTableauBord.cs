@@ -586,5 +586,11 @@ namespace SAE_A21_D21___Projet_Caserne
             newFrmNewMission.FormClosed += (s, args) => RemplireToutTableauBord();
             newFrmNewMission.ShowDialog();
         }
+
+        private void btnGestionPersonnel_Click(object sender, EventArgs e)
+        {
+            FrmGestionPompiers newFrmGestionPompiers = new FrmGestionPompiers();
+            newFrmGestionPompiers.ShowDialog();
+        }
     }
 }
