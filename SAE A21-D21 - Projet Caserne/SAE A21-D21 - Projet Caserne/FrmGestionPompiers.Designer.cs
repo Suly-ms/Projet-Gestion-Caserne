@@ -30,48 +30,48 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionPompiers));
             this.pnlAffichagePompier = new System.Windows.Forms.Panel();
-            this.btnValider = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.pnlSelectionPompier = new System.Windows.Forms.Panel();
             this.lblMode = new System.Windows.Forms.Label();
             this.pcbAdmin = new System.Windows.Forms.PictureBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbPompier = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCaserne = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlAffichagePompier.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSelectionPompier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAffichagePompier
             // 
             this.pnlAffichagePompier.AutoScroll = true;
             this.pnlAffichagePompier.BackColor = System.Drawing.Color.PapayaWhip;
-            this.pnlAffichagePompier.Controls.Add(this.btnValider);
-            this.pnlAffichagePompier.Controls.Add(this.btnFermer);
             this.pnlAffichagePompier.Location = new System.Drawing.Point(12, 137);
             this.pnlAffichagePompier.Name = "pnlAffichagePompier";
-            this.pnlAffichagePompier.Size = new System.Drawing.Size(636, 625);
+            this.pnlAffichagePompier.Size = new System.Drawing.Size(636, 548);
             this.pnlAffichagePompier.TabIndex = 8;
             // 
-            // btnValider
+            // btnUpdate
             // 
-            this.btnValider.BackColor = System.Drawing.Color.Lime;
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(474, 575);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(150, 42);
-            this.btnValider.TabIndex = 20;
-            this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.Lime;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(463, 26);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(150, 42);
+            this.btnUpdate.TabIndex = 20;
+            this.btnUpdate.Text = "Mettre à jour";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Visible = false;
             // 
             // btnFermer
             // 
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFermer.Location = new System.Drawing.Point(11, 575);
+            this.btnFermer.Location = new System.Drawing.Point(21, 26);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);
             this.btnFermer.TabIndex = 10;
@@ -84,9 +84,9 @@
             this.pnlSelectionPompier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.pnlSelectionPompier.Controls.Add(this.lblMode);
             this.pnlSelectionPompier.Controls.Add(this.pcbAdmin);
-            this.pnlSelectionPompier.Controls.Add(this.comboBox2);
+            this.pnlSelectionPompier.Controls.Add(this.cmbPompier);
             this.pnlSelectionPompier.Controls.Add(this.label2);
-            this.pnlSelectionPompier.Controls.Add(this.comboBox1);
+            this.pnlSelectionPompier.Controls.Add(this.cmbCaserne);
             this.pnlSelectionPompier.Controls.Add(this.label1);
             this.pnlSelectionPompier.Location = new System.Drawing.Point(12, 12);
             this.pnlSelectionPompier.Name = "pnlSelectionPompier";
@@ -116,14 +116,15 @@
             this.pcbAdmin.TabStop = false;
             this.pcbAdmin.Click += new System.EventHandler(this.pcbAdmin_Click);
             // 
-            // comboBox2
+            // cmbPompier
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(345, 87);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(239, 21);
-            this.comboBox2.TabIndex = 3;
+            this.cmbPompier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPompier.FormattingEnabled = true;
+            this.cmbPompier.Location = new System.Drawing.Point(345, 87);
+            this.cmbPompier.Name = "cmbPompier";
+            this.cmbPompier.Size = new System.Drawing.Size(239, 21);
+            this.cmbPompier.TabIndex = 3;
+            this.cmbPompier.SelectedIndexChanged += new System.EventHandler(this.cmbPompier_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -136,14 +137,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Veuillez sélectionner un pompier";
             // 
-            // comboBox1
+            // cmbCaserne
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(37, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(239, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCaserne.FormattingEnabled = true;
+            this.cmbCaserne.Location = new System.Drawing.Point(37, 87);
+            this.cmbCaserne.Name = "cmbCaserne";
+            this.cmbCaserne.Size = new System.Drawing.Size(239, 21);
+            this.cmbCaserne.TabIndex = 1;
+            this.cmbCaserne.SelectedIndexChanged += new System.EventHandler(this.cmbCaserne_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -156,6 +158,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Veuillez sélectionner une caserne";
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Controls.Add(this.btnFermer);
+            this.panel1.Location = new System.Drawing.Point(12, 678);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(636, 82);
+            this.panel1.TabIndex = 9;
+            // 
             // FrmGestionPompiers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,14 +177,15 @@
             this.ClientSize = new System.Drawing.Size(660, 772);
             this.Controls.Add(this.pnlSelectionPompier);
             this.Controls.Add(this.pnlAffichagePompier);
+            this.Controls.Add(this.panel1);
             this.Name = "FrmGestionPompiers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion du personnel";
             this.Load += new System.EventHandler(this.FrmGestionPompiers_Load);
-            this.pnlAffichagePompier.ResumeLayout(false);
             this.pnlSelectionPompier.ResumeLayout(false);
             this.pnlSelectionPompier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -180,13 +194,14 @@
 
         private System.Windows.Forms.Panel pnlAffichagePompier;
         private System.Windows.Forms.Button btnFermer;
-        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel pnlSelectionPompier;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbPompier;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCaserne;
         private System.Windows.Forms.PictureBox pcbAdmin;
         private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.Panel panel1;
     }
 }
