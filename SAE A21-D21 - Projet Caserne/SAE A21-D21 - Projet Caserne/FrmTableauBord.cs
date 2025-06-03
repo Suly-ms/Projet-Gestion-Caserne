@@ -460,6 +460,27 @@ namespace SAE_A21_D21___Projet_Caserne
                             {
                                 string requeteMajStatus = $"UPDATE Mission SET terminee = 1 WHERE id = {idMission}";
 
+                                DataRow[] engins = TrouverEnginsUtilisesRow(idMission);
+                                foreach (DataRow engin in engins)
+                                {
+                                    string requeteUpdateEngin = $"UPDATE Engin SET enMission = 0 WHERE idCaserne = {engin["idCaserne"]} AND codeTypeEngin = '{engin["codeTypeEngin"]}' AND numero = {engin["numeroEngin"]}";
+
+                                    SQLiteCommand cdEngin = new SQLiteCommand();
+                                    cdEngin.Connection = connec;
+                                    cdEngin.CommandType = CommandType.Text;
+                                    cdEngin.CommandText = requeteMajStatus;
+                                    cdEngin.ExecuteNonQuery();
+                                    // Mise à jour dans le DataSet
+                                    DataRow[] lignesDs = MesDatas.DsGlobal.Tables["Engin"].Select(
+                                        $"idCaserne = {engin["idCaserne"]} AND codeTypeEngin = '{engin["codeTypeEngin"]}' AND numero = {engin["numeroEngin"]}"
+                                    );
+
+                                    if (lignesDs.Length > 0)
+                                    {
+                                        lignesDs[0]["enMission"] = false;
+                                    }
+                                }
+
                                 string dateRetour = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
                                 string requeteMajDateRetour = $"UPDATE Mission SET dateHeureRetour = '{dateRetour}' WHERE id = {idMission}";
@@ -509,6 +530,14 @@ namespace SAE_A21_D21___Projet_Caserne
                     MessageBox.Show($"Le PDF de la mission n°{idMission} à été généré");
                 }
             }
+        }
+
+        private DataRow[] TrouverEnginsUtilisesRow(int idMission)
+        {
+            DataTable tablePartir = MesDatas.DsGlobal.Tables["PartirAvec"];
+            DataRow[] partir = tablePartir.Select($"idMission = {idMission}");
+
+            return partir;
         }
 
 
@@ -583,7 +612,7 @@ namespace SAE_A21_D21___Projet_Caserne
         private void btnNouvelleMission_Click(object sender, EventArgs e)
         {
             FrmGestionNouvelleMission newFrmNewMission = new FrmGestionNouvelleMission();
-            newFrmNewMission.FormClosed += (s, args) => RemplireToutTableauBord();
+            newFrmNewMission.FormClosed += (s, args) => this.RemplireToutTableauBord();
             newFrmNewMission.ShowDialog();
         }
     }

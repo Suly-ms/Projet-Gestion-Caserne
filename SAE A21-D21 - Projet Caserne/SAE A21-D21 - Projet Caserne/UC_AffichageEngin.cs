@@ -91,7 +91,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 try
                 {
                     // Mettre à jour la base de donnée pour les lignes concernées
-                    string requeteUpdateEngin = $"UPDATE Engin SET enPanne = 0 WHERE idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numero = {m_numeroEngin}";
+                    string requeteUpdateEngin = $"UPDATE Engin SET enPanne = 0, enMission = 0 WHERE idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numero = {m_numeroEngin}";
                     string requetePartirAvec = $"UPDATE PartirAvec SET reparationsEventuelles = NULL WHERE idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numeroEngin = {m_numeroEngin} AND idMission = {m_idMission}";
 
                     SQLiteCommand cdUpdate = new SQLiteCommand();
@@ -105,6 +105,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
                     // Mettre à jour le DataSet MesDatas.DsGlobal pour les lignes concernées
                     MesDatas.DsGlobal.Tables["Engin"].Select($"idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numero = {m_numeroEngin}")[0]["enPanne"] = false;
+                    MesDatas.DsGlobal.Tables["Engin"].Select($"idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numero = {m_numeroEngin}")[0]["enMission"] = false;
                     MesDatas.DsGlobal.Tables["PartirAvec"].Select($"idCaserne = {m_idCaserne} AND codeTypeEngin = '{m_codeTypeEngin}' AND numeroEngin = {m_numeroEngin} AND idMission = {m_idMission}")[0]["reparationsEventuelles"] = null;
 
                     MessageBox.Show($"Les réparations à faire ont été enlevées de la base de donnée");

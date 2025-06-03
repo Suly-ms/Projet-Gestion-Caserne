@@ -95,7 +95,8 @@ namespace SAE_A21_D21___Projet_Caserne
                                                VALUES({row["Caserne"]}, '{row["Type"]}', '{row["Numero"]}', {numeroMission}, NULL);";
                     insertIntoMission.ExecuteNonQuery();
                     insertIntoMission.CommandText = $@"UPDATE Engin
-                                               SET enMission = 1 WHERE codeTypeEngin = {row["Type"]} AND numero = { row["Numero"]} AND idCaserne = {row["Caserne"]};";
+                                               SET enMission = 1 WHERE codeTypeEngin = '{row["Type"]}' AND numero = { row["Numero"]} AND idCaserne = {row["Caserne"]};";
+                    MessageBox.Show(insertIntoMission.CommandText);
                     insertIntoMission.ExecuteNonQuery();
                 }
 
@@ -108,6 +109,50 @@ namespace SAE_A21_D21___Projet_Caserne
                 }
 
                 Connexion.FermerConnexion();
+
+                // Ajouter dans Mission
+                DataRow rowMission = MesDatas.DsGlobal.Tables["Mission"].NewRow();
+                rowMission["id"] = numeroMission;
+                rowMission["dateHeureDepart"] = DateTime.Now;
+                rowMission["motifAppel"] = txbMotif.Text;
+                rowMission["adresse"] = txbRue.Text;
+                rowMission["cp"] = txbCodePostal.Text;
+                rowMission["ville"] = txbVille.Text;
+                rowMission["terminee"] = 0;
+                rowMission["idNatureSinistre"] = cbxNatureSinistre.SelectedValue;
+                rowMission["idCaserne"] = cbxCaserne.SelectedValue;
+                MesDatas.DsGlobal.Tables["Mission"].Rows.Add(rowMission);
+
+                // Ajouter dans PartirAvec + mettre à jour Engin
+                foreach (DataRow vehicule in pompierVehiculeMission.Tables["Vehicules"].Rows)
+                {
+                    // Ajouter PartirAvec
+                    DataRow rowPartirAvec = MesDatas.DsGlobal.Tables["PartirAvec"].NewRow();
+                    rowPartirAvec["idCaserne"] = vehicule["Caserne"];
+                    rowPartirAvec["codeTypeEngin"] = vehicule["Type"];
+                    rowPartirAvec["numeroEngin"] = vehicule["Numero"];
+                    rowPartirAvec["idMission"] = numeroMission;
+                    MesDatas.DsGlobal.Tables["PartirAvec"].Rows.Add(rowPartirAvec);
+
+                    // Modifier enMission dans Engin
+                    DataRow[] engin = MesDatas.DsGlobal.Tables["Engin"].Select(
+                        $"idCaserne = {vehicule["Caserne"]} AND codeTypeEngin = '{vehicule["Type"]}' AND numero = {vehicule["Numero"]}"
+                    );
+                    if (engin.Length > 0)
+                    {
+                        engin[0]["enMission"] = 1;
+                    }
+                }
+
+                // Ajouter dans Mobiliser
+                foreach (DataRow pompier in pompierVehiculeMission.Tables["Pompiers"].Rows)
+                {
+                    DataRow rowMobiliser = MesDatas.DsGlobal.Tables["Mobiliser"].NewRow();
+                    rowMobiliser["matriculePompier"] = pompier["matricule"];
+                    rowMobiliser["idMission"] = numeroMission;
+                    rowMobiliser["idHabilitation"] = pompier["habilitation"];
+                    MesDatas.DsGlobal.Tables["Mobiliser"].Rows.Add(rowMobiliser);
+                }
 
                 this.DialogResult = DialogResult.OK;
             }
