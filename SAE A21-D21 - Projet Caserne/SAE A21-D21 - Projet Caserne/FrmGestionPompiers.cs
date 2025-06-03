@@ -26,6 +26,9 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private bool m_admin = false;
 
+        // Declaration du userControl
+        UC_AffichagePompier ucPompier;
+
         public FrmGestionPompiers()
         {
             InitializeComponent();
@@ -36,6 +39,10 @@ namespace SAE_A21_D21___Projet_Caserne
             // Empeche le redimensionnement
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
+        }
+
+        private void FrmGestionPompiers_Load(object sender, EventArgs e)
+        {
             // Remplit la comboBox avec toutes les casernes
             cmbCaserne.DataSource = MesDatas.DsGlobal.Tables["Caserne"];
             cmbCaserne.DisplayMember = "nom";
@@ -44,8 +51,18 @@ namespace SAE_A21_D21___Projet_Caserne
             caserneCharge = true;
         }
 
-        private void FrmGestionPompiers_Load(object sender, EventArgs e)
+        private int chercherIdCaserne(int matricule)
         {
+            DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
+
+            return Convert.ToInt16(tableAffectation.Select($"matriculePompier = {matricule}")[0]["idCaserne"]);
+        }
+
+        private string chercherCaserne(int idCaserne)
+        {
+            DataTable tableCaserne = MesDatas.DsGlobal.Tables["Caserne"];
+            DataRow[] casernes = tableCaserne.Select($"id = {idCaserne}");
+            return casernes[0]["nom"].ToString();
         }
 
         private void modeAdmin()
@@ -56,14 +73,20 @@ namespace SAE_A21_D21___Projet_Caserne
             lblMode.Text = "Mode administrateur";
             btnUpdate.Visible = true;
 
+            lblSeConnecter.Visible = false;
+            lblConnecte.Visible = true;
+
             // Chat gpt a changer
-            if (cmbPompier.SelectedItem is KeyValuePair<int, string> selectedPair)
+            if (cmbPompier.SelectedValue != null)
             {
-                afficherUCPompier(selectedPair.Key);
-            }
-            else
-            {
-                afficherUCPompier(Convert.ToInt16(cmbPompier.SelectedValue));
+                if (cmbPompier.SelectedItem is KeyValuePair<int, string> selectedPair)
+                {
+                    afficherUCPompier(selectedPair.Key);
+                }
+                else
+                {
+                    afficherUCPompier(Convert.ToInt16(cmbPompier.SelectedValue));
+                }
             }
         }
 
@@ -71,17 +94,30 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             pnlAffichagePompier.Controls.Clear();
 
-            UC_AffichagePompier mission = new UC_AffichagePompier(matricule, m_admin);
-            mission.Location = new Point(15, 20);
-            pnlAffichagePompier.Controls.Add(mission);
+            ucPompier = new UC_AffichagePompier(matricule, m_admin);
+            ucPompier.Location = new Point(15, 20);
+            pnlAffichagePompier.Controls.Add(ucPompier);
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void pnlConnexion_Click(object sender, EventArgs e)
+        {
+            pnlConnexion_Click();
+        }
+        private void lblSeConnecter_Click(object sender, EventArgs e)
+        {
+            pnlConnexion_Click();
+        }
 
         private void pcbAdmin_Click(object sender, EventArgs e)
+        {
+            pnlConnexion_Click();
+        }
+
+        private void pnlConnexion_Click()
         {
             FrmConnexionAdmin frmConnexionAdmin = new FrmConnexionAdmin();
 
@@ -93,6 +129,8 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 modeAdmin();
                 pcbAdmin.Enabled = false; // Plus cliquable
+                lblSeConnecter.Enabled = false;
+                pnlConnexion.Enabled = false;
             }
         }
 
@@ -104,7 +142,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
                 Dictionary<int, string> dico = new Dictionary<int, string>();
 
-                foreach (DataRow row in MesDatas.DsGlobal.Tables["Affectation"].Select($"idCaserne = {idCaserne}"))
+                foreach (DataRow row in MesDatas.DsGlobal.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND dateFin IS NULL"))
                 {
                     int matricule = Convert.ToInt16(row["matriculePompier"]);
                     DataRow pompier = MesDatas.DsGlobal.Tables["Pompier"].Select($"matricule = {matricule}")[0];
@@ -130,7 +168,65 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 afficherUCPompier(Convert.ToInt16(cmbPompier.SelectedValue));
             }
-                
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string requeteUpdatePompier = $"UPDATE Pompier SET type = '{ucPompier.getType()}', enConge = {ucPompier.estEnConge()}, codeGrade = '{ucPompier.getCodeGrade()}' WHERE matricule = {ucPompier.getMatricule()}";
+                SQLiteCommand cdUpdatePompier = new SQLiteCommand();
+                cdUpdatePompier.Connection = connec;
+                cdUpdatePompier.CommandType = CommandType.Text;
+                cdUpdatePompier.CommandText = requeteUpdatePompier;
+                cdUpdatePompier.ExecuteNonQuery();
+
+                DataRow lignePompier = MesDatas.DsGlobal.Tables["Pompier"].Select($"matricule = {ucPompier.getMatricule()} AND dateFin IS NULL")[0];
+                lignePompier["type"] = ucPompier.getType();
+                lignePompier["enConge"] = ucPompier.estEnConge();
+                lignePompier["codeGrade"] = ucPompier.getCodeGrade();
+
+
+                if (ucPompier.getIdCaserne() != chercherIdCaserne(ucPompier.getMatricule()))
+                {
+                    string requeteUpdateAffectation = $"UPDATE Affectation SET dateFin = {DateTime.Now} WHERE matriculePompier = {ucPompier.getMatricule()} AND dateFin IS NULL";
+                    SQLiteCommand cdUpdateAffectation = new SQLiteCommand();
+                    cdUpdateAffectation.Connection = connec;
+                    cdUpdateAffectation.CommandType = CommandType.Text;
+                    cdUpdateAffectation.CommandText = requeteUpdateAffectation;
+                    cdUpdateAffectation.ExecuteNonQuery();
+
+                    DataRow ligneAffectation = MesDatas.DsGlobal.Tables["Affectation"].Select($"matriculePompier = {ucPompier.getMatricule()} AND dateFin IS NULL")[0];
+                    ligneAffectation["dateFin"] = DateTime.Now;
+
+
+
+                    string requeteInsertAffectation = $"INSERT INTO Affectation (matriculePompier), (dateA), (idCaserne) " +
+                                                      $"VALUES ({ucPompier.getMatricule()}), ({DateTime.Now}), ({ucPompier.getIdCaserne()})";
+                    SQLiteCommand cdInsertAffectation = new SQLiteCommand();
+                    cdInsertAffectation.Connection = connec;
+                    cdInsertAffectation.CommandType = CommandType.Text;
+                    cdInsertAffectation.CommandText = requeteInsertAffectation;
+                    cdInsertAffectation.ExecuteNonQuery();
+
+                    DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
+                    DataRow nouvelleLigne = tableAffectation.NewRow();
+                    nouvelleLigne["matriculePompier"] = ucPompier.getMatricule();
+                    nouvelleLigne["dateA"] = DateTime.Now;
+                    nouvelleLigne["idCaserne"] = ucPompier.getIdCaserne();
+                    nouvelleLigne["dateFin"] = DBNull.Value;
+
+                    tableAffectation.Rows.Add(nouvelleLigne);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
+            finally
+            {
+                FrmGestionPompiers_Load(sender, EventArgs.Empty); 
+            }
         }
     }
 }

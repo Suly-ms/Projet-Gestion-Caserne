@@ -40,9 +40,13 @@
             this.cmbCaserne = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSeConnecter = new System.Windows.Forms.Label();
+            this.lblConnecte = new System.Windows.Forms.Label();
+            this.pnlConnexion = new System.Windows.Forms.Panel();
             this.pnlSelectionPompier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlConnexion.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAffichagePompier
@@ -65,6 +69,7 @@
             this.btnUpdate.Text = "Mettre à jour";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnFermer
             // 
@@ -82,8 +87,8 @@
             // pnlSelectionPompier
             // 
             this.pnlSelectionPompier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.pnlSelectionPompier.Controls.Add(this.pnlConnexion);
             this.pnlSelectionPompier.Controls.Add(this.lblMode);
-            this.pnlSelectionPompier.Controls.Add(this.pcbAdmin);
             this.pnlSelectionPompier.Controls.Add(this.cmbPompier);
             this.pnlSelectionPompier.Controls.Add(this.label2);
             this.pnlSelectionPompier.Controls.Add(this.cmbCaserne);
@@ -108,7 +113,7 @@
             // 
             this.pcbAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcbAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pcbAdmin.Image")));
-            this.pcbAdmin.Location = new System.Drawing.Point(582, 9);
+            this.pcbAdmin.Location = new System.Drawing.Point(109, 0);
             this.pcbAdmin.Name = "pcbAdmin";
             this.pcbAdmin.Size = new System.Drawing.Size(43, 43);
             this.pcbAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,6 +174,42 @@
             this.panel1.Size = new System.Drawing.Size(636, 82);
             this.panel1.TabIndex = 9;
             // 
+            // lblSeConnecter
+            // 
+            this.lblSeConnecter.AutoSize = true;
+            this.lblSeConnecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblSeConnecter.ForeColor = System.Drawing.Color.White;
+            this.lblSeConnecter.Location = new System.Drawing.Point(1, 12);
+            this.lblSeConnecter.Name = "lblSeConnecter";
+            this.lblSeConnecter.Size = new System.Drawing.Size(107, 20);
+            this.lblSeConnecter.TabIndex = 6;
+            this.lblSeConnecter.Text = "Se Connecter";
+            this.lblSeConnecter.Click += new System.EventHandler(this.lblSeConnecter_Click);
+            // 
+            // lblConnecte
+            // 
+            this.lblConnecte.AutoSize = true;
+            this.lblConnecte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblConnecte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.lblConnecte.Location = new System.Drawing.Point(31, 12);
+            this.lblConnecte.Name = "lblConnecte";
+            this.lblConnecte.Size = new System.Drawing.Size(78, 20);
+            this.lblConnecte.TabIndex = 7;
+            this.lblConnecte.Text = "hlhelguen";
+            this.lblConnecte.Visible = false;
+            // 
+            // pnlConnexion
+            // 
+            this.pnlConnexion.Controls.Add(this.lblConnecte);
+            this.pnlConnexion.Controls.Add(this.lblSeConnecter);
+            this.pnlConnexion.Controls.Add(this.pcbAdmin);
+            this.pnlConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlConnexion.Location = new System.Drawing.Point(473, 9);
+            this.pnlConnexion.Name = "pnlConnexion";
+            this.pnlConnexion.Size = new System.Drawing.Size(152, 42);
+            this.pnlConnexion.TabIndex = 8;
+            this.pnlConnexion.Click += new System.EventHandler(this.pnlConnexion_Click);
+            // 
             // FrmGestionPompiers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +227,8 @@
             this.pnlSelectionPompier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.pnlConnexion.ResumeLayout(false);
+            this.pnlConnexion.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -203,5 +246,8 @@
         private System.Windows.Forms.PictureBox pcbAdmin;
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblConnecte;
+        private System.Windows.Forms.Label lblSeConnecter;
+        private System.Windows.Forms.Panel pnlConnexion;
     }
 }

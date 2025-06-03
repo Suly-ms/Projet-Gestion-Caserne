@@ -1,14 +1,8 @@
-﻿using Org.BouncyCastle.Asn1.IsisMtt.X509;
-using Pinpon;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pinpon;
 
 namespace SAE_A21_D21___Projet_Caserne
 {
@@ -16,6 +10,7 @@ namespace SAE_A21_D21___Projet_Caserne
     {
         private int m_matricule;
         private bool m_admin;
+
         public UC_AffichagePompier(int matricule, bool admin)
         {
             InitializeComponent();
@@ -46,28 +41,139 @@ namespace SAE_A21_D21___Projet_Caserne
 
             lblAge.Text = $"Age : {age}";
 
-            rdbProfessionnel.Checked = pompier["type"].ToString() == "d";
-            rdbProfessionnel.Checked = pompier["type"].ToString() == "v";
+            rdbProfessionnel.Checked = Convert.ToChar(pompier["type"]) == 'p';
+            rdbVolontaire.Checked = Convert.ToChar(pompier["type"]) == 'v';
+
+            rdbActif.Checked = !Convert.ToBoolean(pompier["enConge"]);
+            rdbEnConge.Checked = Convert.ToBoolean(pompier["enConge"]);
 
             DateTime dateEmbauche = Convert.ToDateTime(pompier["dateEmbauche"]);
 
             lblDateEmbauche.Text = $"Date d'embauche : {dateEmbauche:dd/MM/yyyy}";
 
-            // cmbGrade.Items.Add();
-
             lblTelephone.Text = $"Téléphone : {pompier["portable"].ToString()}";
             lblBip.Text = $"Bip : {pompier["bip"].ToString()}";
 
+            lblCodeGrade.Text = pompier["codeGrade"].ToString().ToUpper();
+            pcbGrade.Image = Image.FromFile($"img/grades/{lblCodeGrade.Text}.png");
+
+            DataTable tableGrades = MesDatas.DsGlobal.Tables["Grade"];
+            DataRow[] grades = tableGrades.Select();
+
+            foreach (DataRow grade in grades)
+            {
+                cmbGrade.Items.Add(grade["libelle"]);
+                if (grade["code"].ToString().ToUpper() == lblCodeGrade.Text)
+                {
+                    cmbGrade.SelectedItem = grade["libelle"];
+                }
+            }
+
+            remplirCmbCaserneRattachement(chercherIdCaserne());
+
+            DataRow[] habilitations = chercherHabilitation();
+
+            foreach (DataRow habilitation in habilitations)
+            {
+                lsbHabilitation.Items.Add(habilitation["libelle"].ToString());
+            }
+
+            DataRow[] affectations = chercherAffectation();
+
+            foreach (DataRow affectation in affectations)
+            {
+                lsbAffectations.Items.Add($"{Convert.ToDateTime(affectation["dateA"]):dd-MM-yyyy} - {chercherCaserne(Convert.ToInt16(affectation["idCaserne"]))}");
+            }
+
             if (m_admin) modeAdmin();
+        }
+
+        public char getType()
+        {
+            return rdbProfessionnel.Checked ? 'p' : 'v';
+        }
+
+        public string getCodeGrade()
+        {
+            return lblCodeGrade.Text;
+        }
+
+        public int getIdCaserne()
+        {
+            return Convert.ToInt16(cmbCaserneRattachement.SelectedValue);
+        }
+
+        public bool estEnConge()
+        {
+            return rdbEnConge.Checked;
+        }
+
+        public int getMatricule()
+        {
+            return m_matricule;
+        }
+
+        private void remplirCmbCaserneRattachement(int idCaserne)
+        {
+            // Remplit la comboBox avec toutes les casernes
+
+            // On utilise une copie pour éviter qu'un changement de sélection modifit aussi la sélection de l'autre comboBox (lié au même DataTable)
+            cmbCaserneRattachement.DataSource = MesDatas.DsGlobal.Tables["Caserne"].Copy();     
+            
+            cmbCaserneRattachement.DisplayMember = "nom";
+            cmbCaserneRattachement.ValueMember = "id";
+            cmbCaserneRattachement.SelectedValue = idCaserne;
+        }
+
+        private int chercherIdCaserne()
+        {
+            DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
+
+            return Convert.ToInt16(tableAffectation.Select($"matriculePompier = {m_matricule}")[0]["idCaserne"]);
+        }
+
+        private string chercherCaserne(int idCaserne)
+        {
+            DataTable tableCaserne = MesDatas.DsGlobal.Tables["Caserne"];
+            DataRow[] casernes = tableCaserne.Select($"id = {idCaserne}");
+            return casernes[0]["nom"].ToString();
+        }
+
+        private DataRow[] chercherAffectation()
+        {
+            DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
+            return tableAffectation.Select($"matriculePompier = {m_matricule}");
+
+        }
+
+        private DataRow[] chercherMobilisations()
+        {
+            DataTable tableMobilisers = MesDatas.DsGlobal.Tables["Mobiliser"];
+            return tableMobilisers.Select($"matriculePompier = {m_matricule}");
+        }
+
+        private DataRow[] chercherHabilitation()
+        {
+            DataRow[] mobilisations = chercherMobilisations();
+
+            DataTable tableHabilitations = MesDatas.DsGlobal.Tables["Habilitation"];
+            DataRow[] habilitations = new DataRow[mobilisations.Length];
+
+            for (int i = 0; i < mobilisations.Length; i++)
+            {
+                habilitations[i] = tableHabilitations.Select($"id = {mobilisations[i]["idHabilitation"]}")[0];
+            }
+            return habilitations;
         }
 
         private void modeAdmin()
         {
             // Afficher les boutons d'edition
             pcbEditCaserne.Visible = true;
-            pcbEditRdb.Visible = true;
+            pcbEditRdbProVol.Visible = true;
             pcbEditGrade.Visible = true;
-            pcbEditConge.Visible = true;
+            pcbEditRdbProVol.Visible = true;
+            pcbEditRdbActifConge.Visible = true;
 
             // Afficher les fleches des comboBoxs
             pnlCacherCmbGrade.Visible = false;
@@ -81,19 +187,30 @@ namespace SAE_A21_D21___Projet_Caserne
             rdbVolontaire.Enabled = !rdbVolontaire.Enabled;
         }
 
-        private void pcbEditGrade_Click(object sender, EventArgs e)
-        {
-            cmbGrade.Enabled = !cmbGrade.Enabled;
-        }
-
         private void pcbEditCaserne_Click(object sender, EventArgs e)
         {
             cmbCaserneRattachement.Enabled = !cmbCaserneRattachement.Enabled;
         }
 
-        private void pcbEditConge_Click(object sender, EventArgs e)
+        private void pcbEditGrade_Click(object sender, EventArgs e)
         {
-            ckbEnConge.Enabled = !ckbEnConge.Enabled;
+            cmbGrade.Enabled = !cmbGrade.Enabled;
+        }
+
+        private void cmbGrade_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DataTable tableGrades = MesDatas.DsGlobal.Tables["Grade"];
+            DataRow grade = tableGrades.Select($"libelle = '{cmbGrade.Text}'")[0];
+
+            lblCodeGrade.Text = grade["code"].ToString().ToUpper();
+
+            pcbGrade.Image = Image.FromFile($"img/grades/{lblCodeGrade.Text}.png");
+        }
+
+        private void pcbEditRdbActifConge_Click(object sender, EventArgs e)
+        {
+            rdbActif.Enabled = !rdbActif.Enabled;
+            rdbEnConge.Enabled = !rdbEnConge.Enabled;
         }
     }
 }
