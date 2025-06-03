@@ -470,7 +470,7 @@
   <data name="pcbGrade.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAABOCAYAAAC3zZFGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAIFFJREFUeF7tnHuQJWdZxv3X0oS9zOzMnFt3n9PXc2Z2V8hCLCkQgTJylbLQoJKS
+        vAAADrwBlbxySQAAIFFJREFUeF7tnHuQJWdZxv3X0oS9zOzMnFt3n9PXc2Z2V8hCLCkQgTJylbLQoJKS
         wLJJhBI1QQ0Ro1a0UMSiCFIKqSIRCgGVUgtDqSlBMHLxmmQ3kLA798uZ226ySwjk8vp7vq/7zNnNBpKw
         s/+wW/Vu9+nT3+V9vue9fd1nfuDxxx+3xx57zB43s+r8wr8n/yeMBphx/AGdPProo+7CN7/5TXvooYfs
         4YcfdkeJrn2/S4VDdazA09EzsPxw0x/+gb34pS+xV/30q+3lr3yFk1e86pUXBBEmwubmm2924D3yyCOe
@@ -960,7 +960,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="pcbEditCaserne.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pcbEditRdbActifConge.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASkAAAEpCAYAAADPmdSCAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAUEtJREFUeF7tnXd8FMX7x78/paSRAin03nuT3nuXIqH3ooCooFJUxAoWFFERRVBE
@@ -1309,7 +1309,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="pcbEditRdbActifConge.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pcbEditCaserne.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASkAAAEpCAYAAADPmdSCAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAUEtJREFUeF7tnXd8FMX7x78/paSRAin03nuT3nuXIqH3ooCooFJUxAoWFFERRVBE

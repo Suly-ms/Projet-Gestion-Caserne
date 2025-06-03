@@ -53,6 +53,7 @@
             this.pcbEditRdbProVol = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pcbEditRdbActifConge = new System.Windows.Forms.PictureBox();
             this.rdbActif = new System.Windows.Forms.RadioButton();
             this.rdbEnConge = new System.Windows.Forms.RadioButton();
             this.pcbEditCaserne = new System.Windows.Forms.PictureBox();
@@ -64,7 +65,6 @@
             this.cmbCaserneRattachement = new System.Windows.Forms.ComboBox();
             this.lblCaserneRattachement = new System.Windows.Forms.Label();
             this.lblInfoCarriere = new System.Windows.Forms.Label();
-            this.pcbEditRdbActifConge = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEditGrade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).BeginInit();
@@ -72,8 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbEditRdbProVol)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbEditCaserne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEditRdbActifConge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEditCaserne)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -162,6 +162,7 @@
             this.cmbGrade.Name = "cmbGrade";
             this.cmbGrade.Size = new System.Drawing.Size(171, 26);
             this.cmbGrade.TabIndex = 0;
+            this.cmbGrade.SelectedIndexChanged += new System.EventHandler(this.cmbGrade_SelectedIndexChanged);
             this.cmbGrade.SelectedValueChanged += new System.EventHandler(this.cmbGrade_SelectedValueChanged);
             // 
             // lblBip
@@ -352,6 +353,19 @@
             this.panel3.Size = new System.Drawing.Size(200, 80);
             this.panel3.TabIndex = 23;
             // 
+            // pcbEditRdbActifConge
+            // 
+            this.pcbEditRdbActifConge.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pcbEditRdbActifConge.Image = ((System.Drawing.Image)(resources.GetObject("pcbEditRdbActifConge.Image")));
+            this.pcbEditRdbActifConge.Location = new System.Drawing.Point(156, 36);
+            this.pcbEditRdbActifConge.Name = "pcbEditRdbActifConge";
+            this.pcbEditRdbActifConge.Size = new System.Drawing.Size(20, 20);
+            this.pcbEditRdbActifConge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbEditRdbActifConge.TabIndex = 24;
+            this.pcbEditRdbActifConge.TabStop = false;
+            this.pcbEditRdbActifConge.Visible = false;
+            this.pcbEditRdbActifConge.Click += new System.EventHandler(this.pcbEditRdbActifConge_Click);
+            // 
             // rdbActif
             // 
             this.rdbActif.AutoSize = true;
@@ -393,6 +407,7 @@
             // 
             // lsbAffectations
             // 
+            this.lsbAffectations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.lsbAffectations.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.lsbAffectations.FormattingEnabled = true;
             this.lsbAffectations.ItemHeight = 15;
@@ -413,6 +428,7 @@
             // 
             // lsbHabilitation
             // 
+            this.lsbHabilitation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.lsbHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.lsbHabilitation.FormattingEnabled = true;
             this.lsbHabilitation.ItemHeight = 15;
@@ -471,19 +487,6 @@
             this.lblInfoCarriere.TabIndex = 18;
             this.lblInfoCarriere.Text = "Informations carrière";
             // 
-            // pcbEditRdbActifConge
-            // 
-            this.pcbEditRdbActifConge.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pcbEditRdbActifConge.Image = ((System.Drawing.Image)(resources.GetObject("pcbEditRdbActifConge.Image")));
-            this.pcbEditRdbActifConge.Location = new System.Drawing.Point(156, 36);
-            this.pcbEditRdbActifConge.Name = "pcbEditRdbActifConge";
-            this.pcbEditRdbActifConge.Size = new System.Drawing.Size(20, 20);
-            this.pcbEditRdbActifConge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbEditRdbActifConge.TabIndex = 24;
-            this.pcbEditRdbActifConge.TabStop = false;
-            this.pcbEditRdbActifConge.Visible = false;
-            this.pcbEditRdbActifConge.Click += new System.EventHandler(this.pcbEditRdbActifConge_Click);
-            // 
             // UC_AffichagePompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,8 +508,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbEditCaserne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEditRdbActifConge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbEditCaserne)).EndInit();
             this.ResumeLayout(false);
 
         }

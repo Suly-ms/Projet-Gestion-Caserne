@@ -84,5 +84,10 @@ namespace SAE_A21_D21___Projet_Caserne
                 txbMdp.Clear();
             }
         }
+
+        public string LoginAdmin
+        {
+            get { return txbLogin.Text; }
+        }
     }
 }

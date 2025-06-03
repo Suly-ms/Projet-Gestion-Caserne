@@ -40,7 +40,6 @@ namespace SAE_A21_D21___Projet_Caserne
             SQLiteConnection connec = Connexion.Connec;
             DataTable schemaTable = connec.GetSchema("Tables");
 
-            //dataGridView1.DataSource = schemaTable;
             string requete;
             foreach (DataRow ligne in schemaTable.Rows)
             {
@@ -303,6 +302,42 @@ namespace SAE_A21_D21___Projet_Caserne
             return engins;
         }
 
+        private DataRow[] TrouverEnginsUtilisesRow(int idMission)
+        {
+            DataTable tablePartir = MesDatas.DsGlobal.Tables["PartirAvec"];
+            DataRow[] partir = tablePartir.Select($"idMission = {idMission}");
+
+            return partir;
+        }
+
+        private void majEngin(int idMission, SQLiteConnection connec)
+        {
+            string requeteMajStatus = $"UPDATE Mission SET terminee = 1 WHERE id = {idMission}";
+
+            DataRow[] engins = TrouverEnginsUtilisesRow(idMission);
+            foreach (DataRow engin in engins)
+            {
+                string requeteUpdateEngin = $"UPDATE Engin SET enMission = 0 WHERE idCaserne = {engin["idCaserne"]} AND codeTypeEngin = '{engin["codeTypeEngin"]}' AND numero = {engin["numeroEngin"]}";
+
+                SQLiteCommand cdEngin = new SQLiteCommand();
+                cdEngin.Connection = connec;
+                cdEngin.CommandType = CommandType.Text;
+                cdEngin.CommandText = requeteMajStatus;
+                cdEngin.ExecuteNonQuery();
+
+
+                // Mise à jour dans le DataSet
+                DataRow[] lignesDs = MesDatas.DsGlobal.Tables["Engin"].Select(
+                    $"idCaserne = {engin["idCaserne"]} AND codeTypeEngin = '{engin["codeTypeEngin"]}' AND numero = {engin["numeroEngin"]}"
+                );
+
+                if (lignesDs.Length > 0)
+                {
+                    lignesDs[0]["enMission"] = false;
+                }
+            }
+        }
+
         private void ckbEnCours_CheckedChanged(object sender, EventArgs e)
         {
             RemplireToutTableauBord();
@@ -325,7 +360,7 @@ namespace SAE_A21_D21___Projet_Caserne
             string sinistreMission = TrouverSinistre(idMission);
 
             // Declaration du chemin du fichier PDF
-            string chemin = $"Mission_{idMission}.pdf";
+            string chemin = $"comptes_rendus/Mission_{idMission}.pdf";
 
             // Declaration et initialisation du Document, Filestream et du Pdfwriter
             Document pdf = new Document();
@@ -460,6 +495,12 @@ namespace SAE_A21_D21___Projet_Caserne
                             {
                                 string requeteMajStatus = $"UPDATE Mission SET terminee = 1 WHERE id = {idMission}";
 
+                                DataRow[] engins = TrouverEnginsUtilisesRow(idMission);
+                                foreach (DataRow engin in engins)
+                                {
+                                    majEngin(idMission, connec);
+                                }
+
                                 string dateRetour = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
                                 string requeteMajDateRetour = $"UPDATE Mission SET dateHeureRetour = '{dateRetour}' WHERE id = {idMission}";
@@ -521,56 +562,6 @@ namespace SAE_A21_D21___Projet_Caserne
         {
         }
 
-        private void txbEnCours_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            SQLiteConnection connec = Connexion.Connec;
-
-            if (e.KeyChar == (char)Keys.Enter)
-                try
-                {
-                    string requeteSelect = $"SELECT terminee FROM Mission WHERE id = {txbEnCours.Text}";
-                    SQLiteCommand cdSelect = new SQLiteCommand();
-                    cdSelect.Connection = connec;
-                    cdSelect.CommandType = CommandType.Text;
-                    cdSelect.CommandText = requeteSelect;
-
-                    bool termine = Convert.ToBoolean(cdSelect.ExecuteScalar());
-
-
-                    if (Convert.ToBoolean(!termine))
-                    {
-                        MessageBox.Show($"La mission n°{txbEnCours.Text} est déjà pas terminée");
-                    }
-                    else
-                    {
-                        string requeteMaj = $"UPDATE Mission SET terminee = 0 WHERE id = {txbEnCours.Text}";
-                        SQLiteCommand cdMaj = new SQLiteCommand();
-
-                        cdMaj.Connection = connec;
-                        cdMaj.CommandType = CommandType.Text;
-                        cdMaj.CommandText = requeteMaj;
-                        cdMaj.ExecuteNonQuery();
-
-                        // Mettre à jour le DataSet MesDatas.DsGlobal pour la ligne concernée
-                        MesDatas.DsGlobal.Tables["Mission"].Select($"id = {txbEnCours.Text}")[0]["terminee"] = false;
-
-                        // Actualisation de l'interface
-                        pnlMission.Controls.Clear();
-                        RemplireToutTableauBord();
-
-                        MessageBox.Show($"La mission n°{txbEnCours.Text} est pas finie");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Erreur lors de la mise à jour");
-                }
-                finally
-                {
-                    Connexion.FermerConnexion();
-                }
-        }
         private void pnlTableauBord_Paint(object sender, PaintEventArgs e)
         {
         }

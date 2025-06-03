@@ -27,7 +27,7 @@ namespace SAE_A21_D21___Projet_Caserne
             lblMatricule.Text = $"Matricule {m_matricule}";
             lblNom.Text = $"Nom : {pompier["nom"].ToString()}";
             lblPrenom.Text = $"Prénom : {pompier["prenom"].ToString()}";
-            lblSexe.Text = $"Nom : {(pompier["sexe"].ToString() == "m" ? "Masculin" : "Feminin")}";
+            lblSexe.Text = $"Age : {(pompier["sexe"].ToString() == "m" ? "Masculin" : "Feminin")}";
 
             DateTime dateNaissance = Convert.ToDateTime(pompier["dateNaissance"]);
             DateTime aujourdHui = DateTime.Today;
@@ -80,9 +80,9 @@ namespace SAE_A21_D21___Projet_Caserne
 
             DataRow[] affectations = chercherAffectation();
 
-            foreach (DataRow affectation in affectations)
+            for (int i = affectations.Length - 1; i >= 0; i--)
             {
-                lsbAffectations.Items.Add($"{Convert.ToDateTime(affectation["dateA"]):dd-MM-yyyy} - {chercherCaserne(Convert.ToInt16(affectation["idCaserne"]))}");
+                lsbAffectations.Items.Add($"({i + 1}) {Convert.ToDateTime(affectations[i]["dateA"]):dd-MM-yyyy} - {chercherCaserne(Convert.ToInt16(affectations[i]["idCaserne"]))}");
             }
 
             if (m_admin) modeAdmin();
@@ -113,13 +113,18 @@ namespace SAE_A21_D21___Projet_Caserne
             return m_matricule;
         }
 
+        public string getNomComplet()
+        {
+            DataRow pompier = MesDatas.DsGlobal.Tables["Pompier"].Select($"matricule = {m_matricule}")[0];
+            return $"{pompier["nom"]} {pompier["prenom"]}";
+             
+        }
+
         private void remplirCmbCaserneRattachement(int idCaserne)
         {
             // Remplit la comboBox avec toutes les casernes
-
-            // On utilise une copie pour éviter qu'un changement de sélection modifit aussi la sélection de l'autre comboBox (lié au même DataTable)
-            cmbCaserneRattachement.DataSource = MesDatas.DsGlobal.Tables["Caserne"].Copy();     
-            
+            cmbCaserneRattachement.DataSource = MesDatas.DsGlobal.Tables["Caserne"];     
+   
             cmbCaserneRattachement.DisplayMember = "nom";
             cmbCaserneRattachement.ValueMember = "id";
             cmbCaserneRattachement.SelectedValue = idCaserne;
@@ -129,7 +134,7 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
 
-            return Convert.ToInt16(tableAffectation.Select($"matriculePompier = {m_matricule}")[0]["idCaserne"]);
+            return Convert.ToInt16(tableAffectation.Select($"matriculePompier = {m_matricule} AND dateFin IS NULL")[0]["idCaserne"]);
         }
 
         private string chercherCaserne(int idCaserne)
@@ -211,6 +216,11 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             rdbActif.Enabled = !rdbActif.Enabled;
             rdbEnConge.Enabled = !rdbEnConge.Enabled;
+        }
+
+        private void cmbGrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

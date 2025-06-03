@@ -84,6 +84,12 @@
     <Compile Include="FrmConnexionAdmin.Designer.cs">
       <DependentUpon>FrmConnexionAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreerPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreerPompier.Designer.cs">
+      <DependentUpon>FrmCreerPompier.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDommageEngin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,12 @@
     <Compile Include="UC_AffichagePompier.Designer.cs">
       <DependentUpon>UC_AffichagePompier.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_CreerPompier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_CreerPompier.Designer.cs">
+      <DependentUpon>UC_CreerPompier.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_RecapMission.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="FrmConnexionAdmin.resx">
       <DependentUpon>FrmConnexionAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreerPompier.resx">
+      <DependentUpon>FrmCreerPompier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDommageEngin.resx">
       <DependentUpon>FrmDommageEngin.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AffichagePompier.resx">
       <DependentUpon>UC_AffichagePompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_CreerPompier.resx">
+      <DependentUpon>UC_CreerPompier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_RecapMission.resx">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>

@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTableauDeBord));
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.pnlTableauBord = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txbEnCours = new System.Windows.Forms.TextBox();
             this.btnNouvelleMission = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ckbEnCours = new System.Windows.Forms.CheckBox();
@@ -56,8 +54,6 @@
             // pnlTableauBord
             // 
             this.pnlTableauBord.BackColor = System.Drawing.Color.PapayaWhip;
-            this.pnlTableauBord.Controls.Add(this.label2);
-            this.pnlTableauBord.Controls.Add(this.txbEnCours);
             this.pnlTableauBord.Controls.Add(this.btnNouvelleMission);
             this.pnlTableauBord.Controls.Add(this.panel3);
             this.pnlTableauBord.Controls.Add(this.ckbEnCours);
@@ -67,25 +63,6 @@
             this.pnlTableauBord.Size = new System.Drawing.Size(875, 82);
             this.pnlTableauBord.TabIndex = 2;
             this.pnlTableauBord.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTableauBord_Paint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.25F);
-            this.label2.Location = new System.Drawing.Point(0, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Enlever terminée";
-            // 
-            // txbEnCours
-            // 
-            this.txbEnCours.Location = new System.Drawing.Point(17, 45);
-            this.txbEnCours.Name = "txbEnCours";
-            this.txbEnCours.Size = new System.Drawing.Size(28, 20);
-            this.txbEnCours.TabIndex = 10;
-            this.txbEnCours.TextChanged += new System.EventHandler(this.txbEnCours_TextChanged);
-            this.txbEnCours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbEnCours_KeyPress);
             // 
             // btnNouvelleMission
             // 
@@ -247,8 +224,6 @@
         private System.Windows.Forms.Button btnNouvelleMission;
         private System.Windows.Forms.Panel pnlFond;
         private System.Windows.Forms.Button btnQuitter;
-        private System.Windows.Forms.TextBox txbEnCours;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStatistiques;
         private System.Windows.Forms.Button btnGestionPersonnel;
         private System.Windows.Forms.Button btnGestionEngins;
