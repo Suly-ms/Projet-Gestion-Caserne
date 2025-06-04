@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_CreerPompier));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblCarriere = new System.Windows.Forms.Label();
             this.cmbGrade = new System.Windows.Forms.ComboBox();
@@ -39,7 +38,6 @@
             this.lblDateNaissance = new System.Windows.Forms.Label();
             this.lblSexe = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
-            this.pcbGrade = new System.Windows.Forms.PictureBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.pnlRdbProVol = new System.Windows.Forms.Panel();
             this.rdbProfessionnel = new System.Windows.Forms.RadioButton();
@@ -54,8 +52,8 @@
             this.cmbSexe = new System.Windows.Forms.ComboBox();
             this.dtpDateNaissance = new System.Windows.Forms.DateTimePicker();
             this.txbTelephone = new System.Windows.Forms.TextBox();
-            this.lblCodeGrade = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).BeginInit();
+            this.cmbHabilitation = new System.Windows.Forms.ComboBox();
+            this.lblHabilitation = new System.Windows.Forms.Label();
             this.pnlRdbProVol.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +81,7 @@
             this.cmbGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cmbGrade.FormattingEnabled = true;
-            this.cmbGrade.Location = new System.Drawing.Point(236, 260);
+            this.cmbGrade.Location = new System.Drawing.Point(241, 260);
             this.cmbGrade.Name = "cmbGrade";
             this.cmbGrade.Size = new System.Drawing.Size(191, 21);
             this.cmbGrade.TabIndex = 23;
@@ -103,7 +101,7 @@
             // 
             this.lblGrade.AutoSize = true;
             this.lblGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblGrade.Location = new System.Drawing.Point(306, 239);
+            this.lblGrade.Location = new System.Drawing.Point(311, 239);
             this.lblGrade.Name = "lblGrade";
             this.lblGrade.Size = new System.Drawing.Size(49, 18);
             this.lblGrade.TabIndex = 31;
@@ -149,17 +147,6 @@
             this.lblPrenom.TabIndex = 26;
             this.lblPrenom.Text = "Prénom :";
             // 
-            // pcbGrade
-            // 
-            this.pcbGrade.Image = ((System.Drawing.Image)(resources.GetObject("pcbGrade.Image")));
-            this.pcbGrade.InitialImage = null;
-            this.pcbGrade.Location = new System.Drawing.Point(174, 276);
-            this.pcbGrade.Name = "pcbGrade";
-            this.pcbGrade.Size = new System.Drawing.Size(20, 20);
-            this.pcbGrade.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbGrade.TabIndex = 25;
-            this.pcbGrade.TabStop = false;
-            // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
@@ -174,16 +161,16 @@
             // 
             this.pnlRdbProVol.Controls.Add(this.rdbProfessionnel);
             this.pnlRdbProVol.Controls.Add(this.rdbVolontaire);
-            this.pnlRdbProVol.Location = new System.Drawing.Point(53, 190);
+            this.pnlRdbProVol.Location = new System.Drawing.Point(46, 241);
             this.pnlRdbProVol.Name = "pnlRdbProVol";
-            this.pnlRdbProVol.Size = new System.Drawing.Size(141, 67);
+            this.pnlRdbProVol.Size = new System.Drawing.Size(141, 56);
             this.pnlRdbProVol.TabIndex = 39;
             // 
             // rdbProfessionnel
             // 
             this.rdbProfessionnel.AutoSize = true;
             this.rdbProfessionnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.rdbProfessionnel.Location = new System.Drawing.Point(9, 14);
+            this.rdbProfessionnel.Location = new System.Drawing.Point(9, 4);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
             this.rdbProfessionnel.Size = new System.Drawing.Size(117, 22);
             this.rdbProfessionnel.TabIndex = 7;
@@ -195,7 +182,7 @@
             // 
             this.rdbVolontaire.AutoSize = true;
             this.rdbVolontaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.rdbVolontaire.Location = new System.Drawing.Point(9, 42);
+            this.rdbVolontaire.Location = new System.Drawing.Point(9, 32);
             this.rdbVolontaire.Name = "rdbVolontaire";
             this.rdbVolontaire.Size = new System.Drawing.Size(92, 22);
             this.rdbVolontaire.TabIndex = 8;
@@ -209,7 +196,7 @@
             this.cmbCaserneRattachement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCaserneRattachement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cmbCaserneRattachement.FormattingEnabled = true;
-            this.cmbCaserneRattachement.Location = new System.Drawing.Point(236, 211);
+            this.cmbCaserneRattachement.Location = new System.Drawing.Point(241, 211);
             this.cmbCaserneRattachement.Name = "cmbCaserneRattachement";
             this.cmbCaserneRattachement.Size = new System.Drawing.Size(190, 21);
             this.cmbCaserneRattachement.TabIndex = 41;
@@ -218,7 +205,7 @@
             // 
             this.lblCaserneRattachement.AutoSize = true;
             this.lblCaserneRattachement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblCaserneRattachement.Location = new System.Drawing.Point(244, 190);
+            this.lblCaserneRattachement.Location = new System.Drawing.Point(249, 190);
             this.lblCaserneRattachement.Name = "lblCaserneRattachement";
             this.lblCaserneRattachement.Size = new System.Drawing.Size(174, 18);
             this.lblCaserneRattachement.TabIndex = 42;
@@ -279,25 +266,36 @@
             this.txbTelephone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbTelephone_KeyDown);
             this.txbTelephone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTelephone_KeyPress);
             // 
-            // lblCodeGrade
+            // cmbHabilitation
             // 
-            this.lblCodeGrade.AutoSize = true;
-            this.lblCodeGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodeGrade.Location = new System.Drawing.Point(125, 276);
-            this.lblCodeGrade.Name = "lblCodeGrade";
-            this.lblCodeGrade.Size = new System.Drawing.Size(29, 13);
-            this.lblCodeGrade.TabIndex = 51;
-            this.lblCodeGrade.Text = "CCH";
+            this.cmbHabilitation.BackColor = System.Drawing.Color.White;
+            this.cmbHabilitation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cmbHabilitation.FormattingEnabled = true;
+            this.cmbHabilitation.Location = new System.Drawing.Point(26, 211);
+            this.cmbHabilitation.Name = "cmbHabilitation";
+            this.cmbHabilitation.Size = new System.Drawing.Size(191, 21);
+            this.cmbHabilitation.TabIndex = 51;
+            // 
+            // lblHabilitation
+            // 
+            this.lblHabilitation.AutoSize = true;
+            this.lblHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblHabilitation.Location = new System.Drawing.Point(82, 190);
+            this.lblHabilitation.Name = "lblHabilitation";
+            this.lblHabilitation.Size = new System.Drawing.Size(80, 18);
+            this.lblHabilitation.TabIndex = 52;
+            this.lblHabilitation.Text = "Habilitation";
             // 
             // UC_CreerPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.lblCodeGrade);
+            this.Controls.Add(this.lblHabilitation);
+            this.Controls.Add(this.cmbHabilitation);
             this.Controls.Add(this.txbTelephone);
             this.Controls.Add(this.dtpDateNaissance);
-            this.Controls.Add(this.pcbGrade);
             this.Controls.Add(this.cmbSexe);
             this.Controls.Add(this.txbPrenom);
             this.Controls.Add(this.txbNom);
@@ -317,7 +315,6 @@
             this.Name = "UC_CreerPompier";
             this.Size = new System.Drawing.Size(463, 304);
             this.Load += new System.EventHandler(this.UC_CreerPompier_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pcbGrade)).EndInit();
             this.pnlRdbProVol.ResumeLayout(false);
             this.pnlRdbProVol.PerformLayout();
             this.ResumeLayout(false);
@@ -335,7 +332,6 @@
         private System.Windows.Forms.Label lblDateNaissance;
         private System.Windows.Forms.Label lblSexe;
         private System.Windows.Forms.Label lblPrenom;
-        private System.Windows.Forms.PictureBox pcbGrade;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Panel pnlRdbProVol;
         private System.Windows.Forms.RadioButton rdbProfessionnel;
@@ -350,6 +346,7 @@
         private System.Windows.Forms.ComboBox cmbSexe;
         private System.Windows.Forms.DateTimePicker dtpDateNaissance;
         private System.Windows.Forms.TextBox txbTelephone;
-        private System.Windows.Forms.Label lblCodeGrade;
+        private System.Windows.Forms.ComboBox cmbHabilitation;
+        private System.Windows.Forms.Label lblHabilitation;
     }
 }

@@ -27,7 +27,7 @@ namespace SAE_A21_D21___Projet_Caserne
             lblMatricule.Text = $"Matricule {m_matricule}";
             lblNom.Text = $"Nom : {pompier["nom"].ToString()}";
             lblPrenom.Text = $"Prénom : {pompier["prenom"].ToString()}";
-            lblSexe.Text = $"Age : {(pompier["sexe"].ToString() == "m" ? "Masculin" : "Feminin")}";
+            lblSexe.Text = $"Sexe : {(pompier["sexe"].ToString() == "m" ? "Masculin" : "Feminin")}";
 
             DateTime dateNaissance = Convert.ToDateTime(pompier["dateNaissance"]);
             DateTime aujourdHui = DateTime.Today;

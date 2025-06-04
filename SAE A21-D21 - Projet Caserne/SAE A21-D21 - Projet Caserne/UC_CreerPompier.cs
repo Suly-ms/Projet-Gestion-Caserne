@@ -48,7 +48,10 @@ namespace SAE_A21_D21___Projet_Caserne
 
         public string getCodeGrade()
         {
-            return lblCodeGrade.Text;
+            DataTable tableGrades = MesDatas.DsGlobal.Tables["Grade"];
+            DataRow grade = tableGrades.Select($"libelle = '{cmbGrade.Text}'")[0];
+
+            return grade["code"].ToString().ToUpper();
         }
 
         public int getIdCaserne()
@@ -113,12 +116,6 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void cmbGrade_SelectedValueChanged(object sender, EventArgs e)
         {
-            DataTable tableGrades = MesDatas.DsGlobal.Tables["Grade"];
-            DataRow grade = tableGrades.Select($"libelle = '{cmbGrade.Text}'")[0];
-
-            lblCodeGrade.Text = grade["code"].ToString().ToUpper();
-
-            pcbGrade.Image = Image.FromFile($"img/grades/{lblCodeGrade.Text}.png");
         }
 
         private int calculerAge()
