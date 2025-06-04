@@ -411,9 +411,9 @@
             this.lsbAffectations.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.lsbAffectations.FormattingEnabled = true;
             this.lsbAffectations.ItemHeight = 15;
-            this.lsbAffectations.Location = new System.Drawing.Point(16, 303);
+            this.lsbAffectations.Location = new System.Drawing.Point(10, 303);
             this.lsbAffectations.Name = "lsbAffectations";
-            this.lsbAffectations.Size = new System.Drawing.Size(260, 94);
+            this.lsbAffectations.Size = new System.Drawing.Size(273, 94);
             this.lsbAffectations.TabIndex = 22;
             // 
             // lblAffectations
@@ -432,10 +432,11 @@
             this.lsbHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.lsbHabilitation.FormattingEnabled = true;
             this.lsbHabilitation.ItemHeight = 15;
-            this.lsbHabilitation.Location = new System.Drawing.Point(16, 159);
+            this.lsbHabilitation.Location = new System.Drawing.Point(10, 159);
             this.lsbHabilitation.Name = "lsbHabilitation";
-            this.lsbHabilitation.Size = new System.Drawing.Size(260, 94);
+            this.lsbHabilitation.Size = new System.Drawing.Size(273, 94);
             this.lsbHabilitation.TabIndex = 20;
+            this.lsbHabilitation.SelectedIndexChanged += new System.EventHandler(this.lsbHabilitation_SelectedIndexChanged);
             // 
             // lblHabilitation
             // 

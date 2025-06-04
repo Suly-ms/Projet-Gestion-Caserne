@@ -16,6 +16,8 @@ namespace SAE_A21_D21___Projet_Caserne
         private int m_matricule;
         private int m_bip;
 
+        private string m_requeteHabilitation = "SELECT 1";
+
         public UC_CreerPompier(int matricule, int bip)
         {
             InitializeComponent();
@@ -30,8 +32,6 @@ namespace SAE_A21_D21___Projet_Caserne
 
             cmbSexe.Items.Add("Masculin");
             cmbSexe.Items.Add("Feminin");
-
-            lblAge.Text = $"Age : {calculerAge()} ans";
 
             dtpDateNaissance.MaxDate = DateTime.Today.AddYears(-2);
 
@@ -143,7 +143,6 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void dtpDateNaissance_ValueChanged(object sender, EventArgs e)
         {
-            lblAge.Text = $"Age : {calculerAge()} ans";
         }
 
         private void txbTelephone_KeyPress(object sender, KeyPressEventArgs e)
@@ -162,6 +161,22 @@ namespace SAE_A21_D21___Projet_Caserne
         private void dtpDateNaissance_KeyDown(object sender, KeyEventArgs e)
         {
             e.SuppressKeyPress = true; // Supprime l'effet de la touche
+        }
+
+        private void btnHabilitation_Click(object sender, EventArgs e)
+        {
+            FrmHabilitations frmHabilitation = new FrmHabilitations(getMatricule());
+            DialogResult result = frmHabilitation.ShowDialog();
+
+            if (result == DialogResult.OK) 
+            {
+                m_requeteHabilitation = frmHabilitation.RequeteSQL;
+            }
+        }
+
+        public string RequeteHabilitationSQL
+        {
+            get { return m_requeteHabilitation; }
         }
     }
 }

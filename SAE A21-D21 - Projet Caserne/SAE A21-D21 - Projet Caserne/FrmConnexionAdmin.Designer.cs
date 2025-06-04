@@ -73,6 +73,7 @@
             this.txbMdp.Name = "txbMdp";
             this.txbMdp.Size = new System.Drawing.Size(188, 20);
             this.txbMdp.TabIndex = 4;
+            this.txbMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbMdp_KeyPress);
             // 
             // label3
             // 

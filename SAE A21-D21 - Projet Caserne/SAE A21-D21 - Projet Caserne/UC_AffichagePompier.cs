@@ -75,7 +75,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
             foreach (DataRow habilitation in habilitations)
             {
-                lsbHabilitation.Items.Add(habilitation["libelle"].ToString());
+                lsbHabilitation.Items.Add(chercherLibelleHabilitation(Convert.ToInt16(habilitation["idHabilitation"])));
             }
 
             DataRow[] affectations = chercherAffectation();
@@ -148,27 +148,19 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             DataTable tableAffectation = MesDatas.DsGlobal.Tables["Affectation"];
             return tableAffectation.Select($"matriculePompier = {m_matricule}");
-
-        }
-
-        private DataRow[] chercherMobilisations()
-        {
-            DataTable tableMobilisers = MesDatas.DsGlobal.Tables["Mobiliser"];
-            return tableMobilisers.Select($"matriculePompier = {m_matricule}");
         }
 
         private DataRow[] chercherHabilitation()
         {
-            DataRow[] mobilisations = chercherMobilisations();
+            DataTable tablePasser = MesDatas.DsGlobal.Tables["Passer"];
+            return tablePasser.Select($"matriculePompier = {m_matricule}");
+        }
 
-            DataTable tableHabilitations = MesDatas.DsGlobal.Tables["Habilitation"];
-            DataRow[] habilitations = new DataRow[mobilisations.Length];
+        private string chercherLibelleHabilitation(int idHabilitation)
+        {
+            DataTable tableHabilitation = MesDatas.DsGlobal.Tables["Habilitation"];
 
-            for (int i = 0; i < mobilisations.Length; i++)
-            {
-                habilitations[i] = tableHabilitations.Select($"id = {mobilisations[i]["idHabilitation"]}")[0];
-            }
-            return habilitations;
+            return tableHabilitation.Select($"id = {idHabilitation}")[0]["libelle"].ToString();
         }
 
         private void modeAdmin()
@@ -219,6 +211,11 @@ namespace SAE_A21_D21___Projet_Caserne
         }
 
         private void cmbGrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lsbHabilitation_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

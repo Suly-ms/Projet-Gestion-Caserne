@@ -108,6 +108,12 @@
     <Compile Include="FrmGestionPompiers.Designer.cs">
       <DependentUpon>FrmGestionPompiers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmHabilitations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHabilitations.Designer.cs">
+      <DependentUpon>FrmHabilitations.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTableauBord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionPompiers.resx">
       <DependentUpon>FrmGestionPompiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHabilitations.resx">
+      <DependentUpon>FrmHabilitations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTableauBord.resx">
       <DependentUpon>FrmTableauBord.cs</DependentUpon>

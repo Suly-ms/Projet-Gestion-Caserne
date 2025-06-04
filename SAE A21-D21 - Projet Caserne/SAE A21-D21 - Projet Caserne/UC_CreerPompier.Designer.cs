@@ -34,7 +34,6 @@
             this.cmbGrade = new System.Windows.Forms.ComboBox();
             this.lblTelephone = new System.Windows.Forms.Label();
             this.lblGrade = new System.Windows.Forms.Label();
-            this.lblAge = new System.Windows.Forms.Label();
             this.lblDateNaissance = new System.Windows.Forms.Label();
             this.lblSexe = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
@@ -52,8 +51,8 @@
             this.cmbSexe = new System.Windows.Forms.ComboBox();
             this.dtpDateNaissance = new System.Windows.Forms.DateTimePicker();
             this.txbTelephone = new System.Windows.Forms.TextBox();
-            this.cmbHabilitation = new System.Windows.Forms.ComboBox();
             this.lblHabilitation = new System.Windows.Forms.Label();
+            this.btnHabilitation = new System.Windows.Forms.Button();
             this.pnlRdbProVol.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,16 +105,6 @@
             this.lblGrade.Size = new System.Drawing.Size(49, 18);
             this.lblGrade.TabIndex = 31;
             this.lblGrade.Text = "Grade";
-            // 
-            // lblAge
-            // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblAge.Location = new System.Drawing.Point(125, 12);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(89, 18);
-            this.lblAge.TabIndex = 29;
-            this.lblAge.Text = "Age : 24 ans";
             // 
             // lblDateNaissance
             // 
@@ -266,17 +255,6 @@
             this.txbTelephone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbTelephone_KeyDown);
             this.txbTelephone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTelephone_KeyPress);
             // 
-            // cmbHabilitation
-            // 
-            this.cmbHabilitation.BackColor = System.Drawing.Color.White;
-            this.cmbHabilitation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cmbHabilitation.FormattingEnabled = true;
-            this.cmbHabilitation.Location = new System.Drawing.Point(26, 211);
-            this.cmbHabilitation.Name = "cmbHabilitation";
-            this.cmbHabilitation.Size = new System.Drawing.Size(191, 21);
-            this.cmbHabilitation.TabIndex = 51;
-            // 
             // lblHabilitation
             // 
             this.lblHabilitation.AutoSize = true;
@@ -287,13 +265,24 @@
             this.lblHabilitation.TabIndex = 52;
             this.lblHabilitation.Text = "Habilitation";
             // 
+            // btnHabilitation
+            // 
+            this.btnHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnHabilitation.Location = new System.Drawing.Point(26, 211);
+            this.btnHabilitation.Name = "btnHabilitation";
+            this.btnHabilitation.Size = new System.Drawing.Size(191, 23);
+            this.btnHabilitation.TabIndex = 53;
+            this.btnHabilitation.Text = "Ajouter des habilitations";
+            this.btnHabilitation.UseVisualStyleBackColor = true;
+            this.btnHabilitation.Click += new System.EventHandler(this.btnHabilitation_Click);
+            // 
             // UC_CreerPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnHabilitation);
             this.Controls.Add(this.lblHabilitation);
-            this.Controls.Add(this.cmbHabilitation);
             this.Controls.Add(this.txbTelephone);
             this.Controls.Add(this.dtpDateNaissance);
             this.Controls.Add(this.cmbSexe);
@@ -306,7 +295,6 @@
             this.Controls.Add(this.cmbGrade);
             this.Controls.Add(this.lblTelephone);
             this.Controls.Add(this.lblGrade);
-            this.Controls.Add(this.lblAge);
             this.Controls.Add(this.lblDateNaissance);
             this.Controls.Add(this.lblSexe);
             this.Controls.Add(this.lblPrenom);
@@ -328,7 +316,6 @@
         private System.Windows.Forms.ComboBox cmbGrade;
         private System.Windows.Forms.Label lblTelephone;
         private System.Windows.Forms.Label lblGrade;
-        private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label lblDateNaissance;
         private System.Windows.Forms.Label lblSexe;
         private System.Windows.Forms.Label lblPrenom;
@@ -346,7 +333,7 @@
         private System.Windows.Forms.ComboBox cmbSexe;
         private System.Windows.Forms.DateTimePicker dtpDateNaissance;
         private System.Windows.Forms.TextBox txbTelephone;
-        private System.Windows.Forms.ComboBox cmbHabilitation;
         private System.Windows.Forms.Label lblHabilitation;
+        private System.Windows.Forms.Button btnHabilitation;
     }
 }

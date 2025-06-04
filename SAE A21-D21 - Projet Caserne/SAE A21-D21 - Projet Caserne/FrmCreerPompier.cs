@@ -91,6 +91,14 @@ namespace SAE_A21_D21___Projet_Caserne
                 cdInsertPompier.ExecuteNonQuery();
 
 
+                string requeteInsertHabilitation = uc.RequeteHabilitationSQL;
+                SQLiteCommand cdInsertHabilitation = new SQLiteCommand();
+                cdInsertHabilitation.Connection = connec;
+                cdInsertHabilitation.CommandType = CommandType.Text;
+                cdInsertHabilitation.CommandText = requeteInsertHabilitation;
+                cdInsertHabilitation.ExecuteNonQuery();
+
+
                 string requeteInsertAffectation = $"INSERT INTO Affectation (matriculePompier, dateA, dateFin, idCaserne) " +
                                   $"VALUES ({uc.getMatricule()}, '{maintenant:yyyy-MM-dd HH:mm:ss}', NULL, {uc.getIdCaserne()})";
                 SQLiteCommand cdInsertAffectation = new SQLiteCommand();

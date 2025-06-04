@@ -89,5 +89,14 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             get { return txbLogin.Text; }
         }
+
+        private void txbMdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnValider_Click(sender, EventArgs.Empty);
+            }
+
+        }
     }
 }

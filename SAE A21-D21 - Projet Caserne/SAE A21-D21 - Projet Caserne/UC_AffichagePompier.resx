@@ -960,7 +960,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="pcbEditRdbActifConge.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pcbEditCaserne.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASkAAAEpCAYAAADPmdSCAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAUEtJREFUeF7tnXd8FMX7x78/paSRAin03nuT3nuXIqH3ooCooFJUxAoWFFERRVBE
@@ -1309,7 +1309,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="pcbEditCaserne.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pcbEditRdbActifConge.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASkAAAEpCAYAAADPmdSCAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAUEtJREFUeF7tnXd8FMX7x78/paSRAin03nuT3nuXIqH3ooCooFJUxAoWFFERRVBE

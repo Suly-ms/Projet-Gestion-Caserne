@@ -33,6 +33,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.pnlSelectionPompier = new System.Windows.Forms.Panel();
+            this.btnNouveauPompier = new System.Windows.Forms.Button();
             this.pnlConnexion = new System.Windows.Forms.Panel();
             this.lblSeConnecter = new System.Windows.Forms.Label();
             this.pcbAdmin = new System.Windows.Forms.PictureBox();
@@ -42,7 +43,6 @@
             this.cmbCaserne = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnNouveauPompier = new System.Windows.Forms.Button();
             this.pnlSelectionPompier.SuspendLayout();
             this.pnlConnexion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAdmin)).BeginInit();
@@ -98,6 +98,22 @@
             this.pnlSelectionPompier.Name = "pnlSelectionPompier";
             this.pnlSelectionPompier.Size = new System.Drawing.Size(636, 116);
             this.pnlSelectionPompier.TabIndex = 9;
+            // 
+            // btnNouveauPompier
+            // 
+            this.btnNouveauPompier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.btnNouveauPompier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNouveauPompier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouveauPompier.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveauPompier.ForeColor = System.Drawing.Color.Black;
+            this.btnNouveauPompier.Location = new System.Drawing.Point(476, 9);
+            this.btnNouveauPompier.Name = "btnNouveauPompier";
+            this.btnNouveauPompier.Size = new System.Drawing.Size(150, 40);
+            this.btnNouveauPompier.TabIndex = 10;
+            this.btnNouveauPompier.Text = "Ajouter pompier";
+            this.btnNouveauPompier.UseVisualStyleBackColor = false;
+            this.btnNouveauPompier.Visible = false;
+            this.btnNouveauPompier.Click += new System.EventHandler(this.btnNouveauPompier_Click);
             // 
             // pnlConnexion
             // 
@@ -197,22 +213,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(636, 82);
             this.panel1.TabIndex = 9;
-            // 
-            // btnNouveauPompier
-            // 
-            this.btnNouveauPompier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
-            this.btnNouveauPompier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNouveauPompier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouveauPompier.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouveauPompier.ForeColor = System.Drawing.Color.Black;
-            this.btnNouveauPompier.Location = new System.Drawing.Point(476, 9);
-            this.btnNouveauPompier.Name = "btnNouveauPompier";
-            this.btnNouveauPompier.Size = new System.Drawing.Size(150, 40);
-            this.btnNouveauPompier.TabIndex = 10;
-            this.btnNouveauPompier.Text = "Ajouter pompier";
-            this.btnNouveauPompier.UseVisualStyleBackColor = false;
-            this.btnNouveauPompier.Visible = false;
-            this.btnNouveauPompier.Click += new System.EventHandler(this.btnNouveauPompier_Click);
             // 
             // FrmGestionPompiers
             // 
