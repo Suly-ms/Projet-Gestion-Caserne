@@ -120,7 +120,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 // Ajouter dans le panel du choix des véhicules, les UC pour chosiir les véhicules
                 for (int i = 0; i < Vehicules.Count; i++)
                 {
-                    var choixVehicule = new UC_ChoixVehicule
+                    UC_ChoixVehicule choixVehicule = new UC_ChoixVehicule
                     {
                         Top = top,
                         Left = left
@@ -215,11 +215,7 @@ namespace SAE_A21_D21___Projet_Caserne
             int restant = besoinTotal - dejaAttribue;
 
             // Mettre à jour le dictionnaire avec le nombre restant réel
-            habilitationCompteurs[idHabilitation] = Math.Max(restant, 0);
-
-            // Si plus de besoin, ne pas afficher le bouton
-            if (restant <= 0)
-                return;
+            habilitationCompteurs[idHabilitation] = restant;
 
             // Si le bouton existe déjà, on le met à jour
             foreach (Control ctrl in pnlChoixHabilitation.Controls)
@@ -232,7 +228,7 @@ namespace SAE_A21_D21___Projet_Caserne
             }
 
             // Sinon, on le crée
-            var bouton = new System.Windows.Forms.Button
+            System.Windows.Forms.Button bouton = new System.Windows.Forms.Button
             {
                 Text = $"{nomHabilitation} x{restant}",
                 Tag = idHabilitation,
@@ -253,31 +249,57 @@ namespace SAE_A21_D21___Projet_Caserne
             pnlChoixHabilitation.Controls.Add(bouton);
         }
 
-
         private void afficherPompier(object sender)
         {
-            var bouton = sender as System.Windows.Forms.Button;
-            lastHabilitation = (int)bouton.Tag;
+            System.Windows.Forms.Button bouton = sender as System.Windows.Forms.Button;
+            lastHabilitation = Convert.ToInt32(bouton.Tag);
+                        
+            int idHabilitationCliquee = Convert.ToInt32(bouton.Tag);
+            mettreAJourAffichagePompier();
+        }
 
+        private void mettreAJourAffichagePompier()
+        {
             pnlChoixPompier.Controls.Clear();
             int top = 10;
             int left = 20;
-
-            int idHabilitationCliquee = (int)bouton.Tag;
-
             foreach (DataRow pompier in pompiers)
             {
                 int matricule = Convert.ToInt32(pompier["matricule"]);
 
-                // Vérifier si ce pompier a cette habilitation
+                // Vérifier si le pompier a l'habilitation
                 bool aHabilitation = habilitationPompiers.Any(h =>
                     Convert.ToInt32(h["matriculePompier"]) == matricule &&
-                    Convert.ToInt32(h["idHabilitation"]) == idHabilitationCliquee
+                    Convert.ToInt32(h["idHabilitation"]) == lastHabilitation
                 );
 
-                if (aHabilitation)
+                if (!aHabilitation)
+                    continue;
+
+                // Vérifier si la table "Pompiers" existe
+                bool present = false;
+                bool afficher_vert = false;
+                if (pompierVehiculeEnregistre.Tables.Contains("Pompiers"))
                 {
-                    var choixPompier = new UC_ChoixPompier
+                    foreach (DataRow row in pompierVehiculeEnregistre.Tables["Pompiers"].Rows)
+                    {
+                        if (!(row == null)) { 
+                            if (row["Nom"].ToString() == pompier["nom"].ToString() && row["Prenom"].ToString() == pompier["prenom"].ToString() && Convert.ToInt32(row["habilitation"]) != lastHabilitation)
+                            {
+                                present = true;
+                            }
+                            else if (row["Nom"].ToString() == pompier["nom"].ToString() && row["Prenom"].ToString() == pompier["prenom"].ToString() && Convert.ToInt32(row["habilitation"]) == lastHabilitation)
+                            {
+                                afficher_vert = true;
+                            }
+                        }
+                    }
+                }
+
+                if (!present)
+                {
+                    // Création et configuration du contrôle
+                    UC_ChoixPompier choixPompier = new UC_ChoixPompier
                     {
                         Top = top,
                         Left = left
@@ -285,29 +307,21 @@ namespace SAE_A21_D21___Projet_Caserne
 
                     choixPompier.PompierChoisi += UcPompier_PompierChoisi;
                     choixPompier.PompierNonChoisi += UcPompier_PompierNonChoisi;
-                    String grade = pompier["codeGrade"].ToString();
-                    String nom = pompier["nom"].ToString();
-                    String prenom = pompier["prenom"].ToString();
 
-                    bool present = false;
-                    foreach (DataRow row in pompierVehiculeEnregistre.Tables["Pompiers"].Rows)
+                    string grade = pompier["codeGrade"].ToString();
+                    string nom = pompier["nom"].ToString();
+                    string prenom = pompier["prenom"].ToString();
+
+                    Color couleur = afficher_vert ? Color.Green : Color.Red;
+
+                    if (habilitationCompteurs[lastHabilitation] == 0 && couleur == Color.Red)
                     {
-                        if (row["Nom"].ToString() == nom && row["Prenom"].ToString() == prenom)
-                        {
-                            present = true;
-                        }
+                        choixPompier.desactiverButton();
                     }
 
-                    if (present)
-                    {
-                        choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom, prenom, Color.Green);
-                    }
-                    else
-                    {
-                        choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom, prenom, Color.Red);
-                    }
-
+                    choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom, prenom, couleur);
                     pnlChoixPompier.Controls.Add(choixPompier);
+
                     top += 130;
                 }
             }
@@ -330,70 +344,25 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void UcVehicule_VehiculeNonChoisi(object sender, VehiculeNonChoisiEventArgs e)
         {
-            // Supprimer le véhicule correspondant
-            var tableVehicules = pompierVehiculeEnregistre.Tables["Vehicules"];
-            var vehicules = tableVehicules.Rows.Cast<DataRow>().ToList();
-
-            foreach (var row in vehicules)
+            for (int i = pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Count - 1; i >= 0; i--)
             {
-                if ((int)row["Numero"] == e.Numero && row["Type"].ToString() == e.Type)
+                DataRow row = pompierVehiculeEnregistre.Tables["Vehicules"].Rows[i];
+                if (row["Numero"].ToString() == e.Numero.ToString() &&
+                    row["Type"].ToString() == e.Type.ToString() &&
+                    row["Caserne"].ToString() == e.Caserne.ToString())
                 {
                     row.Delete();
                 }
             }
-            tableVehicules.AcceptChanges();
 
-            // Identifier les pompiers à supprimer (habilitation non requise)
-            var tablePompiers = pompierVehiculeEnregistre.Tables["Pompiers"];
-            var pompiersASupprimer = new List<DataRow>();
-
-            foreach (DataRow pompier in tablePompiers.Rows)
-            {
-                int idHabilitation = (int)pompier["habilitation"];
-                bool habilitationEncoreRequise = pompierVehiculeEnregistre.Tables["Vehicules"].Rows
-                    .Cast<DataRow>()
-                    .Any(vehicule =>
-                        MesDatas.DsGlobal.Tables["Embarquer"].Select(
-                            $"codeTypeEngin = '{vehicule["Type"]}' AND idHabilitation = {idHabilitation}"
-                        ).Any()
-                    );
-
-                if (!habilitationEncoreRequise)
-                {
-                    pompiersASupprimer.Add(pompier);
-                }
-            }
-
-            // Supprimer les pompiers non requis et mettre à jour les compteurs
-            foreach (var pompier in pompiersASupprimer)
-            {
-                int idHabilitation = (int)pompier["habilitation"];
-                pompier.Delete();
-
-                if (habilitationCompteurs.ContainsKey(idHabilitation))
-                {
-                    habilitationCompteurs[idHabilitation]--;
-                }
-            }
-            tablePompiers.AcceptChanges();
-
-            // Rafraîchir les boutons d’habilitation
+            chargerDataSetPompierVehiculeEnregistre();
+            // Recalculer tous les boutons d’habilitation (comme dans la suppression)
             pnlChoixHabilitation.Controls.Clear();
 
-            foreach (DataRow h in MesDatas.DsGlobal.Tables["Habilitation"].Select())
+            var habilitations = MesDatas.DsGlobal.Tables["Habilitation"].Select();
+            foreach (DataRow h in habilitations)
             {
                 AjouterOuMettreAJourBoutonHabilitation(Convert.ToInt32(h["id"]));
-            }
-
-            // Recharger les données
-            chargerDataSetPompierVehiculeEnregistre();
-
-            // Si plus aucune habilitation, vider les pompiers et recharger
-            if (pnlChoixHabilitation.Controls.Count == 0)
-            {
-                pnlChoixPompier.Controls.Clear();
-                tablePompiers.Clear();
-                chargerDataSetPompierVehiculeEnregistre();
             }
         }
 
@@ -424,6 +393,10 @@ namespace SAE_A21_D21___Projet_Caserne
                 }
             }
 
+            if (habilitationCompteurs[lastHabilitation] == 0)
+            {
+                mettreAJourAffichagePompier();
+            }
             chargerDataSetPompierVehiculeEnregistre();
         }
 
@@ -454,6 +427,11 @@ namespace SAE_A21_D21___Projet_Caserne
                         }
                     }
                 }
+            }
+
+            if (habilitationCompteurs[lastHabilitation] == 1)
+            {
+                mettreAJourAffichagePompier();
             }
 
             pompierVehiculeEnregistre.Tables["Pompiers"].AcceptChanges();

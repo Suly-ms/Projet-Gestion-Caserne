@@ -71,5 +71,10 @@ namespace UserControlChoixPompier
             public string Nom { get; set; }
             public string Prenom { get; set; }
         }
+
+        public void desactiverButton()
+        {
+            btnChoisi.Enabled = false;
+        }
     }
 }

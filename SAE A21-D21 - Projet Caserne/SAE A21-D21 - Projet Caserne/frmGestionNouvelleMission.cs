@@ -71,7 +71,6 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 // Ici, on utilise bien l'instance monUC pour accéder à la propriété
                 pompierVehiculeMission = monUC.DataSetMission;
-                btnConstituerManuel.BackColor = Color.White;
             }
         }
 

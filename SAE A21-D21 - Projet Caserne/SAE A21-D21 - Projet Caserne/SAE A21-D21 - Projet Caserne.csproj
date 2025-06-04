@@ -114,6 +114,12 @@
     <Compile Include="UC_AffichageEngin.Designer.cs">
       <DependentUpon>UC_AffichageEngin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_ChoixPompierAutomatique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixPompierAutomatique.Designer.cs">
+      <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_RecapMission.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </Compile>
     <EmbeddedResource Include="UC_AffichageEngin.resx">
       <DependentUpon>UC_AffichageEngin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixPompierAutomatique.resx">
+      <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_RecapMission.resx">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>
