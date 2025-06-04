@@ -33,6 +33,11 @@ namespace SAE_A21_D21___Projet_Caserne
         public FrmChoixVehiculesPompier()
         {
             InitializeComponent();
+            // Empeche de mettre en pleine ecran
+            this.MaximizeBox = false;
+
+            // Empeche le redimensionnement
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         public FrmChoixVehiculesPompier(int natureSinitre, int caserne)
@@ -325,33 +330,73 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void UcVehicule_VehiculeNonChoisi(object sender, VehiculeNonChoisiEventArgs e)
         {
-            foreach (DataRow row in pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Cast<DataRow>().ToList())
+            // Supprimer le véhicule correspondant
+            var tableVehicules = pompierVehiculeEnregistre.Tables["Vehicules"];
+            var vehicules = tableVehicules.Rows.Cast<DataRow>().ToList();
+
+            foreach (var row in vehicules)
             {
                 if ((int)row["Numero"] == e.Numero && row["Type"].ToString() == e.Type)
                 {
                     row.Delete();
                 }
             }
-            pompierVehiculeEnregistre.Tables["Vehicules"].AcceptChanges();
+            tableVehicules.AcceptChanges();
 
-            // Recalculer tous les boutons d’habilitation
+            // Identifier les pompiers à supprimer (habilitation non requise)
+            var tablePompiers = pompierVehiculeEnregistre.Tables["Pompiers"];
+            var pompiersASupprimer = new List<DataRow>();
+
+            foreach (DataRow pompier in tablePompiers.Rows)
+            {
+                int idHabilitation = (int)pompier["habilitation"];
+                bool habilitationEncoreRequise = pompierVehiculeEnregistre.Tables["Vehicules"].Rows
+                    .Cast<DataRow>()
+                    .Any(vehicule =>
+                        MesDatas.DsGlobal.Tables["Embarquer"].Select(
+                            $"codeTypeEngin = '{vehicule["Type"]}' AND idHabilitation = {idHabilitation}"
+                        ).Any()
+                    );
+
+                if (!habilitationEncoreRequise)
+                {
+                    pompiersASupprimer.Add(pompier);
+                }
+            }
+
+            // Supprimer les pompiers non requis et mettre à jour les compteurs
+            foreach (var pompier in pompiersASupprimer)
+            {
+                int idHabilitation = (int)pompier["habilitation"];
+                pompier.Delete();
+
+                if (habilitationCompteurs.ContainsKey(idHabilitation))
+                {
+                    habilitationCompteurs[idHabilitation]--;
+                }
+            }
+            tablePompiers.AcceptChanges();
+
+            // Rafraîchir les boutons d’habilitation
             pnlChoixHabilitation.Controls.Clear();
 
-            var habilitations = MesDatas.DsGlobal.Tables["Habilitation"].Select();
-            foreach (DataRow h in habilitations)
+            foreach (DataRow h in MesDatas.DsGlobal.Tables["Habilitation"].Select())
             {
                 AjouterOuMettreAJourBoutonHabilitation(Convert.ToInt32(h["id"]));
             }
 
+            // Recharger les données
             chargerDataSetPompierVehiculeEnregistre();
 
-            if(pnlChoixHabilitation.Controls.Count == 0)
+            // Si plus aucune habilitation, vider les pompiers et recharger
+            if (pnlChoixHabilitation.Controls.Count == 0)
             {
                 pnlChoixPompier.Controls.Clear();
-                pompierVehiculeEnregistre.Tables["Pompiers"].Clear();
+                tablePompiers.Clear();
                 chargerDataSetPompierVehiculeEnregistre();
             }
         }
+
 
 
         private void UcPompier_PompierChoisi(object sender, PompierChoisiEventArgs e)
@@ -420,15 +465,32 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             pnlPompierEnregistre.Controls.Clear();
             pnlVehiculeEnregistre.Controls.Clear();
-            int top = 20;
+            int top = 23;
             int left = 5;
-            foreach(DataRow row in pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Cast<DataRow>().ToList())
+            Label labelTxtVehicules = new Label();
+            labelTxtVehicules.Text = "Véhicule(s) Enregistrés :";
+            labelTxtVehicules.Top = top;
+            labelTxtVehicules.Left = left;
+            labelTxtVehicules.Width = 55;
+            labelTxtVehicules.AutoSize = true;
+            labelTxtVehicules.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pnlVehiculeEnregistre.Controls.Add(labelTxtVehicules);
+
+            Label labelTxtPompier = new Label();
+            labelTxtPompier.Text = "Pompier(s) Enregistrés :";
+            labelTxtPompier.Top = top;
+            labelTxtPompier.Left = left;
+            labelTxtPompier.Width = 55;
+            labelTxtPompier.AutoSize = true;
+            labelTxtPompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pnlPompierEnregistre.Controls.Add(labelTxtPompier);
+
+            foreach (DataRow row in pompierVehiculeEnregistre.Tables["Vehicules"].Rows.Cast<DataRow>().ToList())
             {
                 Label label = new Label();
                 label.Text = row["Type"].ToString() + row["Numero"].ToString();
                 label.Top = top;
-                label.Left = left;
-                label.Width = 55;
+                label.Left = left+210;
                 label.AutoSize = true;
                 label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 pnlVehiculeEnregistre.Controls.Add(label);
@@ -442,7 +504,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 Label label = new Label();
                 label.Text = row["Grade"].ToString() + " " + row["Nom"].ToString() + " " + row["Prenom"].ToString();
                 label.Top = top;
-                label.Left = left;
+                label.Left = left+210;
                 label.AutoSize = true;
                 label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 pnlPompierEnregistre.Controls.Add(label);
@@ -467,6 +529,11 @@ namespace SAE_A21_D21___Projet_Caserne
         public DataSet DataSetMission
         {
             get { return pompierVehiculeEnregistre; }
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

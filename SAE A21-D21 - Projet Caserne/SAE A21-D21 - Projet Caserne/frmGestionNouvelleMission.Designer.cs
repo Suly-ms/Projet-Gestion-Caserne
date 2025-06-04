@@ -41,7 +41,7 @@
             this.lblRue = new System.Windows.Forms.Label();
             this.txbMotif = new System.Windows.Forms.TextBox();
             this.lblMotif = new System.Windows.Forms.Label();
-            this.btnConstituer = new System.Windows.Forms.Button();
+            this.btnConstituerManuel = new System.Windows.Forms.Button();
             this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.cbxNatureSinistre = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnConstituerAutomatique = new System.Windows.Forms.Button();
+            this.lblConstituer = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -179,17 +181,17 @@
             this.lblMotif.TabIndex = 3;
             this.lblMotif.Text = "Motif :";
             // 
-            // btnConstituer
+            // btnConstituerManuel
             // 
-            this.btnConstituer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConstituer.ForeColor = System.Drawing.Color.Red;
-            this.btnConstituer.Location = new System.Drawing.Point(190, 108);
-            this.btnConstituer.Name = "btnConstituer";
-            this.btnConstituer.Size = new System.Drawing.Size(180, 69);
-            this.btnConstituer.TabIndex = 16;
-            this.btnConstituer.Text = "Choisir Véhicule(s) et Pompier(s)";
-            this.btnConstituer.UseVisualStyleBackColor = true;
-            this.btnConstituer.Click += new System.EventHandler(this.btnConstituer_Click);
+            this.btnConstituerManuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstituerManuel.ForeColor = System.Drawing.Color.Red;
+            this.btnConstituerManuel.Location = new System.Drawing.Point(190, 104);
+            this.btnConstituerManuel.Name = "btnConstituerManuel";
+            this.btnConstituerManuel.Size = new System.Drawing.Size(171, 69);
+            this.btnConstituerManuel.TabIndex = 16;
+            this.btnConstituerManuel.Text = "Manuel";
+            this.btnConstituerManuel.UseVisualStyleBackColor = true;
+            this.btnConstituerManuel.Click += new System.EventHandler(this.btnConstituer_Click);
             // 
             // cbxCaserne
             // 
@@ -299,7 +301,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panel3.Controls.Add(this.btnConstituer);
+            this.panel3.Controls.Add(this.lblConstituer);
+            this.panel3.Controls.Add(this.btnConstituerAutomatique);
+            this.panel3.Controls.Add(this.btnConstituerManuel);
             this.panel3.Controls.Add(this.cbxCaserne);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.lblCaserne);
@@ -308,6 +312,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(562, 192);
             this.panel3.TabIndex = 23;
+            // 
+            // btnConstituerAutomatique
+            // 
+            this.btnConstituerAutomatique.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstituerAutomatique.ForeColor = System.Drawing.Color.Red;
+            this.btnConstituerAutomatique.Location = new System.Drawing.Point(377, 104);
+            this.btnConstituerAutomatique.Name = "btnConstituerAutomatique";
+            this.btnConstituerAutomatique.Size = new System.Drawing.Size(161, 69);
+            this.btnConstituerAutomatique.TabIndex = 17;
+            this.btnConstituerAutomatique.Text = "Automatique";
+            this.btnConstituerAutomatique.UseVisualStyleBackColor = true;
+            this.btnConstituerAutomatique.Click += new System.EventHandler(this.btnConstituerAutomatique_Click);
+            // 
+            // lblConstituer
+            // 
+            this.lblConstituer.AutoSize = true;
+            this.lblConstituer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConstituer.Location = new System.Drawing.Point(22, 126);
+            this.lblConstituer.Name = "lblConstituer";
+            this.lblConstituer.Size = new System.Drawing.Size(102, 22);
+            this.lblConstituer.TabIndex = 18;
+            this.lblConstituer.Text = "Constituer :";
             // 
             // FrmGestionNouvelleMission
             // 
@@ -323,6 +349,7 @@
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnFermer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmGestionNouvelleMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -356,7 +383,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxCaserne;
         private System.Windows.Forms.Label lblCaserne;
-        private System.Windows.Forms.Button btnConstituer;
+        private System.Windows.Forms.Button btnConstituerManuel;
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Label lblChampsIncomplets;
@@ -364,6 +391,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnConstituerAutomatique;
+        private System.Windows.Forms.Label lblConstituer;
     }
 }
 

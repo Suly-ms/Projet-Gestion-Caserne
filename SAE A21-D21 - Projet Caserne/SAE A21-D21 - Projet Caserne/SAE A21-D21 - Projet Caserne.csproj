@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>fire-helmets-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
@@ -71,6 +74,12 @@
     </Compile>
     <Compile Include="FrmChoixVehiculesPompier.Designer.cs">
       <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChoixVehiculesPompierAutomatique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChoixVehiculesPompierAutomatique.Designer.cs">
+      <DependentUpon>FrmChoixVehiculesPompierAutomatique.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCompteRendu.cs">
       <SubType>Form</SubType>
@@ -132,6 +141,9 @@
     <EmbeddedResource Include="FrmChoixVehiculesPompier.resx">
       <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChoixVehiculesPompierAutomatique.resx">
+      <DependentUpon>FrmChoixVehiculesPompierAutomatique.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCompteRendu.resx">
       <DependentUpon>FrmCompteRendu.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,9 +190,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SDIS67.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fire-helmets-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

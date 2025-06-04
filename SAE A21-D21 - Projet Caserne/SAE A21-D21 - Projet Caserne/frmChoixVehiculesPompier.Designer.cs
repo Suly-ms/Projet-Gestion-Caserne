@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChoixVehiculesPompier));
             this.pnlChoixVehicule = new System.Windows.Forms.Panel();
             this.lblVehiculeValide = new System.Windows.Forms.Label();
             this.lblHabilitationPompier = new System.Windows.Forms.Label();
@@ -45,12 +46,18 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblPasAssezDePompier = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.pnlVehiculeEnregistre.SuspendLayout();
+            this.pnlPompierEnregistre.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlChoixVehicule
             // 
             this.pnlChoixVehicule.AutoScroll = true;
-            this.pnlChoixVehicule.Location = new System.Drawing.Point(13, 78);
+            this.pnlChoixVehicule.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlChoixVehicule.Location = new System.Drawing.Point(13, 77);
             this.pnlChoixVehicule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlChoixVehicule.Name = "pnlChoixVehicule";
             this.pnlChoixVehicule.Size = new System.Drawing.Size(250, 474);
@@ -60,7 +67,7 @@
             // 
             this.lblVehiculeValide.AutoSize = true;
             this.lblVehiculeValide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehiculeValide.Location = new System.Drawing.Point(41, 37);
+            this.lblVehiculeValide.Location = new System.Drawing.Point(21, 19);
             this.lblVehiculeValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehiculeValide.Name = "lblVehiculeValide";
             this.lblVehiculeValide.Size = new System.Drawing.Size(194, 25);
@@ -71,17 +78,18 @@
             // 
             this.lblHabilitationPompier.AutoSize = true;
             this.lblHabilitationPompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHabilitationPompier.Location = new System.Drawing.Point(298, 37);
+            this.lblHabilitationPompier.Location = new System.Drawing.Point(278, 19);
             this.lblHabilitationPompier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHabilitationPompier.Name = "lblHabilitationPompier";
-            this.lblHabilitationPompier.Size = new System.Drawing.Size(218, 25);
+            this.lblHabilitationPompier.Size = new System.Drawing.Size(231, 25);
             this.lblHabilitationPompier.TabIndex = 4;
-            this.lblHabilitationPompier.Text = "Choix de l\'habilitation";
+            this.lblHabilitationPompier.Text = "Choix de l\'habilitation :";
             // 
             // pnlChoixHabilitation
             // 
             this.pnlChoixHabilitation.AutoScroll = true;
-            this.pnlChoixHabilitation.Location = new System.Drawing.Point(284, 78);
+            this.pnlChoixHabilitation.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlChoixHabilitation.Location = new System.Drawing.Point(284, 77);
             this.pnlChoixHabilitation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlChoixHabilitation.Name = "pnlChoixHabilitation";
             this.pnlChoixHabilitation.Size = new System.Drawing.Size(250, 474);
@@ -91,7 +99,7 @@
             // 
             this.lblPompierValide.AutoSize = true;
             this.lblPompierValide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPompierValide.Location = new System.Drawing.Point(584, 37);
+            this.lblPompierValide.Location = new System.Drawing.Point(564, 19);
             this.lblPompierValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompierValide.Name = "lblPompierValide";
             this.lblPompierValide.Size = new System.Drawing.Size(189, 25);
@@ -101,7 +109,8 @@
             // pnlChoixPompier
             // 
             this.pnlChoixPompier.AutoScroll = true;
-            this.pnlChoixPompier.Location = new System.Drawing.Point(555, 78);
+            this.pnlChoixPompier.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlChoixPompier.Location = new System.Drawing.Point(555, 77);
             this.pnlChoixPompier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlChoixPompier.Name = "pnlChoixPompier";
             this.pnlChoixPompier.Size = new System.Drawing.Size(250, 474);
@@ -110,44 +119,48 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(270, 78);
+            this.panel1.Location = new System.Drawing.Point(270, 77);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(7, 470);
+            this.panel1.Size = new System.Drawing.Size(7, 485);
             this.panel1.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel2.Location = new System.Drawing.Point(541, 78);
+            this.panel2.Location = new System.Drawing.Point(541, 77);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(7, 470);
+            this.panel2.Size = new System.Drawing.Size(7, 485);
             this.panel2.TabIndex = 8;
             // 
             // pnlVehiculeEnregistre
             // 
             this.pnlVehiculeEnregistre.AutoScroll = true;
-            this.pnlVehiculeEnregistre.Location = new System.Drawing.Point(235, 560);
+            this.pnlVehiculeEnregistre.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlVehiculeEnregistre.Controls.Add(this.lblVehiculeEnregistre);
+            this.pnlVehiculeEnregistre.Location = new System.Drawing.Point(13, 561);
             this.pnlVehiculeEnregistre.Margin = new System.Windows.Forms.Padding(4);
             this.pnlVehiculeEnregistre.Name = "pnlVehiculeEnregistre";
-            this.pnlVehiculeEnregistre.Size = new System.Drawing.Size(571, 65);
+            this.pnlVehiculeEnregistre.Size = new System.Drawing.Size(792, 65);
             this.pnlVehiculeEnregistre.TabIndex = 9;
             // 
             // pnlPompierEnregistre
             // 
             this.pnlPompierEnregistre.AutoScroll = true;
-            this.pnlPompierEnregistre.Location = new System.Drawing.Point(235, 623);
+            this.pnlPompierEnregistre.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlPompierEnregistre.Controls.Add(this.lblPompiersEnregistre);
+            this.pnlPompierEnregistre.Location = new System.Drawing.Point(13, 624);
             this.pnlPompierEnregistre.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPompierEnregistre.Name = "pnlPompierEnregistre";
-            this.pnlPompierEnregistre.Size = new System.Drawing.Size(571, 66);
+            this.pnlPompierEnregistre.Size = new System.Drawing.Size(792, 66);
             this.pnlPompierEnregistre.TabIndex = 10;
             // 
             // lblVehiculeEnregistre
             // 
             this.lblVehiculeEnregistre.AutoSize = true;
             this.lblVehiculeEnregistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehiculeEnregistre.Location = new System.Drawing.Point(32, 582);
+            this.lblVehiculeEnregistre.Location = new System.Drawing.Point(11, 24);
             this.lblVehiculeEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehiculeEnregistre.Name = "lblVehiculeEnregistre";
             this.lblVehiculeEnregistre.Size = new System.Drawing.Size(195, 20);
@@ -158,7 +171,7 @@
             // 
             this.lblPompiersEnregistre.AutoSize = true;
             this.lblPompiersEnregistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPompiersEnregistre.Location = new System.Drawing.Point(34, 648);
+            this.lblPompiersEnregistre.Location = new System.Drawing.Point(13, 23);
             this.lblPompiersEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompiersEnregistre.Name = "lblPompiersEnregistre";
             this.lblPompiersEnregistre.Size = new System.Drawing.Size(193, 20);
@@ -169,19 +182,19 @@
             // 
             this.btnValider.BackColor = System.Drawing.Color.Lime;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(649, 697);
+            this.btnValider.Location = new System.Drawing.Point(648, 698);
             this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(157, 46);
             this.btnValider.TabIndex = 11;
-            this.btnValider.Text = "VALIDER";
+            this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel5.Location = new System.Drawing.Point(14, 559);
+            this.panel5.Location = new System.Drawing.Point(13, 560);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(792, 6);
@@ -190,7 +203,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel6.Location = new System.Drawing.Point(14, 623);
+            this.panel6.Location = new System.Drawing.Point(13, 624);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(792, 6);
@@ -199,7 +212,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel7.Location = new System.Drawing.Point(14, 683);
+            this.panel7.Location = new System.Drawing.Point(13, 684);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(792, 6);
@@ -209,22 +222,47 @@
             // 
             this.lblPasAssezDePompier.AutoSize = true;
             this.lblPasAssezDePompier.BackColor = System.Drawing.Color.Red;
-            this.lblPasAssezDePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasAssezDePompier.Location = new System.Drawing.Point(124, 705);
+            this.lblPasAssezDePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasAssezDePompier.Location = new System.Drawing.Point(211, 709);
             this.lblPasAssezDePompier.Name = "lblPasAssezDePompier";
-            this.lblPasAssezDePompier.Size = new System.Drawing.Size(518, 29);
+            this.lblPasAssezDePompier.Size = new System.Drawing.Size(430, 25);
             this.lblPasAssezDePompier.TabIndex = 12;
             this.lblPasAssezDePompier.Text = "Il n\'y a pas assez de pompiers sélectionnés";
             this.lblPasAssezDePompier.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.panel3.Controls.Add(this.lblPompierValide);
+            this.panel3.Controls.Add(this.lblVehiculeValide);
+            this.panel3.Controls.Add(this.lblHabilitationPompier);
+            this.panel3.Location = new System.Drawing.Point(13, 10);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(793, 60);
+            this.panel3.TabIndex = 13;
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.BackColor = System.Drawing.Color.Red;
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Location = new System.Drawing.Point(13, 698);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(157, 46);
+            this.btnRetour.TabIndex = 14;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // FrmChoixVehiculesPompier
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(819, 750);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(816, 750);
+            this.Controls.Add(this.btnRetour);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.lblPasAssezDePompier);
-            this.Controls.Add(this.lblPompiersEnregistre);
-            this.Controls.Add(this.lblVehiculeEnregistre);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -233,17 +271,21 @@
             this.Controls.Add(this.pnlVehiculeEnregistre);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblPompierValide);
-            this.Controls.Add(this.lblHabilitationPompier);
             this.Controls.Add(this.pnlChoixPompier);
-            this.Controls.Add(this.lblVehiculeValide);
             this.Controls.Add(this.pnlChoixHabilitation);
             this.Controls.Add(this.pnlChoixVehicule);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmChoixVehiculesPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choix des véhicules et des pompiers";
             this.Load += new System.EventHandler(this.frmChoixVehiculesPompier_Load);
+            this.pnlVehiculeEnregistre.ResumeLayout(false);
+            this.pnlVehiculeEnregistre.PerformLayout();
+            this.pnlPompierEnregistre.ResumeLayout(false);
+            this.pnlPompierEnregistre.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +309,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblPasAssezDePompier;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnRetour;
     }
 }
