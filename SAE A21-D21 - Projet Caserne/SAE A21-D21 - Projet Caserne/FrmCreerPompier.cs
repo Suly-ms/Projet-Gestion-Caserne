@@ -123,5 +123,10 @@ namespace SAE_A21_D21___Projet_Caserne
                 DialogResult = DialogResult.OK;
             }
         }
+
+        public int IndexCaserne
+        {
+            get { return uc.getIdCaserne(); }
+        }
     }
 }

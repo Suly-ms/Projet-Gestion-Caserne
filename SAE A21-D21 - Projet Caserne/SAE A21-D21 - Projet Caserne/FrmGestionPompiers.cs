@@ -25,6 +25,7 @@ namespace SAE_A21_D21___Projet_Caserne
         // Variable qui empeche l'appel de la methode cmbCaserne_SelectedIndexChanged avant que la comboBox est chartgé complètement (ca provoquait des bugs)
         private bool caserneCharge = false;
         private bool majEnCours = false;
+        private bool indexCaserne = false;
 
         private bool m_admin = false;
 
@@ -74,7 +75,7 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             m_admin = true;
 
-            pcbAdmin.Image = Image.FromFile("img/admin_connecte.jpg");
+            pcbAdmin.Image = Image.FromFile("img/admin/admin_connecte.jpg");
             lblMode.Text = "Mode administrateur";
             lblMode.ForeColor = Color.FromArgb(255, 193, 7);
             btnUpdate.Visible = true;
@@ -148,6 +149,8 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             if (caserneCharge && !majEnCours)
             {
+                indexCaserne = true;
+
                 int idCaserne = Convert.ToInt16(cmbCaserne.SelectedValue);
 
                 Dictionary<int, string> dico = new Dictionary<int, string>();
@@ -167,9 +170,16 @@ namespace SAE_A21_D21___Projet_Caserne
             }
         }
 
+        private void chargerCaserne(object sender)
+        {
+            if (indexCaserne)
+            {
+                cmbCaserne_SelectedIndexChanged(sender, EventArgs.Empty);
+            }
+        }
+
         private void cmbPompier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Chat gpt a changer
             if (!majEnCours)
             {
                 if (cmbPompier.SelectedItem is KeyValuePair<int, string> selectedPair)
@@ -196,11 +206,6 @@ namespace SAE_A21_D21___Projet_Caserne
                 cdUpdatePompier.CommandText = requeteUpdatePompier;
                 cdUpdatePompier.ExecuteNonQuery();
 
-                /*
-                DataRow lignePompier = MesDatas.DsGlobal.Tables["Pompier"].Select($"matricule = {ucPompier.getMatricule()}")[0];
-                lignePompier["type"] = ucPompier.getType();
-                lignePompier["enConge"] = ucPompier.estEnConge();
-                lignePompier["codeGrade"] = ucPompier.getCodeGrade();*/
 
                 int newIdCaserne = chercherIdCaserne(ucPompier.getMatricule());
                 if (ucPompier.getIdCaserne() != newIdCaserne)
@@ -270,7 +275,12 @@ namespace SAE_A21_D21___Projet_Caserne
             DialogResult result = frmCreerPompier.ShowDialog();
 
             Task.Delay(500);
-            if (result == DialogResult.OK) cmbCaserne_SelectedIndexChanged(sender, EventArgs.Empty);
+            if (result == DialogResult.OK) 
+            {
+                chargerCaserne(sender);
+                cmbCaserne.SelectedValue = frmCreerPompier.IndexCaserne;
+                cmbPompier.SelectedIndex = cmbPompier.Items.Count - 1;
+            } 
         }
     }
 }

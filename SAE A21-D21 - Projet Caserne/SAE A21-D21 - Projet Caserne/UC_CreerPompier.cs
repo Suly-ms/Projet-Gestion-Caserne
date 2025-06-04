@@ -141,7 +141,7 @@ namespace SAE_A21_D21___Projet_Caserne
 
         public bool estRemplit()
         {
-            return (txbNom.Text != null && txbPrenom != null && txbTelephone != null && cmbCaserneRattachement.SelectedItem != null && cmbSexe.SelectedItem != null && cmbGrade.SelectedItem != null);
+            return (txbNom.Text != "" && txbPrenom.Text != "" && txbTelephone.Text != "" && cmbCaserneRattachement.SelectedItem != null && cmbSexe.SelectedItem != null && cmbGrade.SelectedItem != null);
         }
 
         private void dtpDateNaissance_ValueChanged(object sender, EventArgs e)
