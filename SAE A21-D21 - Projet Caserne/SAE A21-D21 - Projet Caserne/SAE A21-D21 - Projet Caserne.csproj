@@ -144,6 +144,12 @@
     <Compile Include="UC_CreerPompier.Designer.cs">
       <DependentUpon>UC_CreerPompier.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Habilitation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Habilitation.Designer.cs">
+      <DependentUpon>UC_Habilitation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_RecapMission.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_CreerPompier.resx">
       <DependentUpon>UC_CreerPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Habilitation.resx">
+      <DependentUpon>UC_Habilitation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_RecapMission.resx">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>

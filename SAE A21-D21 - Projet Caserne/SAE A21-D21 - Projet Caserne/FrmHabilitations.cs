@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,8 +23,6 @@ namespace SAE_A21_D21___Projet_Caserne
         private int m_matricule;
 
         private string m_requete = "SELECT 1";
-
-        private DateTime m_aujourdHui = DateTime.Today;
 
         public FrmHabilitations(int matricule)
         {
@@ -46,32 +45,12 @@ namespace SAE_A21_D21___Projet_Caserne
             int hauteur = 30;
             foreach (DataRow habilitation in habilitations) 
             {
-                CheckBox cbx = new CheckBox();
-                cbx.Tag = Convert.ToInt16(habilitation["id"]);
-                cbx.Text = Convert.ToString(habilitation["libelle"]);
+                UC_Habilitation uc = new UC_Habilitation(Convert.ToInt16(habilitation["id"]));
+                uc.Location = new Point(4, hauteur);
 
-                cbx.Location = new Point(8, hauteur);
-                cbx.AutoSize = true;
+                pnlHabilitations.Controls.Add(uc);
 
-                pnlHabilitations.Controls.Add(cbx);
-
-                // Création du DateTimePicker caché associé
-                DateTimePicker dtp = new DateTimePicker();
-
-                // A droit du checkedBox
-                dtp.Location = new Point(274, hauteur + 3);
-                dtp.Tag = cbx.Tag;
-
-                dtp.Size = new Size(13, 8);
-                dtp.Font = new Font(FontFamily.GenericSansSerif, 2, FontStyle.Regular);
-
-                dtp.MaxDate = DateTime.Today;
-                dtp.Value = m_aujourdHui;
-
-                pnlHabilitations.Controls.Add(dtp);
-
-
-                hauteur += 20;
+                hauteur += 30;
             }
 
             CheckBox osef = new CheckBox();
@@ -91,42 +70,33 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             try
             {
-                int count = 0;
-
                 foreach (Control ctrl in pnlHabilitations.Controls)
                 {
-                    if (ctrl is CheckBox cbx && cbx.Checked)
+                    if (ctrl is UC_Habilitation uc)
                     {
-                        int idHabilitation = Convert.ToInt16(cbx.Tag);
-
-                        // Chercher le DateTimePicker associé (avec le même Tag)
-                        DateTime dateHabilitation = new DateTime();
-
-                        foreach (Control ctrl2 in pnlHabilitations.Controls)
+                        if (uc.estCheck())
                         {
-                            if (ctrl2 is DateTimePicker dtp && dtp.Tag != null && dtp.Tag == cbx.Tag)
+                            if (!uc.dateChange())
                             {
-                                dateHabilitation = dtp.Value;
-                                break;
+                                MessageBox.Show("Veuillez selectionner la date d'obtention des habilitations");
+                                return;
+                            }
+
+                            // Si c'est le premier uc check qu'on traite
+                            else if (m_requete == "SELECT 1")
+                            {
+                                // Initialise avec un insert into
+                                m_requete = $"INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) " +
+                                            $"VALUES ({m_matricule}, {uc.getIdHabilitation()}, '{uc.getDateHabilitation():yyyy-MM-dd}')";
+                            }
+
+                            // Si c'est pas le premier
+                            else
+                            {
+                                // Ajoute une autre ligne au insert into, syntaxe : INSERT INTO xx (xx, xx,xx), (xx,xx,xx), ... Rajoute plusieurs lignes en une commande
+                                m_requete += $", ({m_matricule}, {uc.getIdHabilitation()}, '{uc.getDateHabilitation():yyyy-MM-dd}')";
                             }
                         }
-
-                        if (dateHabilitation == m_aujourdHui)
-                        {
-                            MessageBox.Show("Veuillez selectionner la date d'obtention des habilitations");
-                            return;
-                        }
-
-                        else if (count == 0)
-                        {
-                            m_requete = $"INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) " +
-                                        $"VALUES ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
-                        }
-                        else
-                        {
-                            m_requete += $", ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
-                        }
-                        count++;
                     }
                 }
 
