@@ -131,9 +131,9 @@ namespace SAE_A21_D21___Projet_Caserne
             return age;
         }
 
-        public bool estMajeur()
+        public bool est16ans()
         {
-            return calculerAge() >= 18;
+            return calculerAge() >= 16;
         }
 
         public bool estRemplit()

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChoixVehiculesPompier));
             this.pnlChoixVehicule = new System.Windows.Forms.Panel();
             this.lblVehiculeValide = new System.Windows.Forms.Label();
             this.lblHabilitationPompier = new System.Windows.Forms.Label();
@@ -63,7 +64,7 @@
             this.lblVehiculeValide.Location = new System.Drawing.Point(41, 37);
             this.lblVehiculeValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehiculeValide.Name = "lblVehiculeValide";
-            this.lblVehiculeValide.Size = new System.Drawing.Size(194, 25);
+            this.lblVehiculeValide.Size = new System.Drawing.Size(157, 20);
             this.lblVehiculeValide.TabIndex = 2;
             this.lblVehiculeValide.Text = "Véhicules validés :";
             // 
@@ -74,7 +75,7 @@
             this.lblHabilitationPompier.Location = new System.Drawing.Point(298, 37);
             this.lblHabilitationPompier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHabilitationPompier.Name = "lblHabilitationPompier";
-            this.lblHabilitationPompier.Size = new System.Drawing.Size(218, 25);
+            this.lblHabilitationPompier.Size = new System.Drawing.Size(179, 20);
             this.lblHabilitationPompier.TabIndex = 4;
             this.lblHabilitationPompier.Text = "Choix de l\'habilitation";
             // 
@@ -94,7 +95,7 @@
             this.lblPompierValide.Location = new System.Drawing.Point(584, 37);
             this.lblPompierValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompierValide.Name = "lblPompierValide";
-            this.lblPompierValide.Size = new System.Drawing.Size(189, 25);
+            this.lblPompierValide.Size = new System.Drawing.Size(153, 20);
             this.lblPompierValide.TabIndex = 6;
             this.lblPompierValide.Text = "Pompiers validés :";
             // 
@@ -150,7 +151,7 @@
             this.lblVehiculeEnregistre.Location = new System.Drawing.Point(32, 582);
             this.lblVehiculeEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehiculeEnregistre.Name = "lblVehiculeEnregistre";
-            this.lblVehiculeEnregistre.Size = new System.Drawing.Size(195, 20);
+            this.lblVehiculeEnregistre.Size = new System.Drawing.Size(163, 17);
             this.lblVehiculeEnregistre.TabIndex = 0;
             this.lblVehiculeEnregistre.Text = "Véhicule(s) Enregistrés :";
             // 
@@ -161,7 +162,7 @@
             this.lblPompiersEnregistre.Location = new System.Drawing.Point(34, 648);
             this.lblPompiersEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompiersEnregistre.Name = "lblPompiersEnregistre";
-            this.lblPompiersEnregistre.Size = new System.Drawing.Size(193, 20);
+            this.lblPompiersEnregistre.Size = new System.Drawing.Size(161, 17);
             this.lblPompiersEnregistre.TabIndex = 1;
             this.lblPompiersEnregistre.Text = "Pompier(s) Enregistrés :";
             // 
@@ -212,7 +213,7 @@
             this.lblPasAssezDePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasAssezDePompier.Location = new System.Drawing.Point(124, 705);
             this.lblPasAssezDePompier.Name = "lblPasAssezDePompier";
-            this.lblPasAssezDePompier.Size = new System.Drawing.Size(518, 29);
+            this.lblPasAssezDePompier.Size = new System.Drawing.Size(415, 24);
             this.lblPasAssezDePompier.TabIndex = 12;
             this.lblPasAssezDePompier.Text = "Il n\'y a pas assez de pompiers sélectionnés";
             this.lblPasAssezDePompier.Visible = false;
@@ -239,6 +240,7 @@
             this.Controls.Add(this.lblVehiculeValide);
             this.Controls.Add(this.pnlChoixHabilitation);
             this.Controls.Add(this.pnlChoixVehicule);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmChoixVehiculesPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

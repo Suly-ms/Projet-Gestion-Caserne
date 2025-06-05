@@ -201,6 +201,7 @@
             this.Controls.Add(this.pnlMission);
             this.Controls.Add(this.pnlNavBar);
             this.Controls.Add(this.pnlFond);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de bord";

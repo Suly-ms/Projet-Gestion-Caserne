@@ -69,9 +69,9 @@ namespace SAE_A21_D21___Projet_Caserne
                 return;
             }
 
-            if (!uc.estMajeur()) 
+            if (!uc.est16ans()) 
             {
-                MessageBox.Show("Le pompier doit être majeur.");
+                MessageBox.Show("Le pompier doit avoir plus de 16ans.");
                 return; 
             }
 

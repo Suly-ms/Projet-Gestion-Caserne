@@ -223,6 +223,7 @@
             this.Controls.Add(this.pnlSelectionPompier);
             this.Controls.Add(this.pnlAffichagePompier);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmGestionPompiers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion du personnel";

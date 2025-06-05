@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDommageEngin));
             this.lblReparation = new System.Windows.Forms.Label();
             this.txbReparation = new System.Windows.Forms.TextBox();
             this.btnValider = new System.Windows.Forms.Button();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.lblReparation);
             this.Controls.Add(this.txbReparation);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDommageEngin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dégâts";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCompteRenduBox));
             this.txbRapport = new System.Windows.Forms.TextBox();
             this.lblCompteRendu = new System.Windows.Forms.Label();
             this.pnlEngin = new System.Windows.Forms.Panel();
@@ -114,6 +115,7 @@
             this.Controls.Add(this.pnlEngin);
             this.Controls.Add(this.lblCompteRendu);
             this.Controls.Add(this.txbRapport);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCompteRenduBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compte rendu";

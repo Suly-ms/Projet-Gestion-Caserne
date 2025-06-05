@@ -89,46 +89,54 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            int count = 0;
-
-            foreach (Control ctrl in pnlHabilitations.Controls)
+            try
             {
-                if (ctrl is CheckBox cbx && cbx.Checked)
+                int count = 0;
+
+                foreach (Control ctrl in pnlHabilitations.Controls)
                 {
-                    int idHabilitation = Convert.ToInt16(cbx.Tag);
-
-                    // Chercher le DateTimePicker associé (avec le même Tag)
-                    DateTime dateHabilitation = new DateTime();
-
-                    foreach (Control ctrl2 in pnlHabilitations.Controls)
+                    if (ctrl is CheckBox cbx && cbx.Checked)
                     {
-                        if (ctrl2 is DateTimePicker dtp && dtp.Tag != null && dtp.Tag == cbx.Tag)
+                        int idHabilitation = Convert.ToInt16(cbx.Tag);
+
+                        // Chercher le DateTimePicker associé (avec le même Tag)
+                        DateTime dateHabilitation = new DateTime();
+
+                        foreach (Control ctrl2 in pnlHabilitations.Controls)
                         {
-                            dateHabilitation = dtp.Value;
-                            break;
+                            if (ctrl2 is DateTimePicker dtp && dtp.Tag != null && dtp.Tag == cbx.Tag)
+                            {
+                                dateHabilitation = dtp.Value;
+                                break;
+                            }
                         }
-                    }
 
-                    if (dateHabilitation == m_aujourdHui)
-                    {
-                        MessageBox.Show("Veuillez selectionner la date d'obtention des habilitations");
-                        return;
-                    }
+                        if (dateHabilitation == m_aujourdHui)
+                        {
+                            MessageBox.Show("Veuillez selectionner la date d'obtention des habilitations");
+                            return;
+                        }
 
-                    else if (count == 0)
-                    {
-                        m_requete = $"INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) " +
-                                    $"VALUES ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
-                    }
-                    else
-                    {
-                        m_requete += $", ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
-                    }
+                        else if (count == 0)
+                        {
+                            m_requete = $"INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) " +
+                                        $"VALUES ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
+                        }
+                        else
+                        {
+                            m_requete += $", ({m_matricule}, {idHabilitation}, '{dateHabilitation:yyyy-MM-dd}')";
+                        }
                         count++;
+                    }
                 }
-            }
 
-            this.DialogResult = DialogResult.OK;
+                this.DialogResult = DialogResult.OK;
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("L'ajout du pompier a échoué");
+            }
+            
         }
 
         public string RequeteSQL

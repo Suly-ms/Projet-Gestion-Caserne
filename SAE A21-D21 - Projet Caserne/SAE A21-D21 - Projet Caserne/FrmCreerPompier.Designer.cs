@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreerPompier));
             this.pnlSelectionPompier = new System.Windows.Forms.Panel();
-            this.pnlAffichagePompier = new System.Windows.Forms.Panel();
-            this.lblMatricule = new System.Windows.Forms.Label();
             this.lblBip = new System.Windows.Forms.Label();
+            this.lblMatricule = new System.Windows.Forms.Label();
+            this.pnlAffichagePompier = new System.Windows.Forms.Panel();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.pnlSelectionPompier.SuspendLayout();
@@ -49,16 +49,16 @@
             this.pnlSelectionPompier.Size = new System.Drawing.Size(463, 100);
             this.pnlSelectionPompier.TabIndex = 11;
             // 
-            // pnlAffichagePompier
+            // lblBip
             // 
-            this.pnlAffichagePompier.AutoScroll = true;
-            this.pnlAffichagePompier.BackColor = System.Drawing.Color.PapayaWhip;
-            this.pnlAffichagePompier.Controls.Add(this.btnAjouter);
-            this.pnlAffichagePompier.Controls.Add(this.btnFermer);
-            this.pnlAffichagePompier.Location = new System.Drawing.Point(11, 119);
-            this.pnlAffichagePompier.Name = "pnlAffichagePompier";
-            this.pnlAffichagePompier.Size = new System.Drawing.Size(463, 385);
-            this.pnlAffichagePompier.TabIndex = 10;
+            this.lblBip.AutoSize = true;
+            this.lblBip.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblBip.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblBip.Location = new System.Drawing.Point(378, 15);
+            this.lblBip.Name = "lblBip";
+            this.lblBip.Size = new System.Drawing.Size(73, 18);
+            this.lblBip.TabIndex = 35;
+            this.lblBip.Text = "Bip : 1234";
             // 
             // lblMatricule
             // 
@@ -71,16 +71,16 @@
             this.lblMatricule.TabIndex = 0;
             this.lblMatricule.Text = "Matricule n°0000";
             // 
-            // lblBip
+            // pnlAffichagePompier
             // 
-            this.lblBip.AutoSize = true;
-            this.lblBip.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblBip.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblBip.Location = new System.Drawing.Point(378, 15);
-            this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(73, 18);
-            this.lblBip.TabIndex = 35;
-            this.lblBip.Text = "Bip : 1234";
+            this.pnlAffichagePompier.AutoScroll = true;
+            this.pnlAffichagePompier.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlAffichagePompier.Controls.Add(this.btnAjouter);
+            this.pnlAffichagePompier.Controls.Add(this.btnFermer);
+            this.pnlAffichagePompier.Location = new System.Drawing.Point(11, 119);
+            this.pnlAffichagePompier.Name = "pnlAffichagePompier";
+            this.pnlAffichagePompier.Size = new System.Drawing.Size(463, 385);
+            this.pnlAffichagePompier.TabIndex = 10;
             // 
             // btnAjouter
             // 
@@ -115,6 +115,7 @@
             this.ClientSize = new System.Drawing.Size(484, 511);
             this.Controls.Add(this.pnlSelectionPompier);
             this.Controls.Add(this.pnlAffichagePompier);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCreerPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajouter un pompier";

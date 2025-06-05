@@ -42,6 +42,9 @@ namespace SAE_A21_D21___Projet_Caserne
             // Empeche le redimensionnement
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
+            // Ferme la connexion peu importe comment on quitte le form
+            this.FormClosing += FrmGestionPompiers_FormClosing;
+
         }
 
         private void FrmGestionPompiers_Load(object sender, EventArgs e)
@@ -55,6 +58,11 @@ namespace SAE_A21_D21___Projet_Caserne
             cmbCaserne.ValueMember = "id";
             cmbCaserne.SelectedIndex = -1;
             caserneCharge = true;
+        }
+
+        private void FrmGestionPompiers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Connexion.FermerConnexion();
         }
 
         private int chercherIdCaserne(int matricule)
