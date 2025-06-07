@@ -165,11 +165,17 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void btnHabilitation_Click(object sender, EventArgs e)
         {
+            if (m_requeteHabilitation != "SELECT 1")
+            {
+                MessageBox.Show("Vous allez devoir re-sélectionner toutes les habilitations");
+            }
+
             FrmHabilitations frmHabilitation = new FrmHabilitations(getMatricule());
             DialogResult result = frmHabilitation.ShowDialog();
 
             if (result == DialogResult.OK) 
             {
+                MessageBox.Show("Les habilitations ont été enregistrées");
                 m_requeteHabilitation = frmHabilitation.RequeteSQL;
             }
         }

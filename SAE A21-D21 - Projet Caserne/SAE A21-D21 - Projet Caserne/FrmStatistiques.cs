@@ -56,7 +56,7 @@ namespace SAE_A21_D21___Projet_Caserne
             }
 
             pnlCaserne.Visible = false;
-            string[] requeteCaserne = { "Choisir casenre ", "Engins les plus utilisés", "Cumul d’utilisation" };
+            string[] requeteCaserne = { "Choisir le type de statistique ", "Engins les plus utilisés", "Cumul d’utilisation" };
 
 
 
@@ -64,12 +64,12 @@ namespace SAE_A21_D21___Projet_Caserne
             cbxRequeteParCaserne.SelectedIndex = 0;
 
 
-            string[] requeteGlobale = { "Choisir statistique ", "Nombre d’interventions", "Habilitations les plus sollicitées", "Pompiers par habilitation" };
+            string[] requeteGlobale = { "Choisir le type de statistique ", "Nombre d’interventions", "Habilitations les plus sollicitées", "Pompiers par habilitation" };
 
             cbxStatGlobal.Items.AddRange(requeteGlobale);
             cbxStatGlobal.SelectedIndex = 0;
 
-            cbxHabilitation.Items.Add("Choisir habilitation");
+            cbxHabilitation.Items.Add("Choisir l'habilitation");
             String sql2 = "SELECT libelle FROM Habilitation ORDER BY id";
             try
             {
@@ -89,7 +89,7 @@ namespace SAE_A21_D21___Projet_Caserne
             cbxHabilitation.SelectedIndex = 0;
 
 
-            cbxTypeSinistre.Items.Add("Choisir type sinistre");
+            cbxTypeSinistre.Items.Add("Choisir le type de sinistre");
             String sql3 = "SELECT libelle FROM NatureSinistre ORDER BY id";
             try
             {
