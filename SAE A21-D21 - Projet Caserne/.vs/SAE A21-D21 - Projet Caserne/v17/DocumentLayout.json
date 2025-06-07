@@ -3,31 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmhabilitations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmhabilitations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmgestionpompiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmparcoursequipements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmparcoursequipements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmparcoursequipements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmstatistiques.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmhabilitations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmhabilitations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|c:\\users\\josue\\desktop\\sae-a21-d21\\sae a21-d21 - projet caserne\\sae a21-d21 - projet caserne\\frmtableaubord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\sae a21-d21 - projet caserne\\frmtableaubord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7B772E03-AE3D-471C-913F-6531ED0C6669}|SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne.csproj|solutionrelative:sae a21-d21 - projet caserne\\frmtableaubord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -49,37 +49,35 @@
               "ToolTip": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmTableauBord.cs [Design]",
               "RelativeToolTip": "SAE A21-D21 - Projet Caserne\\FrmTableauBord.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:30:30.733Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-07T15:30:30.733Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "FrmParcoursEquipements.cs [Design]",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmParcoursEquipements.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmParcoursEquipements.cs",
               "ToolTip": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmParcoursEquipements.cs [Design]",
               "RelativeToolTip": "SAE A21-D21 - Projet Caserne\\FrmParcoursEquipements.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:19:49.364Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-07T15:19:49.364Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "FrmStatistiques.cs",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
               "ToolTip": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
               "RelativeToolTip": "SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
-              "ViewState": "AgIAAFQBAAAAAAAAAAAwwHIBAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAE0BAAAAAAAAAAAwwHcBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T15:14:33.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "FrmStatistiques.cs [Design]",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmStatistiques.cs",
@@ -91,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FrmHabilitations.cs [Design]",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmHabilitations.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmHabilitations.cs",
@@ -103,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FrmGestionPompiers.cs",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmGestionPompiers.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmGestionPompiers.cs",
@@ -116,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "FrmGestionPompiers.cs [Design]",
               "DocumentMoniker": "C:\\Users\\josue\\Desktop\\sae-a21-d21\\SAE A21-D21 - Projet Caserne\\SAE A21-D21 - Projet Caserne\\FrmGestionPompiers.cs",
               "RelativeDocumentMoniker": "SAE A21-D21 - Projet Caserne\\FrmGestionPompiers.cs",

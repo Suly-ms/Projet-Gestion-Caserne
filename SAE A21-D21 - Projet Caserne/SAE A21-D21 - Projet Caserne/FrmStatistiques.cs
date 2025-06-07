@@ -369,7 +369,6 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 cbxTypeSinistre.SelectedIndex = 0;
                 cbxTypeSinistre.Visible = true;
-                pnlGlobal.Visible = false;
             }
             else
             {
@@ -379,7 +378,6 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 cbxHabilitation.SelectedIndex = 0;
                 cbxHabilitation.Visible = true;
-                pnlGlobal.Visible = false;
             }
             else
             {
