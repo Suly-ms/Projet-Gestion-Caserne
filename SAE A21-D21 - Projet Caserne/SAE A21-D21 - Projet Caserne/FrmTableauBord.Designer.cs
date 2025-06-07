@@ -133,6 +133,7 @@
             this.btnStatistiques.TabIndex = 12;
             this.btnStatistiques.Text = "Statistiques";
             this.btnStatistiques.UseVisualStyleBackColor = true;
+            this.btnStatistiques.Click += new System.EventHandler(this.btnStatistiques_Click);
             // 
             // btnGestionPersonnel
             // 
@@ -156,6 +157,7 @@
             this.btnGestionEngins.TabIndex = 10;
             this.btnGestionEngins.Text = "Gestion des engins";
             this.btnGestionEngins.UseVisualStyleBackColor = true;
+            this.btnGestionEngins.Click += new System.EventHandler(this.btnGestionEngins_Click);
             // 
             // btnQuitter
             // 

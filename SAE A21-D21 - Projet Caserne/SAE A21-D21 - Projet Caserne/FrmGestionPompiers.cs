@@ -86,6 +86,7 @@ namespace SAE_A21_D21___Projet_Caserne
             pcbAdmin.Image = Image.FromFile("img/admin/admin_connecte.jpg");
             lblMode.Text = "Mode administrateur";
             lblMode.ForeColor = Color.FromArgb(255, 193, 7);
+            lblMode.Location = new Point(200, 10);
             btnUpdate.Visible = true;
             btnNouveauPompier.Visible = true;
 

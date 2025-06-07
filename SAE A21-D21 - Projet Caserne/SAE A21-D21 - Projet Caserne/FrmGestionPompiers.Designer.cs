@@ -76,6 +76,7 @@
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFermer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnFermer.Location = new System.Drawing.Point(21, 26);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);
@@ -122,7 +123,7 @@
             this.pnlConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlConnexion.Location = new System.Drawing.Point(11, 9);
             this.pnlConnexion.Name = "pnlConnexion";
-            this.pnlConnexion.Size = new System.Drawing.Size(152, 42);
+            this.pnlConnexion.Size = new System.Drawing.Size(151, 42);
             this.pnlConnexion.TabIndex = 8;
             this.pnlConnexion.Click += new System.EventHandler(this.pnlConnexion_Click);
             // 
@@ -131,7 +132,7 @@
             this.lblSeConnecter.AutoSize = true;
             this.lblSeConnecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lblSeConnecter.ForeColor = System.Drawing.Color.White;
-            this.lblSeConnecter.Location = new System.Drawing.Point(45, 11);
+            this.lblSeConnecter.Location = new System.Drawing.Point(46, 11);
             this.lblSeConnecter.Name = "lblSeConnecter";
             this.lblSeConnecter.Size = new System.Drawing.Size(107, 20);
             this.lblSeConnecter.TabIndex = 6;
@@ -155,7 +156,7 @@
             this.lblMode.AutoSize = true;
             this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.lblMode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblMode.Location = new System.Drawing.Point(210, 9);
+            this.lblMode.Location = new System.Drawing.Point(213, 10);
             this.lblMode.Name = "lblMode";
             this.lblMode.Size = new System.Drawing.Size(212, 29);
             this.lblMode.TabIndex = 5;

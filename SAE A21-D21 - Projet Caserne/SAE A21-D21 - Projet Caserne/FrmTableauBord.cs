@@ -583,5 +583,17 @@ namespace SAE_A21_D21___Projet_Caserne
             FrmGestionPompiers newFrmGestionPompiers = new FrmGestionPompiers();
             newFrmGestionPompiers.ShowDialog();
         }
+
+        private void btnGestionEngins_Click(object sender, EventArgs e)
+        {
+            FrmParcoursEquipements parcoursEquipement = new FrmParcoursEquipements();
+            parcoursEquipement.ShowDialog();
+        }
+
+        private void btnStatistiques_Click(object sender, EventArgs e)
+        {
+            FrmStatistiques frmStatistiques = new FrmStatistiques();
+            frmStatistiques.ShowDialog();
+        }
     }
 }
