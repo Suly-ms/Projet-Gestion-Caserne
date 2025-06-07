@@ -36,6 +36,32 @@ namespace SAE_A21_D21___Projet_Caserne
                 ucChoixPompier.Dock = DockStyle.Top; // Permet de les empiler verticalement
                 pnlPompier.Controls.Add(ucChoixPompier);
             }
+            foreach (DataRow row in m_dataSet.Tables["Engin"].Rows)
+            {
+                string type = row["codeTypeEngin"].ToString();
+                int numero = Convert.ToInt32(row["numero"]);
+                int caserne = Convert.ToInt32(row["idCaserne"]);
+                Image image = Image.FromFile("img/" + type.ToLower() + ".jpg");
+                UC_ChoixVehiculeAutomatique ucChoixVehicule = new UC_ChoixVehiculeAutomatique(image, type, numero, caserne);
+                ucChoixVehicule.Dock = DockStyle.Top; // Permet de les empiler verticalement
+                pnlVehicule.Controls.Add(ucChoixVehicule);
+            }
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+            DataSet pompierVehiculeMission = m_dataSet;
+            this.DialogResult = DialogResult.OK;
+        }
+
+        public DataSet DataSetMission
+        {
+            get { return m_dataSet; }
         }
     }
 }

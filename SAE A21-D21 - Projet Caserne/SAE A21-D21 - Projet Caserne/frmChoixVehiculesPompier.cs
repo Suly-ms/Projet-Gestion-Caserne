@@ -1,5 +1,4 @@
-﻿using Pinpon;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,10 +8,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pinpon;
 using UserControlChoixPompier;
 using UserControlChoixVehicules;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using static UserControlChoixPompier.UC_ChoixPompier;
 using static UserControlChoixVehicules.UC_ChoixVehicule;
 
@@ -77,6 +78,7 @@ namespace SAE_A21_D21___Projet_Caserne
             tablePompier.Columns.Add("Grade", typeof(string));
             tablePompier.Columns.Add("matricule", typeof(int));
             tablePompier.Columns.Add("habilitation", typeof(int));
+            tablePompier.Columns.Add("vehicule", typeof(string));
             pompierVehiculeEnregistre.Tables.Add(tablePompier);
 
             int top = 10;
@@ -178,77 +180,6 @@ namespace SAE_A21_D21___Projet_Caserne
             }
         }
 
-        private void AjouterOuMettreAJourBoutonHabilitation(int idHabilitation)
-        {
-            string nomHabilitation = MesDatas.DsGlobal.Tables["Habilitation"]
-                .Select("id = " + idHabilitation)[0]["libelle"].ToString();
-
-            int besoinTotal = 0;
-
-            // Étape 1 : Calculer le besoin total pour tous les véhicules
-            foreach (DataRow vehicule in pompierVehiculeEnregistre.Tables["Vehicules"].Rows)
-            {
-                string typeVehicule = vehicule["Type"].ToString();
-                DataRow[] habilitations = MesDatas.DsGlobal.Tables["Embarquer"]
-                    .Select($"codeTypeEngin = '{typeVehicule}' AND idHabilitation = {idHabilitation}");
-
-                foreach (DataRow h in habilitations)
-                {
-                    besoinTotal += Convert.ToInt32(h["nombre"]);
-                }
-            }
-
-            // Étape 2 : Calculer combien de pompiers déjà affectés ont cette habilitation
-            int dejaAttribue = 0;
-            if (pompierVehiculeEnregistre.Tables.Contains("Pompiers"))
-            {
-                foreach (DataRow pompier in pompierVehiculeEnregistre.Tables["Pompiers"].Rows)
-                {
-                    if (Convert.ToInt32(pompier["habilitation"]) == idHabilitation)
-                    {
-                        dejaAttribue++;
-                    }
-                }
-            }
-
-            // Étape 3 : Calcul du reste à affecter
-            int restant = besoinTotal - dejaAttribue;
-
-            // Mettre à jour le dictionnaire avec le nombre restant réel
-            habilitationCompteurs[idHabilitation] = restant;
-
-            // Si le bouton existe déjà, on le met à jour
-            foreach (Control ctrl in pnlChoixHabilitation.Controls)
-            {
-                if (ctrl is System.Windows.Forms.Button btn && (int)btn.Tag == idHabilitation)
-                {
-                    btn.Text = $"{nomHabilitation} x{restant}";
-                    return;
-                }
-            }
-
-            // Sinon, on le crée
-            System.Windows.Forms.Button bouton = new System.Windows.Forms.Button
-            {
-                Text = $"{nomHabilitation} x{restant}",
-                Tag = idHabilitation,
-                AutoSize = true,
-                Left = 20
-            };
-
-            if (pnlChoixHabilitation.Controls.Count == 0)
-            {
-                bouton.Top = 20;
-            }
-            else
-            {
-                bouton.Top = (pnlChoixHabilitation.Controls.Count * 50) + 20;
-            }
-            bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bouton.Click += (s, e) => afficherPompier(s);
-            pnlChoixHabilitation.Controls.Add(bouton);
-        }
-
         private void afficherPompier(object sender)
         {
             System.Windows.Forms.Button bouton = sender as System.Windows.Forms.Button;
@@ -311,6 +242,7 @@ namespace SAE_A21_D21___Projet_Caserne
                     string grade = pompier["codeGrade"].ToString();
                     string nom = pompier["nom"].ToString();
                     string prenom = pompier["prenom"].ToString();
+                    string vehicule = "";
 
                     Color couleur = afficher_vert ? Color.Green : Color.Red;
 
@@ -319,12 +251,23 @@ namespace SAE_A21_D21___Projet_Caserne
                         choixPompier.desactiverButton();
                     }
 
-                    choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom, prenom, couleur);
+                    choixPompier.ChargerDonnees(Image.FromFile("img/" + grade + ".png"), grade, nom, prenom, couleur, vehicule);
                     pnlChoixPompier.Controls.Add(choixPompier);
 
                     top += 130;
                 }
             }
+        }
+
+        private List<int> getHabilitationVehicule(string typeVehicule)
+        {
+            List<int> habilitations = new List<int>();
+            DataRow[] rows = MesDatas.DsGlobal.Tables["Embarquer"].Select($"codeTypeEngin = '{typeVehicule}'");
+            foreach (DataRow row in rows)
+            {
+                habilitations.Add(Convert.ToInt32(row["idHabilitation"]));
+            }
+            return habilitations;
         }
 
         private void UcVehicule_VehiculeChoisi(object sender, VehiculeChoisiEventArgs e)
@@ -335,10 +278,27 @@ namespace SAE_A21_D21___Projet_Caserne
             // Recalculer tous les boutons d’habilitation (comme dans la suppression)
             pnlChoixHabilitation.Controls.Clear();
 
-            var habilitations = MesDatas.DsGlobal.Tables["Habilitation"].Select();
-            foreach (DataRow h in habilitations)
+            foreach (int habilitation in getHabilitationVehicule(e.Type))
             {
-                AjouterOuMettreAJourBoutonHabilitation(Convert.ToInt32(h["id"]));
+                if(habilitationCompteurs.ContainsKey(habilitation))
+                {
+                    habilitationCompteurs[habilitation] += Convert.ToInt32(MesDatas.DsGlobal.Tables["Embarquer"]
+                    .Select($"codeTypeEngin = '{e.Type}' AND idHabilitation = {habilitation}")[0]["nombre"]);
+                }
+                else
+                {
+                    habilitationCompteurs[habilitation] = Convert.ToInt32(MesDatas.DsGlobal.Tables["Embarquer"]
+                    .Select($"codeTypeEngin = '{e.Type}' AND idHabilitation = {habilitation}")[0]["nombre"]);
+                }
+                System.Windows.Forms.Button button = new System.Windows.Forms.Button();
+                button.Text += MesDatas.DsGlobal.Tables["Habilitation"]
+                .Select("id = " + habilitation)[0]["libelle"].ToString() + $" x{habilitationCompteurs[habilitation]}";
+                button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                button.Click += (s, e_) => afficherPompier(s);
+                button.AutoSize = true;
+                button.Dock = DockStyle.Top;
+                button.Tag = habilitation;
+                pnlChoixHabilitation.Controls.Add(button);
             }
         }
 
@@ -359,10 +319,27 @@ namespace SAE_A21_D21___Projet_Caserne
             // Recalculer tous les boutons d’habilitation (comme dans la suppression)
             pnlChoixHabilitation.Controls.Clear();
 
-            var habilitations = MesDatas.DsGlobal.Tables["Habilitation"].Select();
-            foreach (DataRow h in habilitations)
+            foreach (int habilitation in getHabilitationVehicule(e.Type))
             {
-                AjouterOuMettreAJourBoutonHabilitation(Convert.ToInt32(h["id"]));
+                if (habilitationCompteurs.ContainsKey(habilitation))
+                {
+                    habilitationCompteurs[habilitation] -= Convert.ToInt32(MesDatas.DsGlobal.Tables["Embarquer"]
+                    .Select($"codeTypeEngin = '{e.Type}' AND idHabilitation = {habilitation}")[0]["nombre"]);
+                }
+                else
+                {
+                    habilitationCompteurs[habilitation] = Convert.ToInt32(MesDatas.DsGlobal.Tables["Embarquer"]
+                    .Select($"codeTypeEngin = '{e.Type}' AND idHabilitation = {habilitation}")[0]["nombre"]);
+                }
+                System.Windows.Forms.Button button = new System.Windows.Forms.Button();
+                button.Text += MesDatas.DsGlobal.Tables["Habilitation"]
+                .Select("id = " + habilitation)[0]["libelle"].ToString() + $" x{habilitationCompteurs[habilitation]}";
+                button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                button.Click += (s, e_) => afficherPompier(s);
+                button.AutoSize = true;
+                button.Dock = DockStyle.Top;
+                button.Tag = habilitation;
+                pnlChoixHabilitation.Controls.Add(button);
             }
         }
 

@@ -120,6 +120,12 @@
     <Compile Include="UC_ChoixPompierAutomatique.Designer.cs">
       <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_ChoixVehiculeAutomatique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixVehiculeAutomatique.Designer.cs">
+      <DependentUpon>UC_ChoixVehiculeAutomatique.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_RecapMission.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ChoixPompierAutomatique.resx">
       <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixVehiculeAutomatique.resx">
+      <DependentUpon>UC_ChoixVehiculeAutomatique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_RecapMission.resx">
       <DependentUpon>UC_RecapMission.cs</DependentUpon>

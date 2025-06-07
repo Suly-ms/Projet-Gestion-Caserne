@@ -14,16 +14,17 @@ namespace UserControlChoixPompier
     {
         public event EventHandler<PompierChoisiEventArgs> PompierChoisi;
         public event EventHandler<PompierNonChoisiEventArgs> PompierNonChoisi;
-        private string m_nom, m_prenom;
+        private string m_nom, m_prenom, m_caserne;
         public UC_ChoixPompier()
         {
             InitializeComponent();
         }
 
-        public void ChargerDonnees(Image image, string grade, string nom, string prenom, Color couleurBouton)
+        public void ChargerDonnees(Image image, string grade, string nom, string prenom, Color couleurBouton, string caserne)
         {
             m_nom = nom;
             m_prenom = prenom;
+            m_caserne = caserne;
             pbGrade.Image = image;
             pbGrade.SizeMode = PictureBoxSizeMode.StretchImage;
             lblGrade.Text = grade;

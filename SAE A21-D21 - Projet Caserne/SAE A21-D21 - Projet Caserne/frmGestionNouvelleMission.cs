@@ -295,9 +295,13 @@ namespace SAE_A21_D21___Projet_Caserne
             // Stockage dans la variable principale
             pompierVehiculeMission = dsAuto;
 
-            // Affichage du formulaire automatique
-            FrmChoixVehiculesPompierAutomatique f = new FrmChoixVehiculesPompierAutomatique(dsAuto);
-            f.ShowDialog();
+            FrmChoixVehiculesPompierAutomatique monUC = new FrmChoixVehiculesPompierAutomatique(dsAuto);
+
+            if (monUC.ShowDialog() == DialogResult.OK)
+            {
+                // Ici, on utilise bien l'instance monUC pour accéder à la propriété
+                pompierVehiculeMission = monUC.DataSetMission;
+            }
         }
     }
 }
