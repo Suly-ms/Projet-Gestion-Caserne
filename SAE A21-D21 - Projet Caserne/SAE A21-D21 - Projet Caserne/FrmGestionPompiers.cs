@@ -96,7 +96,6 @@ namespace SAE_A21_D21___Projet_Caserne
 
             Debug.WriteLine($"ModeAdmin : lblSeConnecter.ForeColor = {lblSeConnecter.ForeColor}");
 
-            // Chat gpt a changer
             if (cmbPompier.SelectedValue != null)
             {
                 if (cmbPompier.SelectedItem is KeyValuePair<int, string> selectedPair)
