@@ -85,6 +85,7 @@
             // btnAjouter
             // 
             this.btnAjouter.BackColor = System.Drawing.Color.Lime;
+            this.btnAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouter.Location = new System.Drawing.Point(301, 335);
             this.btnAjouter.Name = "btnAjouter";
@@ -99,6 +100,7 @@
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFermer.ForeColor = System.Drawing.Color.White;
             this.btnFermer.Location = new System.Drawing.Point(11, 335);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);

@@ -61,6 +61,7 @@
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Lime;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(463, 26);
             this.btnUpdate.Name = "btnUpdate";
@@ -76,7 +77,7 @@
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFermer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnFermer.ForeColor = System.Drawing.Color.White;
             this.btnFermer.Location = new System.Drawing.Point(21, 26);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);

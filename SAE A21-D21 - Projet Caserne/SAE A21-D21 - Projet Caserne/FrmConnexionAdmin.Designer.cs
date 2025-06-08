@@ -88,7 +88,9 @@
             // btnValider
             // 
             this.btnValider.BackColor = System.Drawing.Color.Lime;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.ForeColor = System.Drawing.Color.Black;
             this.btnValider.Location = new System.Drawing.Point(314, 131);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(84, 29);
@@ -100,7 +102,9 @@
             // btnAnnuler
             // 
             this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
             this.btnAnnuler.Location = new System.Drawing.Point(212, 131);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(84, 29);

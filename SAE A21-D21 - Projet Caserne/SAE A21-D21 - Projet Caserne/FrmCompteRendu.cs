@@ -117,5 +117,10 @@ namespace CompteRenduBox
         {
             this.Close();
         }
+
+        private void pnlEngin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

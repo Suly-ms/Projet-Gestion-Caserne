@@ -35,12 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txbRapport
             // 
             this.txbRapport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txbRapport.Location = new System.Drawing.Point(18, 35);
+            this.txbRapport.Location = new System.Drawing.Point(48, 44);
             this.txbRapport.Multiline = true;
             this.txbRapport.Name = "txbRapport";
             this.txbRapport.Size = new System.Drawing.Size(359, 123);
@@ -51,30 +54,31 @@
             // lblCompteRendu
             // 
             this.lblCompteRendu.AutoSize = true;
-            this.lblCompteRendu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompteRendu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompteRendu.ForeColor = System.Drawing.Color.Black;
-            this.lblCompteRendu.Location = new System.Drawing.Point(21, 10);
+            this.lblCompteRendu.Location = new System.Drawing.Point(28, 13);
             this.lblCompteRendu.Name = "lblCompteRendu";
-            this.lblCompteRendu.Size = new System.Drawing.Size(352, 20);
+            this.lblCompteRendu.Size = new System.Drawing.Size(402, 20);
             this.lblCompteRendu.TabIndex = 3;
             this.lblCompteRendu.Text = "Veuillez écrire le compte-rendu de la mission n° 0";
             this.lblCompteRendu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlEngin
             // 
-            this.pnlEngin.Location = new System.Drawing.Point(409, 42);
+            this.pnlEngin.Location = new System.Drawing.Point(14, 226);
             this.pnlEngin.Name = "pnlEngin";
-            this.pnlEngin.Size = new System.Drawing.Size(431, 200);
+            this.pnlEngin.Size = new System.Drawing.Size(431, 184);
             this.pnlEngin.TabIndex = 4;
+            this.pnlEngin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEngin_Paint);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(441, 10);
+            this.label1.Location = new System.Drawing.Point(49, 194);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 20);
+            this.label1.Size = new System.Drawing.Size(359, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Veuillez sélectionner les engins endomagés";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,8 +86,10 @@
             // btnValider
             // 
             this.btnValider.BackColor = System.Drawing.Color.Lime;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnValider.Location = new System.Drawing.Point(672, 255);
+            this.btnValider.ForeColor = System.Drawing.Color.Black;
+            this.btnValider.Location = new System.Drawing.Point(296, 432);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(150, 42);
             this.btnValider.TabIndex = 6;
@@ -94,8 +100,10 @@
             // btnAnnuler
             // 
             this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(25, 255);
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(14, 432);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(150, 42);
             this.btnAnnuler.TabIndex = 7;
@@ -103,25 +111,44 @@
             this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.btnValider);
+            this.panel1.Controls.Add(this.btnAnnuler);
+            this.panel1.Controls.Add(this.txbRapport);
+            this.panel1.Controls.Add(this.lblCompteRendu);
+            this.panel1.Controls.Add(this.pnlEngin);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 14);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(460, 485);
+            this.panel1.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(17, 421);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(426, 1);
+            this.panel3.TabIndex = 8;
+            // 
             // FrmCompteRenduBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
-            this.ClientSize = new System.Drawing.Size(852, 310);
-            this.Controls.Add(this.btnAnnuler);
-            this.Controls.Add(this.btnValider);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pnlEngin);
-            this.Controls.Add(this.lblCompteRendu);
-            this.Controls.Add(this.txbRapport);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(484, 511);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCompteRenduBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compte rendu";
             this.Load += new System.EventHandler(this.FrmCompteRenduBox_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -133,6 +160,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

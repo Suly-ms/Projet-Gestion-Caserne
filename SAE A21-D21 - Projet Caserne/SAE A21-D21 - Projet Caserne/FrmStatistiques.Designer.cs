@@ -43,9 +43,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlStatCaserne.SuspendLayout();
             this.pnlStatCaserneTete.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -55,6 +55,7 @@
             // pnlGlobal
             // 
             this.pnlGlobal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlGlobal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlGlobal.Location = new System.Drawing.Point(27, 127);
             this.pnlGlobal.Margin = new System.Windows.Forms.Padding(2);
             this.pnlGlobal.Name = "pnlGlobal";
@@ -64,6 +65,7 @@
             // pnlCaserne
             // 
             this.pnlCaserne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCaserne.Location = new System.Drawing.Point(27, 128);
             this.pnlCaserne.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCaserne.Name = "pnlCaserne";
@@ -128,7 +130,9 @@
             // btnFermer
             // 
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFermer.ForeColor = System.Drawing.Color.White;
             this.btnFermer.Location = new System.Drawing.Point(15, 336);
             this.btnFermer.Margin = new System.Windows.Forms.Padding(2);
             this.btnFermer.Name = "btnFermer";
@@ -207,6 +211,17 @@
             this.panel1.Size = new System.Drawing.Size(636, 107);
             this.panel1.TabIndex = 20;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label4.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label4.Location = new System.Drawing.Point(32, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(262, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Veuillez sélectionner une statistique";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -229,17 +244,6 @@
             this.panel2.Size = new System.Drawing.Size(636, 392);
             this.panel2.TabIndex = 21;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(32, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(262, 20);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Veuillez sélectionner une statistique";
             // 
             // FrmStatistiques
             // 

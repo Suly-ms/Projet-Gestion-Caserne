@@ -50,7 +50,7 @@
             // txbReparation
             // 
             this.txbReparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txbReparation.Location = new System.Drawing.Point(35, 34);
+            this.txbReparation.Location = new System.Drawing.Point(35, 36);
             this.txbReparation.Multiline = true;
             this.txbReparation.Name = "txbReparation";
             this.txbReparation.Size = new System.Drawing.Size(357, 93);
@@ -59,6 +59,7 @@
             // btnValider
             // 
             this.btnValider.BackColor = System.Drawing.Color.Lime;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnValider.Location = new System.Drawing.Point(295, 139);
             this.btnValider.Name = "btnValider";
@@ -71,7 +72,9 @@
             // btnAnnuler
             // 
             this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
             this.btnAnnuler.Location = new System.Drawing.Point(35, 139);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(97, 34);
@@ -84,6 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(439, 179);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);

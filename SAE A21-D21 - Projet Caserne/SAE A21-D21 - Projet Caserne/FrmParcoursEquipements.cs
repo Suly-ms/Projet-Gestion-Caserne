@@ -157,5 +157,10 @@ namespace SAE_A21_D21___Projet_Caserne
         {
             this.Close();
         }
+
+        private void pnlEngin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

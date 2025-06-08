@@ -49,6 +49,7 @@
             this.pnlEngin = new System.Windows.Forms.Panel();
             this.pnlStatCaserneTete = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEngin)).BeginInit();
             this.pnlEngin.SuspendLayout();
@@ -63,7 +64,8 @@
             // btnDroite
             // 
             this.btnDroite.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnDroite.Location = new System.Drawing.Point(324, 331);
+            this.btnDroite.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDroite.Location = new System.Drawing.Point(324, 316);
             this.btnDroite.Margin = new System.Windows.Forms.Padding(2);
             this.btnDroite.Name = "btnDroite";
             this.btnDroite.Size = new System.Drawing.Size(74, 27);
@@ -75,7 +77,8 @@
             // btnGauche
             // 
             this.btnGauche.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnGauche.Location = new System.Drawing.Point(104, 334);
+            this.btnGauche.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGauche.Location = new System.Drawing.Point(225, 316);
             this.btnGauche.Margin = new System.Windows.Forms.Padding(2);
             this.btnGauche.Name = "btnGauche";
             this.btnGauche.Size = new System.Drawing.Size(74, 27);
@@ -87,7 +90,8 @@
             // btnFullDroite
             // 
             this.btnFullDroite.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnFullDroite.Location = new System.Drawing.Point(402, 331);
+            this.btnFullDroite.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFullDroite.Location = new System.Drawing.Point(402, 316);
             this.btnFullDroite.Margin = new System.Windows.Forms.Padding(2);
             this.btnFullDroite.Name = "btnFullDroite";
             this.btnFullDroite.Size = new System.Drawing.Size(74, 27);
@@ -99,7 +103,8 @@
             // btnFullGauche
             // 
             this.btnFullGauche.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnFullGauche.Location = new System.Drawing.Point(16, 335);
+            this.btnFullGauche.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFullGauche.Location = new System.Drawing.Point(137, 317);
             this.btnFullGauche.Margin = new System.Windows.Forms.Padding(2);
             this.btnFullGauche.Name = "btnFullGauche";
             this.btnFullGauche.Size = new System.Drawing.Size(74, 27);
@@ -238,8 +243,10 @@
             // btnFermer
             // 
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
+            this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnFermer.Location = new System.Drawing.Point(202, 331);
+            this.btnFermer.ForeColor = System.Drawing.Color.White;
+            this.btnFermer.Location = new System.Drawing.Point(11, 341);
             this.btnFermer.Margin = new System.Windows.Forms.Padding(2);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(99, 31);
@@ -252,6 +259,7 @@
             // 
             this.pnlEngin.AutoScroll = true;
             this.pnlEngin.BackColor = System.Drawing.Color.PapayaWhip;
+            this.pnlEngin.Controls.Add(this.panel3);
             this.pnlEngin.Controls.Add(this.btnFermer);
             this.pnlEngin.Controls.Add(this.btnDroite);
             this.pnlEngin.Controls.Add(this.btnFullDroite);
@@ -261,6 +269,7 @@
             this.pnlEngin.Name = "pnlEngin";
             this.pnlEngin.Size = new System.Drawing.Size(496, 381);
             this.pnlEngin.TabIndex = 11;
+            this.pnlEngin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEngin_Paint);
             // 
             // pnlStatCaserneTete
             // 
@@ -282,6 +291,14 @@
             this.label1.Size = new System.Drawing.Size(278, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Veuillez sélectionner une caserne";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(311, 316);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1, 30);
+            this.panel3.TabIndex = 11;
             // 
             // FrmParcoursEquipements
             // 
@@ -329,6 +346,7 @@
         private System.Windows.Forms.Panel pnlEngin;
         private System.Windows.Forms.Panel pnlStatCaserneTete;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
