@@ -31,7 +31,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 string nom = row["Nom"].ToString();
                 string prenom = row["Prenom"].ToString();
                 string grade = row["codeGrade"].ToString();
-                Image image = Image.FromFile("img/" + grade + ".png");
+                Image image = Image.FromFile("img/grades/" + grade + ".png");
                 UC_ChoixPompierAutomatique ucChoixPompier = new UC_ChoixPompierAutomatique(image, grade, nom, prenom);
                 ucChoixPompier.Dock = DockStyle.Top; // Permet de les empiler verticalement
                 pnlPompier.Controls.Add(ucChoixPompier);
@@ -41,7 +41,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 string type = row["codeTypeEngin"].ToString();
                 int numero = Convert.ToInt32(row["numero"]);
                 int caserne = Convert.ToInt32(row["idCaserne"]);
-                Image image = Image.FromFile("img/" + type.ToLower() + ".jpg");
+                Image image = Image.FromFile("img/vehicules/" + type.ToLower() + ".jpg");
                 UC_ChoixVehiculeAutomatique ucChoixVehicule = new UC_ChoixVehiculeAutomatique(image, type, numero, caserne);
                 ucChoixVehicule.Dock = DockStyle.Top; // Permet de les empiler verticalement
                 pnlVehicule.Controls.Add(ucChoixVehicule);

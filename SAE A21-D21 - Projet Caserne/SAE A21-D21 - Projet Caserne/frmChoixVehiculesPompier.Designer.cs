@@ -38,8 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlVehiculeEnregistre = new System.Windows.Forms.Panel();
-            this.pnlPompierEnregistre = new System.Windows.Forms.Panel();
             this.lblVehiculeEnregistre = new System.Windows.Forms.Label();
+            this.pnlPompierEnregistre = new System.Windows.Forms.Panel();
             this.lblPompiersEnregistre = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -70,7 +70,7 @@
             this.lblVehiculeValide.Location = new System.Drawing.Point(21, 19);
             this.lblVehiculeValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehiculeValide.Name = "lblVehiculeValide";
-            this.lblVehiculeValide.Size = new System.Drawing.Size(194, 25);
+            this.lblVehiculeValide.Size = new System.Drawing.Size(157, 20);
             this.lblVehiculeValide.TabIndex = 2;
             this.lblVehiculeValide.Text = "Véhicules validés :";
             // 
@@ -81,7 +81,7 @@
             this.lblHabilitationPompier.Location = new System.Drawing.Point(278, 19);
             this.lblHabilitationPompier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHabilitationPompier.Name = "lblHabilitationPompier";
-            this.lblHabilitationPompier.Size = new System.Drawing.Size(231, 25);
+            this.lblHabilitationPompier.Size = new System.Drawing.Size(189, 20);
             this.lblHabilitationPompier.TabIndex = 4;
             this.lblHabilitationPompier.Text = "Choix de l\'habilitation :";
             // 
@@ -102,7 +102,7 @@
             this.lblPompierValide.Location = new System.Drawing.Point(564, 19);
             this.lblPompierValide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompierValide.Name = "lblPompierValide";
-            this.lblPompierValide.Size = new System.Drawing.Size(189, 25);
+            this.lblPompierValide.Size = new System.Drawing.Size(153, 20);
             this.lblPompierValide.TabIndex = 6;
             this.lblPompierValide.Text = "Pompiers validés :";
             // 
@@ -145,6 +145,17 @@
             this.pnlVehiculeEnregistre.Size = new System.Drawing.Size(792, 65);
             this.pnlVehiculeEnregistre.TabIndex = 9;
             // 
+            // lblVehiculeEnregistre
+            // 
+            this.lblVehiculeEnregistre.AutoSize = true;
+            this.lblVehiculeEnregistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVehiculeEnregistre.Location = new System.Drawing.Point(11, 24);
+            this.lblVehiculeEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVehiculeEnregistre.Name = "lblVehiculeEnregistre";
+            this.lblVehiculeEnregistre.Size = new System.Drawing.Size(163, 17);
+            this.lblVehiculeEnregistre.TabIndex = 0;
+            this.lblVehiculeEnregistre.Text = "Véhicule(s) Enregistrés :";
+            // 
             // pnlPompierEnregistre
             // 
             this.pnlPompierEnregistre.AutoScroll = true;
@@ -156,17 +167,6 @@
             this.pnlPompierEnregistre.Size = new System.Drawing.Size(792, 66);
             this.pnlPompierEnregistre.TabIndex = 10;
             // 
-            // lblVehiculeEnregistre
-            // 
-            this.lblVehiculeEnregistre.AutoSize = true;
-            this.lblVehiculeEnregistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehiculeEnregistre.Location = new System.Drawing.Point(11, 24);
-            this.lblVehiculeEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblVehiculeEnregistre.Name = "lblVehiculeEnregistre";
-            this.lblVehiculeEnregistre.Size = new System.Drawing.Size(195, 20);
-            this.lblVehiculeEnregistre.TabIndex = 0;
-            this.lblVehiculeEnregistre.Text = "Véhicule(s) Enregistrés :";
-            // 
             // lblPompiersEnregistre
             // 
             this.lblPompiersEnregistre.AutoSize = true;
@@ -174,7 +174,7 @@
             this.lblPompiersEnregistre.Location = new System.Drawing.Point(13, 23);
             this.lblPompiersEnregistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompiersEnregistre.Name = "lblPompiersEnregistre";
-            this.lblPompiersEnregistre.Size = new System.Drawing.Size(193, 20);
+            this.lblPompiersEnregistre.Size = new System.Drawing.Size(161, 17);
             this.lblPompiersEnregistre.TabIndex = 1;
             this.lblPompiersEnregistre.Text = "Pompier(s) Enregistrés :";
             // 
@@ -225,7 +225,7 @@
             this.lblPasAssezDePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasAssezDePompier.Location = new System.Drawing.Point(211, 709);
             this.lblPasAssezDePompier.Name = "lblPasAssezDePompier";
-            this.lblPasAssezDePompier.Size = new System.Drawing.Size(430, 25);
+            this.lblPasAssezDePompier.Size = new System.Drawing.Size(356, 20);
             this.lblPasAssezDePompier.TabIndex = 12;
             this.lblPasAssezDePompier.Text = "Il n\'y a pas assez de pompiers sélectionnés";
             this.lblPasAssezDePompier.Visible = false;

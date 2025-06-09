@@ -167,6 +167,7 @@ namespace SAE_A21_D21___Projet_Caserne
                 txbCodePostal.BackColor = txbCodePostal.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
                 txbMotif.BackColor = txbMotif.Text == "" ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
                 btnConstituerManuel.BackColor = pompierVehiculeMission == null ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
+                btnConstituerAutomatique.BackColor = pompierVehiculeMission == null ? ColorTranslator.FromHtml("#ff9c9c") : Color.White;
                 lblChampsIncomplets.BackColor = ColorTranslator.FromHtml("#ff9c9c");
                 lblChampsIncomplets.Visible = true;
             }
