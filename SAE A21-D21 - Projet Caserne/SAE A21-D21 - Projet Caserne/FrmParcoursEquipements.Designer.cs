@@ -47,9 +47,9 @@
             this.lblNum = new System.Windows.Forms.Label();
             this.btnFermer = new System.Windows.Forms.Button();
             this.pnlEngin = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlStatCaserneTete = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEngin)).BeginInit();
             this.pnlEngin.SuspendLayout();
@@ -271,6 +271,14 @@
             this.pnlEngin.TabIndex = 11;
             this.pnlEngin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEngin_Paint);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(311, 316);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1, 30);
+            this.panel3.TabIndex = 11;
+            // 
             // pnlStatCaserneTete
             // 
             this.pnlStatCaserneTete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -292,14 +300,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Veuillez sélectionner une caserne";
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(311, 316);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 30);
-            this.panel3.TabIndex = 11;
-            // 
             // FrmParcoursEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,7 +311,7 @@
             this.Controls.Add(this.pnlEngin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmParcoursEquipements";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Visualisation des engins";
             this.Load += new System.EventHandler(this.FrmParcoursEquipements_Load);
             this.groupBox2.ResumeLayout(false);

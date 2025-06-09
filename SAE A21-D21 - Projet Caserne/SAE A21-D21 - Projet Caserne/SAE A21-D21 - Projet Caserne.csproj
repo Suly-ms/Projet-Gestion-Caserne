@@ -69,6 +69,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
+    <Compile Include="FrmChoixVehiculesPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChoixVehiculesPompier.Designer.cs">
+      <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChoixVehiculesPompierAutomatique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChoixVehiculesPompierAutomatique.Designer.cs">
+      <DependentUpon>FrmChoixVehiculesPompierAutomatique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionNouvelleMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionNouvelleMission.Designer.cs">
+      <DependentUpon>FrmGestionNouvelleMission.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStatistiques.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,12 +98,6 @@
     </Compile>
     <Compile Include="FrmParcoursEquipements.Designer.cs">
       <DependentUpon>FrmParcoursEquipements.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmChoixVehiculesPompier.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmChoixVehiculesPompier.Designer.cs">
-      <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCompteRendu.cs">
       <SubType>Form</SubType>
@@ -110,12 +122,6 @@
     </Compile>
     <Compile Include="FrmDommageEngin.Designer.cs">
       <DependentUpon>FrmDommageEngin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmGestionNouvelleMission.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmGestionNouvelleMission.Designer.cs">
-      <DependentUpon>FrmGestionNouvelleMission.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGestionPompiers.cs">
       <SubType>Form</SubType>
@@ -150,6 +156,30 @@
     <Compile Include="UC_AffichagePompier.Designer.cs">
       <DependentUpon>UC_AffichagePompier.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_ChoixPompier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixPompier.Designer.cs">
+      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChoixPompierAutomatique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixPompierAutomatique.Designer.cs">
+      <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChoixVehicule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixVehicule.Designer.cs">
+      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChoixVehiculeAutomatique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChoixVehiculeAutomatique.Designer.cs">
+      <DependentUpon>UC_ChoixVehiculeAutomatique.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_CreerPompier.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,26 +204,20 @@
     <Compile Include="UC_DoubleBoutonImage.Designer.cs">
       <DependentUpon>UC_DoubleBoutonImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_ChoixPompier.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_ChoixPompier.Designer.cs">
-      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_ChoixVehicule.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_ChoixVehicule.Designer.cs">
-      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="FrmChoixVehiculesPompier.resx">
+      <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChoixVehiculesPompierAutomatique.resx">
+      <DependentUpon>FrmChoixVehiculesPompierAutomatique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionNouvelleMission.resx">
+      <DependentUpon>FrmGestionNouvelleMission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStatistiques.resx">
       <DependentUpon>FrmStatistiques.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmParcoursEquipements.resx">
       <DependentUpon>FrmParcoursEquipements.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmChoixVehiculesPompier.resx">
-      <DependentUpon>FrmChoixVehiculesPompier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompteRendu.resx">
       <DependentUpon>FrmCompteRendu.cs</DependentUpon>
@@ -206,9 +230,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDommageEngin.resx">
       <DependentUpon>FrmDommageEngin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmGestionNouvelleMission.resx">
-      <DependentUpon>FrmGestionNouvelleMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionPompiers.resx">
       <DependentUpon>FrmGestionPompiers.cs</DependentUpon>
@@ -234,6 +255,18 @@
     <EmbeddedResource Include="UC_AffichagePompier.resx">
       <DependentUpon>UC_AffichagePompier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixPompier.resx">
+      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixPompierAutomatique.resx">
+      <DependentUpon>UC_ChoixPompierAutomatique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixVehicule.resx">
+      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChoixVehiculeAutomatique.resx">
+      <DependentUpon>UC_ChoixVehiculeAutomatique.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_CreerPompier.resx">
       <DependentUpon>UC_CreerPompier.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,12 +278,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_DoubleBoutonImage.resx">
       <DependentUpon>UC_DoubleBoutonImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_ChoixPompier.resx">
-      <DependentUpon>UC_ChoixPompier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_ChoixVehicule.resx">
-      <DependentUpon>UC_ChoixVehicule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

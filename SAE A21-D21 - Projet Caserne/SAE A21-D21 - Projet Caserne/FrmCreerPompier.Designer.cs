@@ -119,7 +119,7 @@
             this.Controls.Add(this.pnlAffichagePompier);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCreerPompier";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ajouter un pompier";
             this.Load += new System.EventHandler(this.FrmCreerPompier_Load);
             this.pnlSelectionPompier.ResumeLayout(false);

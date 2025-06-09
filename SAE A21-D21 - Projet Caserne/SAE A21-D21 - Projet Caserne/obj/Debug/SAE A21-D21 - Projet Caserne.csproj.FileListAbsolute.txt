@@ -142,3 +142,6 @@ C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Pr
 C:\Users\josue\Desktop\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmStatistiques.resources
 C:\Users\Josué\Desktop\Cours\BUT1\S2\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmStatistiques.resources
 C:\Users\Josué\Desktop\Cours\BUT1\S2\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmParcoursEquipements.resources
+C:\Users\Josué\Desktop\Cours\BUT1\S2\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.FrmChoixVehiculesPompierAutomatique.resources
+C:\Users\Josué\Desktop\Cours\BUT1\S2\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.UC_ChoixPompierAutomatique.resources
+C:\Users\Josué\Desktop\Cours\BUT1\S2\SAE\A21\sae-a21-d21\SAE A21-D21 - Projet Caserne\SAE A21-D21 - Projet Caserne\obj\Debug\SAE_A21_D21___Projet_Caserne.UC_ChoixVehiculeAutomatique.resources

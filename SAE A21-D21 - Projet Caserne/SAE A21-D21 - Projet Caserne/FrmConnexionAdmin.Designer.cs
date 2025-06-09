@@ -142,7 +142,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConnexionAdmin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Page de connexion";
             this.Load += new System.EventHandler(this.FrmConnexionAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAfficherMdp)).EndInit();

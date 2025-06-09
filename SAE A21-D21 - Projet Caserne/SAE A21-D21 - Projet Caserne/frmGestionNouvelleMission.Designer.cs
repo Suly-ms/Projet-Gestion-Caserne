@@ -32,20 +32,16 @@
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.lblNouvelleMission = new System.Windows.Forms.Label();
             this.lblDateDelenchement = new System.Windows.Forms.Label();
-            this.gbxInformationUsager = new System.Windows.Forms.GroupBox();
             this.lblMax6Caracteres = new System.Windows.Forms.Label();
-            this.btnReinitialiser = new System.Windows.Forms.Button();
             this.txbVille = new System.Windows.Forms.TextBox();
             this.lblVille = new System.Windows.Forms.Label();
             this.txbCodePostal = new System.Windows.Forms.TextBox();
             this.lblCodePostale = new System.Windows.Forms.Label();
             this.txbRue = new System.Windows.Forms.TextBox();
             this.lblRue = new System.Windows.Forms.Label();
-            this.lblAdresseSinistre = new System.Windows.Forms.Label();
             this.txbMotif = new System.Windows.Forms.TextBox();
             this.lblMotif = new System.Windows.Forms.Label();
-            this.gbxDecisionRegul = new System.Windows.Forms.GroupBox();
-            this.btnConstituer = new System.Windows.Forms.Button();
+            this.btnConstituerManuel = new System.Windows.Forms.Button();
             this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.cbxNatureSinistre = new System.Windows.Forms.ComboBox();
@@ -53,8 +49,14 @@
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.lblChampsIncomplets = new System.Windows.Forms.Label();
-            this.gbxInformationUsager.SuspendLayout();
-            this.gbxDecisionRegul.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblConstituer = new System.Windows.Forms.Label();
+            this.btnConstituerAutomatique = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // sqLiteCommandBuilder1
@@ -67,8 +69,8 @@
             this.lblNouvelleMission.AutoSize = true;
             this.lblNouvelleMission.BackColor = System.Drawing.Color.Transparent;
             this.lblNouvelleMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNouvelleMission.ForeColor = System.Drawing.Color.Black;
-            this.lblNouvelleMission.Location = new System.Drawing.Point(236, 19);
+            this.lblNouvelleMission.ForeColor = System.Drawing.Color.White;
+            this.lblNouvelleMission.Location = new System.Drawing.Point(204, 10);
             this.lblNouvelleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNouvelleMission.Name = "lblNouvelleMission";
             this.lblNouvelleMission.Size = new System.Drawing.Size(112, 24);
@@ -80,60 +82,29 @@
             this.lblDateDelenchement.AutoSize = true;
             this.lblDateDelenchement.BackColor = System.Drawing.Color.Transparent;
             this.lblDateDelenchement.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateDelenchement.ForeColor = System.Drawing.Color.Black;
-            this.lblDateDelenchement.Location = new System.Drawing.Point(236, 48);
+            this.lblDateDelenchement.ForeColor = System.Drawing.Color.White;
+            this.lblDateDelenchement.Location = new System.Drawing.Point(204, 39);
             this.lblDateDelenchement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateDelenchement.Name = "lblDateDelenchement";
             this.lblDateDelenchement.Size = new System.Drawing.Size(152, 24);
             this.lblDateDelenchement.TabIndex = 1;
             this.lblDateDelenchement.Text = "Déclenché le : ";
             // 
-            // gbxInformationUsager
-            // 
-            this.gbxInformationUsager.BackColor = System.Drawing.Color.Transparent;
-            this.gbxInformationUsager.Controls.Add(this.lblMax6Caracteres);
-            this.gbxInformationUsager.Controls.Add(this.btnReinitialiser);
-            this.gbxInformationUsager.Controls.Add(this.txbVille);
-            this.gbxInformationUsager.Controls.Add(this.lblVille);
-            this.gbxInformationUsager.Controls.Add(this.txbCodePostal);
-            this.gbxInformationUsager.Controls.Add(this.lblCodePostale);
-            this.gbxInformationUsager.Controls.Add(this.txbRue);
-            this.gbxInformationUsager.Controls.Add(this.lblRue);
-            this.gbxInformationUsager.Controls.Add(this.lblAdresseSinistre);
-            this.gbxInformationUsager.Controls.Add(this.txbMotif);
-            this.gbxInformationUsager.Controls.Add(this.lblMotif);
-            this.gbxInformationUsager.Location = new System.Drawing.Point(47, 80);
-            this.gbxInformationUsager.Name = "gbxInformationUsager";
-            this.gbxInformationUsager.Size = new System.Drawing.Size(565, 409);
-            this.gbxInformationUsager.TabIndex = 2;
-            this.gbxInformationUsager.TabStop = false;
-            this.gbxInformationUsager.Text = "Information usager";
-            // 
             // lblMax6Caracteres
             // 
             this.lblMax6Caracteres.AutoSize = true;
             this.lblMax6Caracteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMax6Caracteres.Location = new System.Drawing.Point(257, 249);
+            this.lblMax6Caracteres.Location = new System.Drawing.Point(255, 205);
             this.lblMax6Caracteres.Name = "lblMax6Caracteres";
             this.lblMax6Caracteres.Size = new System.Drawing.Size(204, 17);
             this.lblMax6Caracteres.TabIndex = 18;
             this.lblMax6Caracteres.Text = "Maximum de 6 nombres entiers";
             // 
-            // btnReinitialiser
-            // 
-            this.btnReinitialiser.Location = new System.Drawing.Point(425, 332);
-            this.btnReinitialiser.Name = "btnReinitialiser";
-            this.btnReinitialiser.Size = new System.Drawing.Size(115, 55);
-            this.btnReinitialiser.TabIndex = 17;
-            this.btnReinitialiser.Text = "Réinitialiser les champs";
-            this.btnReinitialiser.UseVisualStyleBackColor = true;
-            this.btnReinitialiser.Click += new System.EventHandler(this.btnReinitialiser_Click);
-            // 
             // txbVille
             // 
-            this.txbVille.Location = new System.Drawing.Point(88, 289);
+            this.txbVille.Location = new System.Drawing.Point(147, 245);
             this.txbVille.Name = "txbVille";
-            this.txbVille.Size = new System.Drawing.Size(452, 23);
+            this.txbVille.Size = new System.Drawing.Size(391, 23);
             this.txbVille.TabIndex = 11;
             this.txbVille.TextChanged += new System.EventHandler(this.txbVille_TextChanged);
             // 
@@ -142,7 +113,7 @@
             this.lblVille.AutoSize = true;
             this.lblVille.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVille.ForeColor = System.Drawing.Color.Black;
-            this.lblVille.Location = new System.Drawing.Point(24, 289);
+            this.lblVille.Location = new System.Drawing.Point(22, 245);
             this.lblVille.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVille.Name = "lblVille";
             this.lblVille.Size = new System.Drawing.Size(42, 18);
@@ -151,7 +122,7 @@
             // 
             // txbCodePostal
             // 
-            this.txbCodePostal.Location = new System.Drawing.Point(149, 246);
+            this.txbCodePostal.Location = new System.Drawing.Point(147, 202);
             this.txbCodePostal.Name = "txbCodePostal";
             this.txbCodePostal.Size = new System.Drawing.Size(102, 23);
             this.txbCodePostal.TabIndex = 9;
@@ -162,7 +133,7 @@
             this.lblCodePostale.AutoSize = true;
             this.lblCodePostale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodePostale.ForeColor = System.Drawing.Color.Black;
-            this.lblCodePostale.Location = new System.Drawing.Point(24, 246);
+            this.lblCodePostale.Location = new System.Drawing.Point(22, 202);
             this.lblCodePostale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostale.Name = "lblCodePostale";
             this.lblCodePostale.Size = new System.Drawing.Size(98, 18);
@@ -171,9 +142,9 @@
             // 
             // txbRue
             // 
-            this.txbRue.Location = new System.Drawing.Point(88, 203);
+            this.txbRue.Location = new System.Drawing.Point(147, 159);
             this.txbRue.Name = "txbRue";
-            this.txbRue.Size = new System.Drawing.Size(452, 23);
+            this.txbRue.Size = new System.Drawing.Size(391, 23);
             this.txbRue.TabIndex = 7;
             this.txbRue.TextChanged += new System.EventHandler(this.txbRue_TextChanged);
             // 
@@ -182,31 +153,19 @@
             this.lblRue.AutoSize = true;
             this.lblRue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRue.ForeColor = System.Drawing.Color.Black;
-            this.lblRue.Location = new System.Drawing.Point(24, 203);
+            this.lblRue.Location = new System.Drawing.Point(22, 159);
             this.lblRue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRue.Name = "lblRue";
             this.lblRue.Size = new System.Drawing.Size(43, 18);
             this.lblRue.TabIndex = 6;
             this.lblRue.Text = "Rue :";
             // 
-            // lblAdresseSinistre
-            // 
-            this.lblAdresseSinistre.AutoSize = true;
-            this.lblAdresseSinistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresseSinistre.ForeColor = System.Drawing.Color.Black;
-            this.lblAdresseSinistre.Location = new System.Drawing.Point(226, 163);
-            this.lblAdresseSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAdresseSinistre.Name = "lblAdresseSinistre";
-            this.lblAdresseSinistre.Size = new System.Drawing.Size(149, 18);
-            this.lblAdresseSinistre.TabIndex = 5;
-            this.lblAdresseSinistre.Text = "Addresse du sinistre :";
-            // 
             // txbMotif
             // 
-            this.txbMotif.Location = new System.Drawing.Point(90, 48);
+            this.txbMotif.Location = new System.Drawing.Point(24, 41);
             this.txbMotif.Multiline = true;
             this.txbMotif.Name = "txbMotif";
-            this.txbMotif.Size = new System.Drawing.Size(452, 102);
+            this.txbMotif.Size = new System.Drawing.Size(514, 102);
             this.txbMotif.TabIndex = 4;
             this.txbMotif.TextChanged += new System.EventHandler(this.txbMotif_TextChanged);
             // 
@@ -215,45 +174,30 @@
             this.lblMotif.AutoSize = true;
             this.lblMotif.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMotif.ForeColor = System.Drawing.Color.Black;
-            this.lblMotif.Location = new System.Drawing.Point(290, 23);
+            this.lblMotif.Location = new System.Drawing.Point(253, 16);
             this.lblMotif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotif.Name = "lblMotif";
             this.lblMotif.Size = new System.Drawing.Size(49, 18);
             this.lblMotif.TabIndex = 3;
             this.lblMotif.Text = "Motif :";
             // 
-            // gbxDecisionRegul
+            // btnConstituerManuel
             // 
-            this.gbxDecisionRegul.BackColor = System.Drawing.Color.Transparent;
-            this.gbxDecisionRegul.Controls.Add(this.btnConstituer);
-            this.gbxDecisionRegul.Controls.Add(this.cbxCaserne);
-            this.gbxDecisionRegul.Controls.Add(this.lblCaserne);
-            this.gbxDecisionRegul.Controls.Add(this.cbxNatureSinistre);
-            this.gbxDecisionRegul.Controls.Add(this.label1);
-            this.gbxDecisionRegul.Location = new System.Drawing.Point(47, 495);
-            this.gbxDecisionRegul.Name = "gbxDecisionRegul";
-            this.gbxDecisionRegul.Size = new System.Drawing.Size(565, 213);
-            this.gbxDecisionRegul.TabIndex = 3;
-            this.gbxDecisionRegul.TabStop = false;
-            this.gbxDecisionRegul.Text = "Décisions régulateur";
-            // 
-            // btnConstituer
-            // 
-            this.btnConstituer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConstituer.ForeColor = System.Drawing.Color.Red;
-            this.btnConstituer.Location = new System.Drawing.Point(194, 127);
-            this.btnConstituer.Name = "btnConstituer";
-            this.btnConstituer.Size = new System.Drawing.Size(180, 69);
-            this.btnConstituer.TabIndex = 16;
-            this.btnConstituer.Text = "Choisir Véhicule(s) et Pompier(s)";
-            this.btnConstituer.UseVisualStyleBackColor = true;
-            this.btnConstituer.Click += new System.EventHandler(this.btnConstituer_Click);
+            this.btnConstituerManuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstituerManuel.ForeColor = System.Drawing.Color.Red;
+            this.btnConstituerManuel.Location = new System.Drawing.Point(190, 104);
+            this.btnConstituerManuel.Name = "btnConstituerManuel";
+            this.btnConstituerManuel.Size = new System.Drawing.Size(171, 69);
+            this.btnConstituerManuel.TabIndex = 16;
+            this.btnConstituerManuel.Text = "Manuel";
+            this.btnConstituerManuel.UseVisualStyleBackColor = true;
+            this.btnConstituerManuel.Click += new System.EventHandler(this.btnConstituer_Click);
             // 
             // cbxCaserne
             // 
             this.cbxCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCaserne.FormattingEnabled = true;
-            this.cbxCaserne.Location = new System.Drawing.Point(194, 79);
+            this.cbxCaserne.Location = new System.Drawing.Point(190, 60);
             this.cbxCaserne.Name = "cbxCaserne";
             this.cbxCaserne.Size = new System.Drawing.Size(348, 25);
             this.cbxCaserne.TabIndex = 15;
@@ -263,7 +207,7 @@
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaserne.ForeColor = System.Drawing.Color.Black;
-            this.lblCaserne.Location = new System.Drawing.Point(26, 79);
+            this.lblCaserne.Location = new System.Drawing.Point(22, 60);
             this.lblCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(72, 18);
@@ -274,7 +218,7 @@
             // 
             this.cbxNatureSinistre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNatureSinistre.FormattingEnabled = true;
-            this.cbxNatureSinistre.Location = new System.Drawing.Point(194, 38);
+            this.cbxNatureSinistre.Location = new System.Drawing.Point(190, 19);
             this.cbxNatureSinistre.Name = "cbxNatureSinistre";
             this.cbxNatureSinistre.Size = new System.Drawing.Size(348, 25);
             this.cbxNatureSinistre.TabIndex = 13;
@@ -284,7 +228,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(26, 38);
+            this.label1.Location = new System.Drawing.Point(22, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 18);
@@ -293,9 +237,10 @@
             // 
             // btnFermer
             // 
-            this.btnFermer.BackColor = System.Drawing.Color.Red;
+            this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFermer.Location = new System.Drawing.Point(46, 718);
+            this.btnFermer.ForeColor = System.Drawing.Color.White;
+            this.btnFermer.Location = new System.Drawing.Point(14, 602);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);
             this.btnFermer.TabIndex = 18;
@@ -307,7 +252,7 @@
             // 
             this.btnValider.BackColor = System.Drawing.Color.Lime;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(462, 718);
+            this.btnValider.Location = new System.Drawing.Point(430, 602);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(150, 42);
             this.btnValider.TabIndex = 19;
@@ -320,37 +265,103 @@
             this.lblChampsIncomplets.AutoSize = true;
             this.lblChampsIncomplets.BackColor = System.Drawing.Color.Red;
             this.lblChampsIncomplets.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChampsIncomplets.Location = new System.Drawing.Point(214, 724);
+            this.lblChampsIncomplets.Location = new System.Drawing.Point(200, 610);
             this.lblChampsIncomplets.Name = "lblChampsIncomplets";
             this.lblChampsIncomplets.Size = new System.Drawing.Size(193, 24);
             this.lblChampsIncomplets.TabIndex = 20;
             this.lblChampsIncomplets.Text = "Champs Incomplets";
             this.lblChampsIncomplets.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.panel1.Controls.Add(this.lblNouvelleMission);
+            this.panel1.Controls.Add(this.lblDateDelenchement);
+            this.panel1.Location = new System.Drawing.Point(16, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(562, 73);
+            this.panel1.TabIndex = 21;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panel2.Controls.Add(this.lblMax6Caracteres);
+            this.panel2.Controls.Add(this.txbVille);
+            this.panel2.Controls.Add(this.lblMotif);
+            this.panel2.Controls.Add(this.txbMotif);
+            this.panel2.Controls.Add(this.lblVille);
+            this.panel2.Controls.Add(this.txbCodePostal);
+            this.panel2.Controls.Add(this.lblRue);
+            this.panel2.Controls.Add(this.lblCodePostale);
+            this.panel2.Controls.Add(this.txbRue);
+            this.panel2.Location = new System.Drawing.Point(16, 103);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(562, 292);
+            this.panel2.TabIndex = 22;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panel3.Controls.Add(this.lblConstituer);
+            this.panel3.Controls.Add(this.btnConstituerAutomatique);
+            this.panel3.Controls.Add(this.btnConstituerManuel);
+            this.panel3.Controls.Add(this.cbxCaserne);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.lblCaserne);
+            this.panel3.Controls.Add(this.cbxNatureSinistre);
+            this.panel3.Location = new System.Drawing.Point(16, 401);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(562, 192);
+            this.panel3.TabIndex = 23;
+            // 
+            // lblConstituer
+            // 
+            this.lblConstituer.AutoSize = true;
+            this.lblConstituer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConstituer.Location = new System.Drawing.Point(22, 126);
+            this.lblConstituer.Name = "lblConstituer";
+            this.lblConstituer.Size = new System.Drawing.Size(84, 18);
+            this.lblConstituer.TabIndex = 18;
+            this.lblConstituer.Text = "Constituer :";
+            // 
+            // btnConstituerAutomatique
+            // 
+            this.btnConstituerAutomatique.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstituerAutomatique.ForeColor = System.Drawing.Color.Red;
+            this.btnConstituerAutomatique.Location = new System.Drawing.Point(377, 104);
+            this.btnConstituerAutomatique.Name = "btnConstituerAutomatique";
+            this.btnConstituerAutomatique.Size = new System.Drawing.Size(161, 69);
+            this.btnConstituerAutomatique.TabIndex = 17;
+            this.btnConstituerAutomatique.Text = "Automatique";
+            this.btnConstituerAutomatique.UseVisualStyleBackColor = true;
+            this.btnConstituerAutomatique.Click += new System.EventHandler(this.btnConstituerAutomatique_Click);
+            // 
             // FrmGestionNouvelleMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(660, 772);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(597, 654);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblChampsIncomplets);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnFermer);
-            this.Controls.Add(this.gbxDecisionRegul);
-            this.Controls.Add(this.gbxInformationUsager);
-            this.Controls.Add(this.lblDateDelenchement);
-            this.Controls.Add(this.lblNouvelleMission);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmGestionNouvelleMission";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Gestion des nouvelles missions";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.gbxInformationUsager.ResumeLayout(false);
-            this.gbxInformationUsager.PerformLayout();
-            this.gbxDecisionRegul.ResumeLayout(false);
-            this.gbxDecisionRegul.PerformLayout();
+            this.Load += new System.EventHandler(this.FrmGestionNouvelleMission_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,27 +372,28 @@
         private System.Data.SQLite.SQLiteCommandBuilder sqLiteCommandBuilder1;
         private System.Windows.Forms.Label lblNouvelleMission;
         private System.Windows.Forms.Label lblDateDelenchement;
-        private System.Windows.Forms.GroupBox gbxInformationUsager;
         private System.Windows.Forms.TextBox txbMotif;
         private System.Windows.Forms.Label lblMotif;
         private System.Windows.Forms.TextBox txbRue;
         private System.Windows.Forms.Label lblRue;
-        private System.Windows.Forms.Label lblAdresseSinistre;
         private System.Windows.Forms.TextBox txbVille;
         private System.Windows.Forms.Label lblVille;
         private System.Windows.Forms.TextBox txbCodePostal;
         private System.Windows.Forms.Label lblCodePostale;
-        private System.Windows.Forms.GroupBox gbxDecisionRegul;
         private System.Windows.Forms.ComboBox cbxNatureSinistre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxCaserne;
         private System.Windows.Forms.Label lblCaserne;
-        private System.Windows.Forms.Button btnConstituer;
-        private System.Windows.Forms.Button btnReinitialiser;
+        private System.Windows.Forms.Button btnConstituerManuel;
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Label lblChampsIncomplets;
         private System.Windows.Forms.Label lblMax6Caracteres;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnConstituerAutomatique;
+        private System.Windows.Forms.Label lblConstituer;
     }
 }
 

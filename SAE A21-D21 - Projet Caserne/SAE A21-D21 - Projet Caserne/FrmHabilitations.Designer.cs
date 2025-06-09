@@ -130,7 +130,7 @@
             this.Controls.Add(this.pnlHabilitations);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHabilitations";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ajouter Habilitations";
             this.Load += new System.EventHandler(this.FrmHabilitations_Load);
             this.panel1.ResumeLayout(false);
