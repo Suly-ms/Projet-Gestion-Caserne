@@ -226,8 +226,7 @@
             this.lblPasAssezDePompier.AutoSize = true;
             this.lblPasAssezDePompier.BackColor = System.Drawing.Color.Red;
             this.lblPasAssezDePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasAssezDePompier.ForeColor = System.Drawing.Color.White;
-            this.lblPasAssezDePompier.Location = new System.Drawing.Point(224, 711);
+            this.lblPasAssezDePompier.Location = new System.Drawing.Point(229, 710);
             this.lblPasAssezDePompier.Name = "lblPasAssezDePompier";
             this.lblPasAssezDePompier.Size = new System.Drawing.Size(356, 20);
             this.lblPasAssezDePompier.TabIndex = 12;
@@ -249,7 +248,6 @@
             // 
             this.btnRetour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetour.ForeColor = System.Drawing.Color.White;
             this.btnRetour.Location = new System.Drawing.Point(13, 698);
             this.btnRetour.Margin = new System.Windows.Forms.Padding(4);
             this.btnRetour.Name = "btnRetour";

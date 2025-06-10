@@ -239,7 +239,6 @@
             // 
             this.btnFermer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFermer.ForeColor = System.Drawing.Color.White;
             this.btnFermer.Location = new System.Drawing.Point(14, 602);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(150, 42);
@@ -265,7 +264,7 @@
             this.lblChampsIncomplets.AutoSize = true;
             this.lblChampsIncomplets.BackColor = System.Drawing.Color.Red;
             this.lblChampsIncomplets.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChampsIncomplets.Location = new System.Drawing.Point(200, 610);
+            this.lblChampsIncomplets.Location = new System.Drawing.Point(199, 610);
             this.lblChampsIncomplets.Name = "lblChampsIncomplets";
             this.lblChampsIncomplets.Size = new System.Drawing.Size(193, 24);
             this.lblChampsIncomplets.TabIndex = 20;

@@ -87,9 +87,9 @@ namespace SAE_A21_D21___Projet_Caserne
             if(!(txbVille.Text=="" || txbRue.Text == "" || txbCodePostal.Text == "" || pompierVehiculeMission == null))
             {
                 SQLiteCommand insertIntoMission = new SQLiteCommand();
+
                 insertIntoMission.Connection = Connexion.Connec;
-                insertIntoMission.CommandText = $@"INSERT INTO Mission(id, dateHeureDepart, motifAppel, adresse, cp, ville, terminee, idNatureSinistre, idCaserne)
-                                               VALUES('{numeroMission}', '{DateTime.Now}', '{txbMotif.Text}', '{txbRue.Text}', '{txbCodePostal.Text}', '{txbVille.Text}', 0, '{cbxNatureSinistre.SelectedValue}', '{cbxCaserne.SelectedValue}');";
+                insertIntoMission.CommandText = $"INSERT INTO Mission(id, dateHeureDepart, motifAppel, adresse, cp, ville, terminee, idNatureSinistre, idCaserne) VALUES({numeroMission}, '{DateTime.Now:yyyy-MM-dd HH:mm}', '{txbMotif.Text.Replace("'", "''")}', '{txbRue.Text.Replace("'", "''")}', '{txbCodePostal.Text.Replace("'", "''")}', '{txbVille.Text.Replace("'", "''")}', 0, {cbxNatureSinistre.SelectedValue}, {cbxCaserne.SelectedValue})";
                 insertIntoMission.ExecuteNonQuery();
 
                 DataRow[] Vehicules = pompierVehiculeMission.Tables["Vehicules"].Select();
@@ -170,7 +170,6 @@ namespace SAE_A21_D21___Projet_Caserne
                 lblChampsIncomplets.BackColor = ColorTranslator.FromHtml("#ff9c9c");
                 lblChampsIncomplets.Visible = true;
             }
-            MessageBox.Show("L'ajout de la mission est un succès");
         }
 
         private void txbCodePostal_KeyPress(object sender, KeyPressEventArgs e)
@@ -226,10 +225,24 @@ namespace SAE_A21_D21___Projet_Caserne
             int idNature = Convert.ToInt32(cbxNatureSinistre.SelectedValue);
             int idCaserne = Convert.ToInt32(cbxCaserne.SelectedValue);
 
-            // Création d’un DataSet temporaire
+            // Création d'un DataSet temporaire
             DataSet dsAuto = new DataSet();
-            DataTable dtVehicules = MesDatas.DsGlobal.Tables["Engin"].Clone();
-            DataTable dtPompiers = MesDatas.DsGlobal.Tables["Pompier"].Clone();
+
+            // Création des tables avec la même structure que dans FrmChoixVehiculesPompier
+            DataTable tableVehicule = new DataTable("Vehicules");
+            tableVehicule.Columns.Add("Numero", typeof(int));
+            tableVehicule.Columns.Add("Type", typeof(string));
+            tableVehicule.Columns.Add("Caserne", typeof(int));
+            dsAuto.Tables.Add(tableVehicule);
+
+            DataTable tablePompier = new DataTable("Pompiers");
+            tablePompier.Columns.Add("Nom", typeof(string));
+            tablePompier.Columns.Add("Prenom", typeof(string));
+            tablePompier.Columns.Add("Grade", typeof(string));
+            tablePompier.Columns.Add("matricule", typeof(int));
+            tablePompier.Columns.Add("habilitation", typeof(int));
+            tablePompier.Columns.Add("vehicule", typeof(string));
+            dsAuto.Tables.Add(tablePompier);
 
             // Récupération des véhicules nécessaires pour le sinistre
             var besoins = MesDatas.DsGlobal.Tables["Necessiter"].Select($"idNatureSinistre = {idNature}");
@@ -238,70 +251,123 @@ namespace SAE_A21_D21___Projet_Caserne
             {
                 string typeEngin = besoin["codeTypeEngin"].ToString();
                 int quantite = Convert.ToInt32(besoin["nombre"]);
+                int nbVehiculesAjoutes = 0;
 
-                var enginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
-                    $"idCaserne = {idCaserne} AND codeTypeEngin = '{typeEngin}' AND enMission = 0"
+                // D'abord essayer dans la caserne sélectionnée
+                var enginsDispoCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
+                    $"idCaserne = {idCaserne} AND codeTypeEngin = '{typeEngin}' AND enMission = 0 AND enPanne = 0"
                 );
 
-                for (int i = 0; i < Math.Min(quantite, enginsDispo.Length); i++)
+                // Ajouter les véhicules de la caserne sélectionnée
+                for (int i = 0; i < Math.Min(quantite, enginsDispoCaserne.Length); i++)
                 {
-                    dtVehicules.ImportRow(enginsDispo[i]);
-                }
-            }
-
-            // Déterminer les pompiers nécessaires via "Embarquer"
-            foreach (DataRow vehicule in dtVehicules.Rows)
-            {
-                string type = vehicule["codeTypeEngin"].ToString();
-                var lignesEmbarquer = MesDatas.DsGlobal.Tables["Embarquer"].Select(
-                    $"codeTypeEngin = '{type}'"
-                );
-
-                foreach (var ligne in lignesEmbarquer)
-                {
-                    int idHabilitation = Convert.ToInt32(ligne["idHabilitation"]);
-                    int nbRequis = Convert.ToInt32(ligne["nombre"]);
-
-                    var pompiersDispo = MesDatas.DsGlobal.Tables["Pompier"].Select(
-                        $"enMission = 0 AND enConge = 0"
+                    tableVehicule.Rows.Add(
+                        enginsDispoCaserne[i]["numero"],
+                        enginsDispoCaserne[i]["codeTypeEngin"],
+                        enginsDispoCaserne[i]["idCaserne"]
                     );
+                    nbVehiculesAjoutes++;
+                }
 
-                    int nbAjoutes = 0;
-                    bool continuer = true;
-                    foreach (DataRow pompier in pompiersDispo)
+                // Si on n'a pas assez de véhicules, chercher dans les autres casernes
+                if (nbVehiculesAjoutes < quantite)
+                {
+                    // Récupérer toutes les casernes sauf celle sélectionnée
+                    var autresCasernes = MesDatas.DsGlobal.Tables["Caserne"].AsEnumerable()
+                        .Where(c => Convert.ToInt32(c["id"]) != idCaserne);
+
+                    foreach (DataRow autreCaserne in autresCasernes)
                     {
-                        if (continuer)
+                        if (nbVehiculesAjoutes >= quantite) break;
+
+                        int idAutreCaserne = Convert.ToInt32(autreCaserne["id"]);
+                        var enginsDispoAutreCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
+                            $"idCaserne = {idAutreCaserne} AND codeTypeEngin = '{typeEngin}' AND enMission = 0 AND enPanne = 0"
+                        );
+
+                        for (int i = 0; i < enginsDispoAutreCaserne.Length; i++)
                         {
-                            // Vérifier si le pompier possède l'habilitation requise dans Passer
-                            var habilite = MesDatas.DsGlobal.Tables["Passer"].Select(
-                                $"matriculePompier = {pompier["matricule"]} AND idHabilitation = {idHabilitation}"
+                            if (nbVehiculesAjoutes >= quantite) break;
+
+                            tableVehicule.Rows.Add(
+                                enginsDispoAutreCaserne[i]["numero"],
+                                enginsDispoAutreCaserne[i]["codeTypeEngin"],
+                                enginsDispoAutreCaserne[i]["idCaserne"]
                             );
-                            if (habilite.Length > 0 && !dtPompiers.AsEnumerable().Any(r => r["matricule"].Equals(pompier["matricule"])))
-                            {
-                                dtPompiers.ImportRow(pompier);
-                                nbAjoutes++;
-                                if (nbAjoutes >= nbRequis)
-                                {
-                                    continuer = false;
-                                }
-                            }
+                            nbVehiculesAjoutes++;
                         }
                     }
                 }
             }
 
-            dsAuto.Tables.Add(dtVehicules);
-            dsAuto.Tables.Add(dtPompiers);
-
-            // Stockage dans la variable principale
-            pompierVehiculeMission = dsAuto;
-
-            FrmChoixVehiculesPompierAutomatique monUC = new FrmChoixVehiculesPompierAutomatique(dsAuto);
-
-            if (monUC.ShowDialog() == DialogResult.OK)
+            // Pour chaque véhicule, on récupère les habilitations nécessaires
+            foreach (DataRow vehicule in tableVehicule.Rows)
             {
-                // Ici, on utilise bien l'instance monUC pour accéder à la propriété
-                pompierVehiculeMission = monUC.DataSetMission;
+                string typeEngin = vehicule["Type"].ToString();
+                int idCaserneVehicule = Convert.ToInt32(vehicule["Caserne"]);
+                var habilitationsNecessaires = MesDatas.DsGlobal.Tables["Embarquer"].Select($"codeTypeEngin = '{typeEngin}'");
+
+                foreach (var habilitation in habilitationsNecessaires)
+                {
+                    int idHabilitation = Convert.ToInt32(habilitation["idHabilitation"]);
+                    int nombreNecessaire = Convert.ToInt32(habilitation["nombre"]);
+
+                    // Recherche des pompiers disponibles avec l'habilitation requise
+                    var pompiersDispo = MesDatas.DsGlobal.Tables["Pompier"].Select(
+                        "enMission = 0 AND enConge = 0"
+                    );
+
+                    var affectations = MesDatas.DsGlobal.Tables["Affectation"].Select(
+                        $"idCaserne = {idCaserneVehicule} AND dateFin IS NULL"
+                    );
+
+                    var habilitations = MesDatas.DsGlobal.Tables["Passer"].Select(
+                        $"idHabilitation = {idHabilitation}"
+                    );
+
+                    int nbPompiersAjoutes = 0;
+                    foreach (DataRow pompier in pompiersDispo)
+                    {
+                        if (nbPompiersAjoutes >= nombreNecessaire) break;
+
+                        int matricule = Convert.ToInt32(pompier["matricule"]);
+
+                        // Vérifier si le pompier est affecté à la caserne du véhicule
+                        bool estAffecte = affectations.Any(a =>
+                            Convert.ToInt32(a["matriculePompier"]) == matricule
+                        );
+
+                        // Vérifier si le pompier a l'habilitation requise
+                        bool aHabilitation = habilitations.Any(h =>
+                            Convert.ToInt32(h["matriculePompier"]) == matricule
+                        );
+
+                        // Vérifier si le pompier n'est pas déjà ajouté
+                        bool dejaAjoute = tablePompier.AsEnumerable().Any(r =>
+                            Convert.ToInt32(r["matricule"]) == matricule
+                        );
+
+                        if (estAffecte && aHabilitation && !dejaAjoute)
+                        {
+                            tablePompier.Rows.Add(
+                                pompier["nom"],
+                                pompier["prenom"],
+                                pompier["codeGrade"],
+                                matricule,
+                                idHabilitation,
+                                typeEngin
+                            );
+                            nbPompiersAjoutes++;
+                        }
+                    }
+                }
+            }
+
+            // Ouvrir le formulaire de choix automatique avec le DataSet
+            FrmChoixVehiculesPompierAutomatique frmAuto = new FrmChoixVehiculesPompierAutomatique(dsAuto);
+            if (frmAuto.ShowDialog() == DialogResult.OK)
+            {
+                pompierVehiculeMission = frmAuto.DataSetMission;
             }
         }
     }

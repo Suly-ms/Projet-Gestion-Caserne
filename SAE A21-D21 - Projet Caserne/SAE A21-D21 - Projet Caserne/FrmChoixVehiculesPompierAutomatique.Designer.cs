@@ -111,7 +111,6 @@
             // 
             this.btnRetour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetour.ForeColor = System.Drawing.Color.White;
             this.btnRetour.Location = new System.Drawing.Point(10, 11);
             this.btnRetour.Margin = new System.Windows.Forms.Padding(2);
             this.btnRetour.Name = "btnRetour";

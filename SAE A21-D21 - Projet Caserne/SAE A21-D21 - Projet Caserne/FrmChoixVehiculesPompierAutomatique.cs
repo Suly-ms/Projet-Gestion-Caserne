@@ -26,21 +26,24 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void FrmChoixVehiculesPompierAutomatique_Load(object sender, EventArgs e)
         {
-            foreach (DataRow row in m_dataSet.Tables["Pompier"].Rows)
+            // Affichage des pompiers
+            foreach (DataRow row in m_dataSet.Tables["Pompiers"].Rows)
             {
                 string nom = row["Nom"].ToString();
                 string prenom = row["Prenom"].ToString();
-                string grade = row["codeGrade"].ToString();
+                string grade = row["Grade"].ToString();
                 Image image = Image.FromFile("img/grades/" + grade + ".png");
                 UC_ChoixPompierAutomatique ucChoixPompier = new UC_ChoixPompierAutomatique(image, grade, nom, prenom);
                 ucChoixPompier.Dock = DockStyle.Top; // Permet de les empiler verticalement
                 pnlPompier.Controls.Add(ucChoixPompier);
             }
-            foreach (DataRow row in m_dataSet.Tables["Engin"].Rows)
+
+            // Affichage des véhicules
+            foreach (DataRow row in m_dataSet.Tables["Vehicules"].Rows)
             {
-                string type = row["codeTypeEngin"].ToString();
-                int numero = Convert.ToInt32(row["numero"]);
-                int caserne = Convert.ToInt32(row["idCaserne"]);
+                string type = row["Type"].ToString();
+                int numero = Convert.ToInt32(row["Numero"]);
+                int caserne = Convert.ToInt32(row["Caserne"]);
                 Image image = Image.FromFile("img/vehicules/" + type.ToLower() + ".jpg");
                 UC_ChoixVehiculeAutomatique ucChoixVehicule = new UC_ChoixVehiculeAutomatique(image, type, numero, caserne);
                 ucChoixVehicule.Dock = DockStyle.Top; // Permet de les empiler verticalement
