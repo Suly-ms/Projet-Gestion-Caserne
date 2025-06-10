@@ -179,6 +179,17 @@ namespace SAE_A21_D21___Projet_Caserne
             pnlChoixPompier.Controls.Clear();
             int top = 10;
             int left = 20;
+
+            // Récupérer la liste des pompiers déjà sélectionnés
+            var pompiersDejaSelectionnes = new HashSet<string>();
+            if (pompierVehiculeEnregistre.Tables.Contains("Pompiers"))
+            {
+                foreach (DataRow row in pompierVehiculeEnregistre.Tables["Pompiers"].Rows)
+                {
+                    pompiersDejaSelectionnes.Add($"{row["Nom"]}_{row["Prenom"]}");
+                }
+            }
+
             foreach (DataRow pompier in pompiers)
             {
                 int matricule = Convert.ToInt32(pompier["matricule"]);
@@ -208,6 +219,11 @@ namespace SAE_A21_D21___Projet_Caserne
                         }
                     }
                 }
+
+                // Vérifier si le pompier est déjà sélectionné pour une autre habilitation
+                string clePompier = $"{pompier["nom"]}_{pompier["prenom"]}";
+                if (pompiersDejaSelectionnes.Contains(clePompier) && !dejaSelectionne)
+                    continue;
 
                 // Création et configuration du contrôle
                 UC_ChoixPompier choixPompier = new UC_ChoixPompier
