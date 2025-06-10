@@ -143,9 +143,11 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pnlPompier);
             this.Controls.Add(this.pnlVehicule);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmChoixVehiculesPompierAutomatique";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Choix des véhicules et des pompiers (automatique)";
             this.Load += new System.EventHandler(this.FrmChoixVehiculesPompierAutomatique_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

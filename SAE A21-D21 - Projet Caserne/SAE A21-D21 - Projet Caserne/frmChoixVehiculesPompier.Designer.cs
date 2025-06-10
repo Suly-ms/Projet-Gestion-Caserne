@@ -281,7 +281,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmChoixVehiculesPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Choix des véhicules et des pompiers";
+            this.Text = "Choix des véhicules et des pompiers (manuel)";
             this.Load += new System.EventHandler(this.FrmChoixVehiculesPompier_Load);
             this.pnlVehiculeEnregistre.ResumeLayout(false);
             this.pnlVehiculeEnregistre.PerformLayout();
