@@ -32,30 +32,20 @@ namespace SAE_A21_D21___Projet_Caserne
 
         private void FrmParcoursEquipements_Load(object sender, EventArgs e)
         {
-            try
-            {
-                SQLiteConnection connec = Connexion.Connec;
-                string requete = "SELECT id, nom FROM Caserne";
+            // Utilisation du DataSet globale chargé par FrmTableauBord
+            DataTable dtCaserne = MesDatas.DsGlobal.Tables["Caserne"];
 
-                SQLiteDataAdapter da = new SQLiteDataAdapter(requete, connec);
-                DataTable dtCaserne = new DataTable();
-                da.Fill(dtCaserne);
+            cbxCaserne.DisplayMember = "nom";
+            cbxCaserne.ValueMember = "id";
+            cbxCaserne.DataSource = dtCaserne;
 
-                cbxCaserne.DisplayMember = "nom";
-                cbxCaserne.ValueMember = "id";
-                cbxCaserne.DataSource = dtCaserne;
+            lblStatutMission.Visible = false;
+            lblStatutPanne.Visible = false;
+            lblStatutDisponible.Visible = false;
 
-                lblStatutMission.Visible = false;
-                lblStatutPanne.Visible = false;
-                lblStatutDisponible.Visible = false;
+            pictureBoxEngin.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                pictureBoxEngin.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur chargement casernes : " + ex.Message);
-            }
-
+            // Affichage du premier vehicule 
             cbxCaserne_SelectedIndexChanged(sender, EventArgs.Empty);
         }
 
