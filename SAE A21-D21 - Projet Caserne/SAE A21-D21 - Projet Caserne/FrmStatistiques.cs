@@ -189,7 +189,9 @@ namespace SAE_A21_D21___Projet_Caserne
                         String engin = dr.GetString(0);
                         int num = dr.GetInt32(1);
                         String numero = num.ToString();
-                        int compteur = dr.GetInt32(2);
+
+                        // Si il est utilisé moins que 0 minutes (des fois ça le fait jsp pourquoi) alors on met 0
+                        int compteur = dr.GetInt32(2) < 0 ? 0 : dr.GetInt32(2);
 
                         Label lbl = new Label();
 
