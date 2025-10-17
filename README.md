@@ -1,19 +1,6 @@
 # 🚒 Projet Gestion Caserne
 
 Une application **Windows Forms** en **C#** permettant de gérer une caserne de pompiers : interventions, véhicules, pompiers, et habilitations.  
-👉 [Voir le dépôt GitHub](https://github.com/Suly-ms/Projet-Gestion-Caserne/tree/main)
-
----
-
-## 🧩 Table des matières
-- [Présentation](#-présentation)
-- [Fonctionnalités](#-fonctionnalités)
-- [Architecture & technologies](#-architecture--technologies)
-- [Installation & configuration](#-installation--configuration)
-- [Utilisation](#-utilisation)
-- [Structure du projet](#-structure-du-projet)
-- [Contribuer](#-contribuer)
-- [Licence](#-licence)
 
 ---
 
